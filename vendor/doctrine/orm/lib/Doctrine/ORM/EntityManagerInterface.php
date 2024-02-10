@@ -4,6 +4,7 @@ declare(strict_types=1);
 
 namespace Doctrine\ORM;
 
+
 use BadMethodCallException;
 use DateTimeInterface;
 use Doctrine\Common\EventManager;
@@ -16,6 +17,7 @@ use Doctrine\ORM\Query\Expr;
 use Doctrine\ORM\Query\FilterCollection;
 use Doctrine\ORM\Query\ResultSetMapping;
 use Doctrine\Persistence\ObjectManager;
+
 
 /**
  * EntityManager interface

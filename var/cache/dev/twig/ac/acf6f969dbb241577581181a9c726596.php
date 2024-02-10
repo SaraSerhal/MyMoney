@@ -228,6 +228,6 @@ class __TwigTemplate_f5c90bf7ddebdef14493ee442ece0f79 extends Template
         </dl>
     </div>
 </div>
-", "@WebProfiler/Profiler/_command_summary.html.twig", "/Users/odeliacohen/Budget/vendor/symfony/web-profiler-bundle/Resources/views/Profiler/_command_summary.html.twig");
+", "@WebProfiler/Profiler/_command_summary.html.twig", "/Applications/MAMP/htdocs/Budget/vendor/symfony/web-profiler-bundle/Resources/views/Profiler/_command_summary.html.twig");
     }
 }

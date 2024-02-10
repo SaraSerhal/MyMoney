@@ -83,6 +83,6 @@ class __TwigTemplate_6efe7386b36cbd620567c1da1cda7d17 extends Template
     <path d=\"M12 20l4 -9l4 9\"></path>
     <path d=\"M19.1 18h-6.2\"></path>
 </svg>
-", "@WebProfiler/Icon/translation.svg", "/Users/odeliacohen/Budget/vendor/symfony/web-profiler-bundle/Resources/views/Icon/translation.svg");
+", "@WebProfiler/Icon/translation.svg", "/Applications/MAMP/htdocs/Budget/vendor/symfony/web-profiler-bundle/Resources/views/Icon/translation.svg");
     }
 }

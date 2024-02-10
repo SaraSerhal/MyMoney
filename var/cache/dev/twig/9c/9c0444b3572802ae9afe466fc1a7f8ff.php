@@ -2483,6 +2483,6 @@ $context["attrvalue"] === false)) {
         {%- endif -%}
     {%- endfor -%}
 {%- endblock attributes -%}
-", "form_div_layout.html.twig", "/Users/odeliacohen/Budget/vendor/symfony/twig-bridge/Resources/views/Form/form_div_layout.html.twig");
+", "form_div_layout.html.twig", "/Applications/MAMP/htdocs/Budget/vendor/symfony/twig-bridge/Resources/views/Form/form_div_layout.html.twig");
     }
 }

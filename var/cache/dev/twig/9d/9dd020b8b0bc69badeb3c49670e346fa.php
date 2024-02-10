@@ -75,6 +75,6 @@ class __TwigTemplate_1d9f3c17955f7c129afdb5b16694deb2 extends Template
     <path stroke=\"none\" d=\"M0 0h24v24H0z\" fill=\"none\"></path>
     <path d=\"M6 9l6 6l6 -6\"></path>
 </svg>
-", "@WebProfiler/Icon/chevron-down.svg", "/Users/odeliacohen/Budget/vendor/symfony/web-profiler-bundle/Resources/views/Icon/chevron-down.svg");
+", "@WebProfiler/Icon/chevron-down.svg", "/Applications/MAMP/htdocs/Budget/vendor/symfony/web-profiler-bundle/Resources/views/Icon/chevron-down.svg");
     }
 }

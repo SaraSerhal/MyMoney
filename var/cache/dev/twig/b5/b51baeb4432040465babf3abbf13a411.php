@@ -79,6 +79,6 @@ class __TwigTemplate_73b41ff602190288e95badc886d06e59 extends Template
     <line x1=\"13\" y1=\"15\" x2=\"16\" y2=\"15\"></line>
     <rect x=\"3\" y=\"4\" width=\"18\" height=\"16\" rx=\"2\"></rect>
 </svg>
-", "@WebProfiler/Icon/command.svg", "/Users/odeliacohen/Budget/vendor/symfony/web-profiler-bundle/Resources/views/Icon/command.svg");
+", "@WebProfiler/Icon/command.svg", "/Applications/MAMP/htdocs/Budget/vendor/symfony/web-profiler-bundle/Resources/views/Icon/command.svg");
     }
 }

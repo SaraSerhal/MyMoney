@@ -79,6 +79,6 @@ class __TwigTemplate_c5b09e89290df2e83d6545dd65d0de0e extends Template
     <line x1=\"12\" y1=\"8\" x2=\"12\" y2=\"12\"></line>
     <line x1=\"12\" y1=\"16\" x2=\"12.01\" y2=\"16\"></line>
 </svg>
-", "@WebProfiler/Icon/alert-circle.svg", "/Users/odeliacohen/Budget/vendor/symfony/web-profiler-bundle/Resources/views/Icon/alert-circle.svg");
+", "@WebProfiler/Icon/alert-circle.svg", "/Applications/MAMP/htdocs/Budget/vendor/symfony/web-profiler-bundle/Resources/views/Icon/alert-circle.svg");
     }
 }

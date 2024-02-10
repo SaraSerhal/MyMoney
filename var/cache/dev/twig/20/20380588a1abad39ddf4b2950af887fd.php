@@ -87,6 +87,6 @@ class __TwigTemplate_282e0af510e02c4fb23820d2ed7fe27e extends Template
     <path d=\"M17 12h.01\"></path>
     <path d=\"M13 12h.01\"></path>
 </svg>
-", "@WebProfiler/Icon/form.svg", "/Users/odeliacohen/Budget/vendor/symfony/web-profiler-bundle/Resources/views/Icon/form.svg");
+", "@WebProfiler/Icon/form.svg", "/Applications/MAMP/htdocs/Budget/vendor/symfony/web-profiler-bundle/Resources/views/Icon/form.svg");
     }
 }
