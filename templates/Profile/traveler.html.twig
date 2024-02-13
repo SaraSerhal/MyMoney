@@ -1,0 +1,13 @@
+{% extends 'base.html.twig' %}
+{% block title %}Traveler  {% endblock %}
+{% block body %}
+    <h1>Traveler</h1>
+
+    {% if profile is defined %}
+        <h4>Your budget is {{ profile.profileBudget }} $</h4>
+    {% else %}
+        <p>No profile found.</p>
+    {% endif %}
+
+{% endblock %}
+

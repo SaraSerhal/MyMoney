@@ -11,6 +11,8 @@ use Symfony\Component\Form\FormTypeInterface;
 #[ORM\Entity(repositoryClass: ProfileRepository::class)]
 class Profile
 {
+
+
     #[ORM\Id]
     #[ORM\GeneratedValue]
     #[ORM\Column]
@@ -30,10 +32,13 @@ class Profile
 
     public function __construct()
     {
-        
+
         $this->createdAt = new \DateTimeImmutable();
         $this->users = new ArrayCollection();
     }
+
+
+
 
     public function getId(): ?int
     {
@@ -102,4 +107,8 @@ class Profile
 
         return $this;
     }
+
+
+
+
 }

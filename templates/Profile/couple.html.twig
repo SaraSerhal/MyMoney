@@ -1,0 +1,14 @@
+{% extends 'base.html.twig' %}
+
+{% block title %} Couple {% endblock %}
+{% block body %}
+    <h1>Couple</h1>
+
+    {% if profile is defined %}
+        <h4>Your budget is {{ profile.profileBudget }} $</h4>
+    {% else %}
+        <p>No  found.</p>
+    {% endif %}
+
+{% endblock %}
+

@@ -20,6 +20,7 @@ return [
         '/investor' => [[['_route' => 'budget_investor', '_controller' => 'App\\Controller\\InscriptionController::investor'], null, null, null, false, false, null]],
         '/parent' => [[['_route' => 'budget_parent', '_controller' => 'App\\Controller\\InscriptionController::parent'], null, null, null, false, false, null]],
         '/couple' => [[['_route' => 'budget_couple', '_controller' => 'App\\Controller\\InscriptionController::couple'], null, null, null, false, false, null]],
+        '/useraccount' => [[['_route' => 'budget_useraccount', '_controller' => 'App\\Controller\\InscriptionController::useraccount'], null, null, null, false, false, null]],
         '/register' => [[['_route' => 'app_register', '_controller' => 'App\\Controller\\RegistrationController::register'], null, null, null, false, false, null]],
         '/' => [[['_route' => 'app_login', '_controller' => 'App\\Controller\\SecurityController::login'], null, null, null, false, false, null]],
         '/logout' => [[['_route' => 'app_logout', '_controller' => 'App\\Controller\\SecurityController::logout'], null, null, null, false, false, null]],

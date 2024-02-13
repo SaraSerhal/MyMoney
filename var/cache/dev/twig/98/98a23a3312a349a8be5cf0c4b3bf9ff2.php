@@ -65,7 +65,10 @@ class __TwigTemplate_81300219e573e318f73085a095befb00 extends Template
     <div class=\"sidenav-header\">
         <b>My profile</b>
     </div>
-    <a href=\"#\" class=\"sidenav-link active\">User Account</a>
+    <a  href=\"";
+        // line 26
+        echo $this->extensions['Symfony\Bridge\Twig\Extension\RoutingExtension']->getPath("budget_useraccount");
+        echo "\" class=\"sidenav-link active\">User Account</a>
     <a href=\"#\" class=\"sidenav-link\">My Expenses</a>
     <a href=\"#\" class=\"sidenav-link\">My Review</a>
 
@@ -96,25 +99,41 @@ class __TwigTemplate_81300219e573e318f73085a095befb00 extends Template
         echo " !</h1>
         </div>
 
+        <div >
+            <p>You have 5 different profiles:</p>
+            <ul>
+                <li>If you are a student and need help managing your budget, select this profile.</li>
+                <li>If you are a traveler and need guidance on budget management, select this profile.</li>
+                <li>If you are an investor and unsure where to allocate your budget, select this profile.</li>
+                <li>If you are a parent and need assistance with budgeting, select this profile.</li>
+                <li>If you are a couple and need guidance on budget management, select this profile.</li>
+            </ul>
+            <p>Select the profile that best fits your situation to get assistance.</p>
+        </div>
+        </div>
+
         ";
-        // line 44
-        echo         $this->env->getRuntime('Symfony\Component\Form\FormRenderer')->renderBlock((isset($context["form"]) || array_key_exists("form", $context) ? $context["form"] : (function () { throw new RuntimeError('Variable "form" does not exist.', 44, $this->source); })()), 'form_start');
-        echo "
-        ";
-        // line 45
-        echo $this->env->getRuntime('Symfony\Component\Form\FormRenderer')->searchAndRenderBlock(twig_get_attribute($this->env, $this->source, (isset($context["form"]) || array_key_exists("form", $context) ? $context["form"] : (function () { throw new RuntimeError('Variable "form" does not exist.', 45, $this->source); })()), "profileType", [], "any", false, false, false, 45), 'row');
-        echo "
-        ";
-        // line 46
-        echo $this->env->getRuntime('Symfony\Component\Form\FormRenderer')->searchAndRenderBlock(twig_get_attribute($this->env, $this->source, (isset($context["form"]) || array_key_exists("form", $context) ? $context["form"] : (function () { throw new RuntimeError('Variable "form" does not exist.', 46, $this->source); })()), "profileBudget", [], "any", false, false, false, 46), 'row');
+        // line 57
+        echo         $this->env->getRuntime('Symfony\Component\Form\FormRenderer')->renderBlock((isset($context["form"]) || array_key_exists("form", $context) ? $context["form"] : (function () { throw new RuntimeError('Variable "form" does not exist.', 57, $this->source); })()), 'form_start');
         echo "
 
-        <button type=\"submit\" class=\"btn\">Register</button>
         ";
-        // line 49
-        echo         $this->env->getRuntime('Symfony\Component\Form\FormRenderer')->renderBlock((isset($context["form"]) || array_key_exists("form", $context) ? $context["form"] : (function () { throw new RuntimeError('Variable "form" does not exist.', 49, $this->source); })()), 'form_end');
+        // line 59
+        echo $this->env->getRuntime('Symfony\Component\Form\FormRenderer')->searchAndRenderBlock(twig_get_attribute($this->env, $this->source, (isset($context["form"]) || array_key_exists("form", $context) ? $context["form"] : (function () { throw new RuntimeError('Variable "form" does not exist.', 59, $this->source); })()), "profileType", [], "any", false, false, false, 59), 'row', ["attr" => ["class" => "form-control"]]);
+        echo "
+        ";
+        // line 60
+        echo $this->env->getRuntime('Symfony\Component\Form\FormRenderer')->searchAndRenderBlock(twig_get_attribute($this->env, $this->source, (isset($context["form"]) || array_key_exists("form", $context) ? $context["form"] : (function () { throw new RuntimeError('Variable "form" does not exist.', 60, $this->source); })()), "profileBudget", [], "any", false, false, false, 60), 'row', ["attr" => ["class" => "form-control", "placeholder" => "Enter your budget in \$..."]]);
+        // line 65
         echo "
 
+
+        <button type=\"submit\" class=\"btn btn-primary\">Register</button>
+
+        ";
+        // line 70
+        echo         $this->env->getRuntime('Symfony\Component\Form\FormRenderer')->renderBlock((isset($context["form"]) || array_key_exists("form", $context) ? $context["form"] : (function () { throw new RuntimeError('Variable "form" does not exist.', 70, $this->source); })()), 'form_end');
+        echo "
 
 
 </main>
@@ -158,7 +177,7 @@ class __TwigTemplate_81300219e573e318f73085a095befb00 extends Template
      */
     public function getDebugInfo()
     {
-        return array (  115 => 49,  109 => 46,  105 => 45,  101 => 44,  95 => 41,  87 => 35,  79 => 32,  76 => 31,  74 => 30,  43 => 1,);
+        return array (  135 => 70,  128 => 65,  126 => 60,  122 => 59,  117 => 57,  98 => 41,  90 => 35,  82 => 32,  79 => 31,  77 => 30,  70 => 26,  43 => 1,);
     }
 
     public function getSourceContext()
@@ -188,7 +207,7 @@ class __TwigTemplate_81300219e573e318f73085a095befb00 extends Template
     <div class=\"sidenav-header\">
         <b>My profile</b>
     </div>
-    <a href=\"#\" class=\"sidenav-link active\">User Account</a>
+    <a  href=\"{{ path('budget_useraccount') }}\" class=\"sidenav-link active\">User Account</a>
     <a href=\"#\" class=\"sidenav-link\">My Expenses</a>
     <a href=\"#\" class=\"sidenav-link\">My Review</a>
 
@@ -206,13 +225,33 @@ class __TwigTemplate_81300219e573e318f73085a095befb00 extends Template
             <h1>Welcome  {{ app.user.lastName}} !</h1>
         </div>
 
+        <div >
+            <p>You have 5 different profiles:</p>
+            <ul>
+                <li>If you are a student and need help managing your budget, select this profile.</li>
+                <li>If you are a traveler and need guidance on budget management, select this profile.</li>
+                <li>If you are an investor and unsure where to allocate your budget, select this profile.</li>
+                <li>If you are a parent and need assistance with budgeting, select this profile.</li>
+                <li>If you are a couple and need guidance on budget management, select this profile.</li>
+            </ul>
+            <p>Select the profile that best fits your situation to get assistance.</p>
+        </div>
+        </div>
+
         {{ form_start(form) }}
-        {{ form_row(form.profileType) }}
-        {{ form_row(form.profileBudget) }}
 
-        <button type=\"submit\" class=\"btn\">Register</button>
+        {{ form_row(form.profileType, {'attr': {'class': 'form-control'}}) }}
+        {{ form_row(form.profileBudget, {
+            'attr': {
+                'class': 'form-control',
+                'placeholder': 'Enter your budget in \$...',
+            }
+        }) }}
+
+
+        <button type=\"submit\" class=\"btn btn-primary\">Register</button>
+
         {{ form_end(form) }}
-
 
 
 </main>

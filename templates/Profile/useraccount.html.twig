@@ -1,0 +1,34 @@
+{% extends 'base.html.twig' %}
+
+{% block title %} useraccount {% endblock %}
+
+{% block body %}
+
+
+    <main>
+        <div style="text-align: center; margin-top: 50px;">
+            <h1>User Account  </h1>
+
+            <br>
+            <h5> Here you can manage your account  </h5>
+
+                <div>FirstName:{{ user.name}} </div>
+                <div >Name :{{ user.lastName}} </div>
+                <div >Email :{{ user.email}} </div>
+                <div >Age :{{ user.age}} </div>
+
+
+
+
+
+
+
+            <a href="{{ path('app_logout') }}" class="btn btn-danger">Logout</a>
+
+
+        </div>
+
+    </main>
+
+
+{% endblock %}

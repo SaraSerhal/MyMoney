@@ -203,6 +203,7 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
         return $this->profiles;
     }
 
+
     public function addProfile(Profile $profile): static
     {
         if (!$this->profiles->contains($profile)) {
