@@ -1,6 +1,7 @@
 {% extends 'base.html.twig' %}
 {% block title %}Traveler  {% endblock %}
 {% block body %}
+<div class="text-center">
     <h1>Traveler</h1>
 
     {% if profile is defined %}
@@ -8,6 +9,7 @@
     {% else %}
         <p>No profile found.</p>
     {% endif %}
+</div>
 
 {% endblock %}
 

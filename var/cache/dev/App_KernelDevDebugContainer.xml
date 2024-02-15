@@ -415,7 +415,7 @@
     </service>
     <service id="argument_resolver.service" class="Symfony\Component\HttpKernel\Controller\ArgumentResolver\ServiceValueResolver">
       <tag priority="-50" name="Symfony\Component\HttpKernel\Controller\ArgumentResolver\ServiceValueResolver">controller.argument_value_resolver</tag>
-      <argument type="service" id=".service_locator.c2vjscd"/>
+      <argument type="service" id=".service_locator.2XQHnSd"/>
     </service>
     <service id="argument_resolver.default" class="Symfony\Component\HttpKernel\Controller\ArgumentResolver\DefaultValueResolver">
       <tag priority="-100" name="Symfony\Component\HttpKernel\Controller\ArgumentResolver\DefaultValueResolver">controller.argument_value_resolver</tag>
@@ -3004,14 +3004,6 @@
         <argument>-100</argument>
       </call>
       <call method="addListener">
-        <argument>Symfony\Component\Messenger\Event\WorkerRunningEvent</argument>
-        <argument type="collection">
-          <argument type="service_closure" id="messenger.listener.dispatch_pcntl_signal_listener"/>
-          <argument>onWorkerRunning</argument>
-        </argument>
-        <argument>100</argument>
-      </call>
-      <call method="addListener">
         <argument>Symfony\Component\Messenger\Event\WorkerStartedEvent</argument>
         <argument type="collection">
           <argument type="service_closure" id="messenger.listener.stop_worker_on_restart_signal_listener"/>
@@ -3289,7 +3281,7 @@
     </service>
     <service id="argument_resolver.not_tagged_controller" class="Symfony\Component\HttpKernel\Controller\ArgumentResolver\NotTaggedControllerValueResolver">
       <tag name="controller.argument_value_resolver" priority="-200"/>
-      <argument type="service" id=".service_locator.c2vjscd"/>
+      <argument type="service" id=".service_locator.2XQHnSd"/>
     </service>
     <service id="debug.log_processor" class="Symfony\Bridge\Monolog\Processor\DebugProcessor">
       <tag name="kernel.reset" method="reset"/>
@@ -7564,11 +7556,12 @@
         <argument key="authenticationUtils" type="service_closure" id="security.authentication_utils"/>
       </argument>
     </service>
-    <service id=".service_locator.c2vjscd" class="Symfony\Component\DependencyInjection\ServiceLocator">
+    <service id=".service_locator.2XQHnSd" class="Symfony\Component\DependencyInjection\ServiceLocator">
       <tag name="container.service_locator"/>
       <argument type="collection">
         <argument key="App\Controller\InscriptionController::couple" type="service_closure" id=".service_locator.CsMkqUa"/>
         <argument key="App\Controller\InscriptionController::create" type="service_closure" id=".service_locator.CsMkqUa"/>
+        <argument key="App\Controller\InscriptionController::deleteUserAndProfiles" type="service_closure" id=".service_locator.CsMkqUa"/>
         <argument key="App\Controller\InscriptionController::investor" type="service_closure" id=".service_locator.CsMkqUa"/>
         <argument key="App\Controller\InscriptionController::parent" type="service_closure" id=".service_locator.CsMkqUa"/>
         <argument key="App\Controller\InscriptionController::student" type="service_closure" id=".service_locator.CsMkqUa"/>
@@ -7582,6 +7575,7 @@
         <argument key="kernel::registerContainerConfiguration" type="service_closure" id=".service_locator.y4_Zrx."/>
         <argument key="App\Controller\InscriptionController:couple" type="service_closure" id=".service_locator.CsMkqUa"/>
         <argument key="App\Controller\InscriptionController:create" type="service_closure" id=".service_locator.CsMkqUa"/>
+        <argument key="App\Controller\InscriptionController:deleteUserAndProfiles" type="service_closure" id=".service_locator.CsMkqUa"/>
         <argument key="App\Controller\InscriptionController:investor" type="service_closure" id=".service_locator.CsMkqUa"/>
         <argument key="App\Controller\InscriptionController:parent" type="service_closure" id=".service_locator.CsMkqUa"/>
         <argument key="App\Controller\InscriptionController:student" type="service_closure" id=".service_locator.CsMkqUa"/>
@@ -9773,7 +9767,7 @@
     <service id="Psr\Log\LoggerInterface" alias="monolog.logger"/>
     <service id="container.env_var_processors_locator" alias=".service_locator.bJ.4HC5" public="true"/>
     <service id="twig.loader.filesystem" alias="twig.loader.native_filesystem"/>
-    <service id="argument_resolver.controller_locator" alias=".service_locator.c2vjscd"/>
+    <service id="argument_resolver.controller_locator" alias=".service_locator.2XQHnSd"/>
     <service id="doctrine.id_generator_locator" alias=".service_locator.KLVvNIq"/>
     <service id="twig.loader" alias="twig.loader.native_filesystem"/>
     <service id="Psr\Log\LoggerInterface $requestLogger" alias="monolog.logger.request"/>

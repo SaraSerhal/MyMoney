@@ -1,6 +1,7 @@
 {% extends 'base.html.twig' %}
 {% block title %} Student  {% endblock %}
 {% block body %}
+<div class="text-center">
     <h1>Student</h1>
 
     {% if profile is defined %}
@@ -8,6 +9,10 @@
     {% else %}
         <p>No profile found.</p>
     {% endif %}
+</div>
+
+
+
 
 {% endblock %}
 

@@ -1,6 +1,7 @@
 {% extends 'base.html.twig' %}
 {% block title %} Investor {% endblock %}
 {% block body %}
+<div class="text-center">
     <h1>Investor</h1>
 
     {% if profile is defined %}
@@ -8,6 +9,6 @@
     {% else %}
         <p>No profile found.</p>
     {% endif %}
-
+</div>
 {% endblock %}
 

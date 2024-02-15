@@ -11,19 +11,47 @@
 
             <br>
             <h5> Here you can manage your account  </h5>
+<br>
 
-                <div>FirstName:{{ user.name}} </div>
-                <div >Name :{{ user.lastName}} </div>
-                <div >Email :{{ user.email}} </div>
-                <div >Age :{{ user.age}} </div>
+            <div class="text-center">
+                <table class="table">
+                    <tr>
+                        <td>FirstName:</td>
+                        <td>{{ user.name }}</td>
+                    </tr>
+                    <tr>
+                        <td>Name:</td>
+                        <td>{{ user.lastName }}</td>
+                    </tr>
+                    <tr>
+                        <td>Email:</td>
+                        <td>{{ user.email }}</td>
+                    </tr>
+                    <tr>
+                        <td>Age:</td>
+                        <td>{{ user.age }}</td>
+                    </tr>
+                    <tr>
+                        {% if profiles is defined and profiles is not empty %}
+                            <td>Profiles & Budgets:</td>
+                            <td>
+                                {% for profile in profiles %}
+                                    Your profile {{ profile.profileType }} and your Budget {{ profile.profileBudget }}<br>
+                                {% endfor %}
+                            </td>
+                        {% else %}
+                            <p>No profiles found</p>
+                        {% endif %}
+                    </tr>
+                </table>
+            </div>
 
-
-
-
-
+            <br>
 
 
             <a href="{{ path('app_logout') }}" class="btn btn-danger">Logout</a>
+            <a href="{{ path('budget_delete_user_and_profiles') }}" class="btn btn-danger" onclick="return confirm('Are you sure you want to delete your account?')">Delete Account</a>
+
 
 
         </div>

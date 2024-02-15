@@ -85,23 +85,24 @@ class __TwigTemplate_215cb120e0d228a3434e0cadbd4a1c9e extends Template
         $__internal_6f47bbe9983af81f1e7450e9a3e3768f->enter($__internal_6f47bbe9983af81f1e7450e9a3e3768f_prof = new \Twig\Profiler\Profile($this->getTemplateName(), "block", "body"));
 
         // line 5
-        echo "    <h1>Couple</h1>
+        echo "<div class=\"text-center\">
+    <h1>Couple</h1>
 
     ";
-        // line 7
+        // line 8
         if (array_key_exists("profile", $context)) {
-            // line 8
+            // line 9
             echo "        <h4>Your budget is ";
-            echo twig_escape_filter($this->env, twig_get_attribute($this->env, $this->source, (isset($context["profile"]) || array_key_exists("profile", $context) ? $context["profile"] : (function () { throw new RuntimeError('Variable "profile" does not exist.', 8, $this->source); })()), "profileBudget", [], "any", false, false, false, 8), "html", null, true);
+            echo twig_escape_filter($this->env, twig_get_attribute($this->env, $this->source, (isset($context["profile"]) || array_key_exists("profile", $context) ? $context["profile"] : (function () { throw new RuntimeError('Variable "profile" does not exist.', 9, $this->source); })()), "profileBudget", [], "any", false, false, false, 9), "html", null, true);
             echo " \$</h4>
     ";
         } else {
-            // line 10
+            // line 11
             echo "        <p>No  found.</p>
     ";
         }
-        // line 12
-        echo "
+        // line 13
+        echo "</div>
 ";
         
         $__internal_6f47bbe9983af81f1e7450e9a3e3768f->leave($__internal_6f47bbe9983af81f1e7450e9a3e3768f_prof);
@@ -132,7 +133,7 @@ class __TwigTemplate_215cb120e0d228a3434e0cadbd4a1c9e extends Template
      */
     public function getDebugInfo()
     {
-        return array (  104 => 12,  100 => 10,  94 => 8,  92 => 7,  88 => 5,  78 => 4,  59 => 3,  36 => 1,);
+        return array (  105 => 13,  101 => 11,  95 => 9,  93 => 8,  88 => 5,  78 => 4,  59 => 3,  36 => 1,);
     }
 
     public function getSourceContext()
@@ -141,6 +142,7 @@ class __TwigTemplate_215cb120e0d228a3434e0cadbd4a1c9e extends Template
 
 {% block title %} Couple {% endblock %}
 {% block body %}
+<div class=\"text-center\">
     <h1>Couple</h1>
 
     {% if profile is defined %}
@@ -148,7 +150,7 @@ class __TwigTemplate_215cb120e0d228a3434e0cadbd4a1c9e extends Template
     {% else %}
         <p>No  found.</p>
     {% endif %}
-
+</div>
 {% endblock %}
 
 ", "Profile/couple.html.twig", "/Applications/MAMP/htdocs/Budget/templates/Profile/couple.html.twig");

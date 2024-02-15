@@ -91,37 +91,88 @@ class __TwigTemplate_f240ccea019b60d701c0ae5b7ad53b36 extends Template
         <div style=\"text-align: center; margin-top: 50px;\">
             <h1>User Account  </h1>
 
-           
             <br>
             <h5> Here you can manage your account  </h5>
+<br>
 
-                <div>FirstName:";
-        // line 16
-        echo twig_escape_filter($this->env, twig_get_attribute($this->env, $this->source, (isset($context["user"]) || array_key_exists("user", $context) ? $context["user"] : (function () { throw new RuntimeError('Variable "user" does not exist.', 16, $this->source); })()), "name", [], "any", false, false, false, 16), "html", null, true);
-        echo " </div>
-                <div >Name :";
-        // line 17
-        echo twig_escape_filter($this->env, twig_get_attribute($this->env, $this->source, (isset($context["user"]) || array_key_exists("user", $context) ? $context["user"] : (function () { throw new RuntimeError('Variable "user" does not exist.', 17, $this->source); })()), "lastName", [], "any", false, false, false, 17), "html", null, true);
-        echo " </div>
-                <div >Email :";
-        // line 18
-        echo twig_escape_filter($this->env, twig_get_attribute($this->env, $this->source, (isset($context["user"]) || array_key_exists("user", $context) ? $context["user"] : (function () { throw new RuntimeError('Variable "user" does not exist.', 18, $this->source); })()), "email", [], "any", false, false, false, 18), "html", null, true);
-        echo " </div>
-                <div >Age :";
-        // line 19
-        echo twig_escape_filter($this->env, twig_get_attribute($this->env, $this->source, (isset($context["user"]) || array_key_exists("user", $context) ? $context["user"] : (function () { throw new RuntimeError('Variable "user" does not exist.', 19, $this->source); })()), "age", [], "any", false, false, false, 19), "html", null, true);
-        echo " </div>
+            <div class=\"text-center\">
+                <table class=\"table\">
+                    <tr>
+                        <td>FirstName:</td>
+                        <td>";
+        // line 20
+        echo twig_escape_filter($this->env, twig_get_attribute($this->env, $this->source, (isset($context["user"]) || array_key_exists("user", $context) ? $context["user"] : (function () { throw new RuntimeError('Variable "user" does not exist.', 20, $this->source); })()), "name", [], "any", false, false, false, 20), "html", null, true);
+        echo "</td>
+                    </tr>
+                    <tr>
+                        <td>Name:</td>
+                        <td>";
+        // line 24
+        echo twig_escape_filter($this->env, twig_get_attribute($this->env, $this->source, (isset($context["user"]) || array_key_exists("user", $context) ? $context["user"] : (function () { throw new RuntimeError('Variable "user" does not exist.', 24, $this->source); })()), "lastName", [], "any", false, false, false, 24), "html", null, true);
+        echo "</td>
+                    </tr>
+                    <tr>
+                        <td>Email:</td>
+                        <td>";
+        // line 28
+        echo twig_escape_filter($this->env, twig_get_attribute($this->env, $this->source, (isset($context["user"]) || array_key_exists("user", $context) ? $context["user"] : (function () { throw new RuntimeError('Variable "user" does not exist.', 28, $this->source); })()), "email", [], "any", false, false, false, 28), "html", null, true);
+        echo "</td>
+                    </tr>
+                    <tr>
+                        <td>Age:</td>
+                        <td>";
+        // line 32
+        echo twig_escape_filter($this->env, twig_get_attribute($this->env, $this->source, (isset($context["user"]) || array_key_exists("user", $context) ? $context["user"] : (function () { throw new RuntimeError('Variable "user" does not exist.', 32, $this->source); })()), "age", [], "any", false, false, false, 32), "html", null, true);
+        echo "</td>
+                    </tr>
+                    <tr>
+                        ";
+        // line 35
+        if ((array_key_exists("profiles", $context) &&  !twig_test_empty((isset($context["profiles"]) || array_key_exists("profiles", $context) ? $context["profiles"] : (function () { throw new RuntimeError('Variable "profiles" does not exist.', 35, $this->source); })())))) {
+            // line 36
+            echo "                            <td>Profiles & Budgets:</td>
+                            <td>
+                                ";
+            // line 38
+            $context['_parent'] = $context;
+            $context['_seq'] = twig_ensure_traversable((isset($context["profiles"]) || array_key_exists("profiles", $context) ? $context["profiles"] : (function () { throw new RuntimeError('Variable "profiles" does not exist.', 38, $this->source); })()));
+            foreach ($context['_seq'] as $context["_key"] => $context["profile"]) {
+                // line 39
+                echo "                                    Your profile ";
+                echo twig_escape_filter($this->env, twig_get_attribute($this->env, $this->source, $context["profile"], "profileType", [], "any", false, false, false, 39), "html", null, true);
+                echo " and your Budget ";
+                echo twig_escape_filter($this->env, twig_get_attribute($this->env, $this->source, $context["profile"], "profileBudget", [], "any", false, false, false, 39), "html", null, true);
+                echo "<br>
+                                ";
+            }
+            $_parent = $context['_parent'];
+            unset($context['_seq'], $context['_iterated'], $context['_key'], $context['profile'], $context['_parent'], $context['loop']);
+            $context = array_intersect_key($context, $_parent) + $_parent;
+            // line 41
+            echo "                            </td>
+                        ";
+        } else {
+            // line 43
+            echo "                            <p>No profiles found</p>
+                        ";
+        }
+        // line 45
+        echo "                    </tr>
+                </table>
+            </div>
 
-
-
-
-
+            <br>
 
 
             <a href=\"";
-        // line 27
+        // line 52
         echo $this->extensions['Symfony\Bridge\Twig\Extension\RoutingExtension']->getPath("app_logout");
         echo "\" class=\"btn btn-danger\">Logout</a>
+            <a href=\"";
+        // line 53
+        echo $this->extensions['Symfony\Bridge\Twig\Extension\RoutingExtension']->getPath("budget_delete_user_and_profiles");
+        echo "\" class=\"btn btn-danger\" onclick=\"return confirm('Are you sure you want to delete your account?')\">Delete Account</a>
+
 
 
         </div>
@@ -159,7 +210,7 @@ class __TwigTemplate_f240ccea019b60d701c0ae5b7ad53b36 extends Template
      */
     public function getDebugInfo()
     {
-        return array (  123 => 27,  112 => 19,  108 => 18,  104 => 17,  100 => 16,  88 => 6,  78 => 5,  59 => 3,  36 => 1,);
+        return array (  173 => 53,  169 => 52,  160 => 45,  156 => 43,  152 => 41,  141 => 39,  137 => 38,  133 => 36,  131 => 35,  125 => 32,  118 => 28,  111 => 24,  104 => 20,  88 => 6,  78 => 5,  59 => 3,  36 => 1,);
     }
 
     public function getSourceContext()
@@ -175,22 +226,49 @@ class __TwigTemplate_f240ccea019b60d701c0ae5b7ad53b36 extends Template
         <div style=\"text-align: center; margin-top: 50px;\">
             <h1>User Account  </h1>
 
-           
             <br>
             <h5> Here you can manage your account  </h5>
+<br>
 
-                <div>FirstName:{{ user.name}} </div>
-                <div >Name :{{ user.lastName}} </div>
-                <div >Email :{{ user.email}} </div>
-                <div >Age :{{ user.age}} </div>
+            <div class=\"text-center\">
+                <table class=\"table\">
+                    <tr>
+                        <td>FirstName:</td>
+                        <td>{{ user.name }}</td>
+                    </tr>
+                    <tr>
+                        <td>Name:</td>
+                        <td>{{ user.lastName }}</td>
+                    </tr>
+                    <tr>
+                        <td>Email:</td>
+                        <td>{{ user.email }}</td>
+                    </tr>
+                    <tr>
+                        <td>Age:</td>
+                        <td>{{ user.age }}</td>
+                    </tr>
+                    <tr>
+                        {% if profiles is defined and profiles is not empty %}
+                            <td>Profiles & Budgets:</td>
+                            <td>
+                                {% for profile in profiles %}
+                                    Your profile {{ profile.profileType }} and your Budget {{ profile.profileBudget }}<br>
+                                {% endfor %}
+                            </td>
+                        {% else %}
+                            <p>No profiles found</p>
+                        {% endif %}
+                    </tr>
+                </table>
+            </div>
 
-
-
-
-
+            <br>
 
 
             <a href=\"{{ path('app_logout') }}\" class=\"btn btn-danger\">Logout</a>
+            <a href=\"{{ path('budget_delete_user_and_profiles') }}\" class=\"btn btn-danger\" onclick=\"return confirm('Are you sure you want to delete your account?')\">Delete Account</a>
+
 
 
         </div>

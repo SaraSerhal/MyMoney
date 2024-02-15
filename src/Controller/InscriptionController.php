@@ -34,6 +34,7 @@ class InscriptionController extends AbstractController{
             $formData = $form->getData();
 
 
+
             $profileType = $formData->getProfileType();
 
             switch ($profileType) {
@@ -205,11 +206,39 @@ class InscriptionController extends AbstractController{
     public function useraccount(Request $request, EntityManagerInterface $entityManager): Response
     {
         $user = $this->getUser();
+
+        // Récupérer tous les profils associés à l'utilisateur
+        $profiles = $user->getProfiles();
+
         return $this->render('Profile/useraccount.html.twig', [
             'controller_name' => 'InscriptionController',
             'user' => $user,
+            'profiles' => $profiles,
         ]);
     }
+    #[Route('/deleteUserAndProfiles', name: 'budget_delete_user_and_profiles')]
+    public function deleteUserAndProfiles(EntityManagerInterface $entityManager): Response
+    {
+        $user = $this->getUser();
+
+        if ($user) {
+            // Supprimer les profils associés à l'utilisateur
+            foreach ($user->getProfiles() as $profile) {
+                $entityManager->remove($profile);
+            }
+
+            // Supprimer l'utilisateur lui-même
+            $entityManager->remove($user);
+            $entityManager->flush();
+
+            // Rediriger vers la page d'accueil ou une autre page après la suppression du compte
+            return $this->redirectToRoute('budget_accueil');
+        }
+
+        return $this->redirectToRoute('budget_accueil');
+    }
+
+
 
 
 

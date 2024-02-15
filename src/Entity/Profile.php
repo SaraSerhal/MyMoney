@@ -6,13 +6,10 @@ use App\Repository\ProfileRepository;
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
-use Symfony\Component\Form\FormTypeInterface;
 
 #[ORM\Entity(repositoryClass: ProfileRepository::class)]
 class Profile
 {
-
-
     #[ORM\Id]
     #[ORM\GeneratedValue]
     #[ORM\Column]
@@ -24,7 +21,7 @@ class Profile
     #[ORM\Column]
     private ?float $profileBudget = null;
 
-    #[ORM\Column]
+    #[ORM\Column(type: 'datetime_immutable')]
     private ?\DateTimeImmutable $createdAt = null;
 
     #[ORM\ManyToMany(targetEntity: User::class, mappedBy: 'profiles')]
@@ -32,13 +29,10 @@ class Profile
 
     public function __construct()
     {
-
+        // Initialisez la date de création dans le constructeur
         $this->createdAt = new \DateTimeImmutable();
         $this->users = new ArrayCollection();
     }
-
-
-
 
     public function getId(): ?int
     {
@@ -74,13 +68,6 @@ class Profile
         return $this->createdAt;
     }
 
-    public function setCreatedAt(\DateTimeImmutable $createdAt): static
-    {
-        $this->createdAt = $createdAt;
-
-        return $this;
-    }
-
     /**
      * @return Collection<int, User>
      */
@@ -99,6 +86,7 @@ class Profile
         return $this;
     }
 
+
     public function removeUser(User $user): static
     {
         if ($this->users->removeElement($user)) {
@@ -107,8 +95,4 @@ class Profile
 
         return $this;
     }
-
-
-
-
 }

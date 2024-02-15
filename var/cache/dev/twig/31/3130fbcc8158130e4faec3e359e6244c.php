@@ -85,23 +85,28 @@ class __TwigTemplate_77855f23e377bed3d0c7760ebcc39d6f extends Template
         $__internal_6f47bbe9983af81f1e7450e9a3e3768f->enter($__internal_6f47bbe9983af81f1e7450e9a3e3768f_prof = new \Twig\Profiler\Profile($this->getTemplateName(), "block", "body"));
 
         // line 4
-        echo "    <h1>Student</h1>
+        echo "<div class=\"text-center\">
+    <h1>Student</h1>
 
     ";
-        // line 6
+        // line 7
         if (array_key_exists("profile", $context)) {
-            // line 7
+            // line 8
             echo "        <h4>Your budget is ";
-            echo twig_escape_filter($this->env, twig_get_attribute($this->env, $this->source, (isset($context["profile"]) || array_key_exists("profile", $context) ? $context["profile"] : (function () { throw new RuntimeError('Variable "profile" does not exist.', 7, $this->source); })()), "profileBudget", [], "any", false, false, false, 7), "html", null, true);
+            echo twig_escape_filter($this->env, twig_get_attribute($this->env, $this->source, (isset($context["profile"]) || array_key_exists("profile", $context) ? $context["profile"] : (function () { throw new RuntimeError('Variable "profile" does not exist.', 8, $this->source); })()), "profileBudget", [], "any", false, false, false, 8), "html", null, true);
             echo " \$</h4>
     ";
         } else {
-            // line 9
+            // line 10
             echo "        <p>No profile found.</p>
     ";
         }
-        // line 11
-        echo "
+        // line 12
+        echo "</div>
+
+
+
+
 ";
         
         $__internal_6f47bbe9983af81f1e7450e9a3e3768f->leave($__internal_6f47bbe9983af81f1e7450e9a3e3768f_prof);
@@ -132,7 +137,7 @@ class __TwigTemplate_77855f23e377bed3d0c7760ebcc39d6f extends Template
      */
     public function getDebugInfo()
     {
-        return array (  104 => 11,  100 => 9,  94 => 7,  92 => 6,  88 => 4,  78 => 3,  59 => 2,  36 => 1,);
+        return array (  105 => 12,  101 => 10,  95 => 8,  93 => 7,  88 => 4,  78 => 3,  59 => 2,  36 => 1,);
     }
 
     public function getSourceContext()
@@ -140,6 +145,7 @@ class __TwigTemplate_77855f23e377bed3d0c7760ebcc39d6f extends Template
         return new Source("{% extends 'base.html.twig' %}
 {% block title %} Student  {% endblock %}
 {% block body %}
+<div class=\"text-center\">
     <h1>Student</h1>
 
     {% if profile is defined %}
@@ -147,6 +153,10 @@ class __TwigTemplate_77855f23e377bed3d0c7760ebcc39d6f extends Template
     {% else %}
         <p>No profile found.</p>
     {% endif %}
+</div>
+
+
+
 
 {% endblock %}
 

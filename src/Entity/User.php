@@ -44,6 +44,8 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
 
 
 
+
+
     /**
      * @var string The hashed password
      */
@@ -57,11 +59,11 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
 
 
 
-
     public function __construct()
     {
         $this->createdAt = new \DateTimeImmutable();
         $this->profiles = new ArrayCollection();
+
     }
 
     public function getId(): ?int
@@ -151,6 +153,13 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
 
         return $this;
     }
+    
+    public function removeUser(User $user): static
+    {
+        $this->users->removeElement($user);
+
+        return $this;
+    }
 
     /**
      * @see UserInterface
@@ -213,9 +222,14 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
         return $this;
     }
 
-    public function removeProfile(Profile $profile): static
+    public function removeProfile(Profile $profile): self
     {
-        $this->profiles->removeElement($profile);
+        if ($this->profiles->removeElement($profile)) {
+            // supprimer le côté propriétaire de la relation s'il existe
+            if ($profile->getUsers()->contains($this)) {
+                $profile->removeUser($this);
+            }
+        }
 
         return $this;
     }

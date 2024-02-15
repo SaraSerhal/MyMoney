@@ -137,7 +137,7 @@ class __TwigTemplate_54b2394a8bced68c491c7e5b7f69125c extends Template
     <button class=\"btn btn-lg btn-primary\" type=\"submit\">
         Sign in
     </button>
-    <p>New? Sign up by clicking on this link. : <a  href=\"";
+    <p>New? Sign up by clicking on this link : <a  href=\"";
         // line 35
         echo $this->extensions['Symfony\Bridge\Twig\Extension\RoutingExtension']->getPath("app_register");
         echo "\"> Here   </a></p>
@@ -212,7 +212,7 @@ class __TwigTemplate_54b2394a8bced68c491c7e5b7f69125c extends Template
     <button class=\"btn btn-lg btn-primary\" type=\"submit\">
         Sign in
     </button>
-    <p>New? Sign up by clicking on this link. : <a  href=\"{{ path('app_register') }}\"> Here   </a></p>
+    <p>New? Sign up by clicking on this link : <a  href=\"{{ path('app_register') }}\"> Here   </a></p>
 
 </form>
 {% endblock %}
