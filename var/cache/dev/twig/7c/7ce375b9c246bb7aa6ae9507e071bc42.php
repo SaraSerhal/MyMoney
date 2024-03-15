@@ -823,6 +823,6 @@ class __TwigTemplate_787bceae88c401aee9802a81f9b6c1bb extends Template
         {% endif %}
     </div>
 {% endblock %}
-", "@WebProfiler/Collector/command.html.twig", "C:\\wamp64\\www\\Projet_Dev\\vendor\\symfony\\web-profiler-bundle\\Resources\\views\\Collector\\command.html.twig");
+", "@WebProfiler/Collector/command.html.twig", "C:\\laragon\\www\\Projet_Dev\\vendor\\symfony\\web-profiler-bundle\\Resources\\views\\Collector\\command.html.twig");
     }
 }

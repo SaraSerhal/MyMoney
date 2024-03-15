@@ -231,6 +231,6 @@ class __TwigTemplate_01eb40a8dcb49e3e040fea28489d1c02 extends Template
 
         <p>&copy; 2024 Budget Management. All rights reserved.
         </p>
-</footer>", "base.html.twig", "C:\\wamp64\\www\\Projet_Dev\\templates\\base.html.twig");
+</footer>", "base.html.twig", "C:\\laragon\\www\\Projet_Dev\\templates\\base.html.twig");
     }
 }
