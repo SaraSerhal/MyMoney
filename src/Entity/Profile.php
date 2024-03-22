@@ -27,11 +27,15 @@ class Profile
     #[ORM\ManyToMany(targetEntity: User::class, mappedBy: 'profiles')]
     private Collection $users;
 
+    #[ORM\OneToMany(mappedBy: 'profile', targetEntity: ExpensesCategory::class)]
+    private Collection $expensesCategory;
+
     public function __construct()
     {
         // Initialisez la date de création dans le constructeur
         $this->createdAt = new \DateTimeImmutable();
         $this->users = new ArrayCollection();
+        $this->expensesCategory = new ArrayCollection();
     }
 
     public function getId(): ?int
@@ -91,6 +95,36 @@ class Profile
     {
         if ($this->users->removeElement($user)) {
             $user->removeProfile($this);
+        }
+
+        return $this;
+    }
+
+    /**
+     * @return Collection<int, ExpensesCategory>
+     */
+    public function getExpensesCategory(): Collection
+    {
+        return $this->expensesCategory;
+    }
+
+    public function addExpensesCategory(ExpensesCategory $expensesCategory): static
+    {
+        if (!$this->expensesCategory->contains($expensesCategory)) {
+            $this->expensesCategory->add($expensesCategory);
+            $expensesCategory->setProfile($this);
+        }
+
+        return $this;
+    }
+
+    public function removeExpensesCategory(ExpensesCategory $expensesCategory): static
+    {
+        if ($this->expensesCategory->removeElement($expensesCategory)) {
+            // set the owning side to null (unless already changed)
+            if ($expensesCategory->getProfile() === $this) {
+                $expensesCategory->setProfile(null);
+            }
         }
 
         return $this;

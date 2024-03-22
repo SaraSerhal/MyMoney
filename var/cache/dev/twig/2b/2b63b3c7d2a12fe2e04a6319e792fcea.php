@@ -117,7 +117,7 @@ class __TwigTemplate_54b2394a8bced68c491c7e5b7f69125c extends Template
         <h1 class=\"text-center\">Welcome</h1>
         <h5 class=\"text-center\">Our mission is to help you manage your budget effectively and achieve your financial goals.</h5>
     </div>
-    <h1 class=\"h3 mb-3 font-weight-normal\"> Sign Up :</h1>
+    <h1 class=\"h3 mb-3 font-weight-normal\"> Sign in :</h1>
 
     <label for=\"inputEmail\">Email</label>
     <input type=\"email\" value=\"";
@@ -198,7 +198,7 @@ class __TwigTemplate_54b2394a8bced68c491c7e5b7f69125c extends Template
         <h1 class=\"text-center\">Welcome</h1>
         <h5 class=\"text-center\">Our mission is to help you manage your budget effectively and achieve your financial goals.</h5>
     </div>
-    <h1 class=\"h3 mb-3 font-weight-normal\"> Sign Up :</h1>
+    <h1 class=\"h3 mb-3 font-weight-normal\"> Sign in :</h1>
 
     <label for=\"inputEmail\">Email</label>
     <input type=\"email\" value=\"{{ last_username }}\" name=\"email\" id=\"inputEmail\" class=\"form-control\" autocomplete=\"email\" required autofocus>

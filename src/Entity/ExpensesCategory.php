@@ -18,6 +18,9 @@ class ExpensesCategory
     #[ORM\Column(length: 255)]
     private ?string $categoryName = null;
 
+    #[ORM\ManyToOne(inversedBy: 'expensesCategory')]
+    private ?Profile $profile = null;
+
     public function getId(): ?int
     {
         return $this->id;
@@ -31,6 +34,18 @@ class ExpensesCategory
     public function setCategoryName(string $categoryName): static
     {
         $this->categoryName = $categoryName;
+
+        return $this;
+    }
+
+    public function getProfile(): ?Profile
+    {
+        return $this->profile;
+    }
+
+    public function setProfile(?Profile $profile): static
+    {
+        $this->profile = $profile;
 
         return $this;
     }
