@@ -62,10 +62,16 @@ class __TwigTemplate_adabb17835d42600dd4021a6782a9176 extends Template
 <body>
 <header>
     <nav class=\"navbar navbar-expand-lg navbar-light bg-light\">
-        <a class=\"navbar-brand\" href=\"#\">
+        <a class=\"navbar-brand\" href=\"";
+        // line 16
+        echo $this->extensions['Symfony\Bridge\Twig\Extension\RoutingExtension']->getPath("home");
+        echo "\">
             <i class=\"fas fa-credit-card fa-lg\"></i>
         </a>
-        <a class=\"navbar-brand mx-auto\" href=\"#\">ManageBudget</a>
+        <a class=\"navbar-brand mx-auto\" href=\"";
+        // line 19
+        echo $this->extensions['Symfony\Bridge\Twig\Extension\RoutingExtension']->getPath("home");
+        echo "\">ManageBudget</a>
         <a class=\"navbar-brand mx-auto\" href=";
         // line 20
         echo $this->extensions['Symfony\Bridge\Twig\Extension\RoutingExtension']->getPath("app_login");
@@ -73,7 +79,7 @@ class __TwigTemplate_adabb17835d42600dd4021a6782a9176 extends Template
         <a class=\"navbar-brand mx-auto\" href=\"";
         // line 21
         echo $this->extensions['Symfony\Bridge\Twig\Extension\RoutingExtension']->getPath("app_register");
-        echo "\">Register</a>
+        echo "\">Sign up</a>
 
     </nav>
 </header>
@@ -173,7 +179,7 @@ class __TwigTemplate_adabb17835d42600dd4021a6782a9176 extends Template
      */
     public function getDebugInfo()
     {
-        return array (  146 => 9,  136 => 8,  117 => 6,  75 => 21,  71 => 20,  59 => 10,  57 => 8,  52 => 6,  45 => 1,);
+        return array (  152 => 9,  142 => 8,  123 => 6,  81 => 21,  77 => 20,  73 => 19,  67 => 16,  59 => 10,  57 => 8,  52 => 6,  45 => 1,);
     }
 
     public function getSourceContext()
@@ -193,12 +199,12 @@ class __TwigTemplate_adabb17835d42600dd4021a6782a9176 extends Template
 <body>
 <header>
     <nav class=\"navbar navbar-expand-lg navbar-light bg-light\">
-        <a class=\"navbar-brand\" href=\"#\">
+        <a class=\"navbar-brand\" href=\"{{ path ('home') }}\">
             <i class=\"fas fa-credit-card fa-lg\"></i>
         </a>
-        <a class=\"navbar-brand mx-auto\" href=\"#\">ManageBudget</a>
+        <a class=\"navbar-brand mx-auto\" href=\"{{ path('home') }}\">ManageBudget</a>
         <a class=\"navbar-brand mx-auto\" href={{ path('app_login') }}>Login</a>
-        <a class=\"navbar-brand mx-auto\" href=\"{{ path('app_register') }}\">Register</a>
+        <a class=\"navbar-brand mx-auto\" href=\"{{ path('app_register') }}\">Sign up</a>
 
     </nav>
 </header>

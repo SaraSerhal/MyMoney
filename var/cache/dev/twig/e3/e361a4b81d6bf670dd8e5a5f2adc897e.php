@@ -95,7 +95,7 @@ class __TwigTemplate_e3ea81a130c20640fa22ff059fe3be06 extends Template
         <div style=\"text-align: center; margin-top: 50px;\">
             <h1>Welcome  ";
         // line 41
-        echo twig_escape_filter($this->env, twig_get_attribute($this->env, $this->source, twig_get_attribute($this->env, $this->source, (isset($context["app"]) || array_key_exists("app", $context) ? $context["app"] : (function () { throw new RuntimeError('Variable "app" does not exist.', 41, $this->source); })()), "user", [], "any", false, false, false, 41), "lastName", [], "any", false, false, false, 41), "html", null, true);
+        echo twig_escape_filter($this->env, twig_get_attribute($this->env, $this->source, twig_get_attribute($this->env, $this->source, (isset($context["app"]) || array_key_exists("app", $context) ? $context["app"] : (function () { throw new RuntimeError('Variable "app" does not exist.', 41, $this->source); })()), "user", [], "any", false, false, false, 41), "name", [], "any", false, false, false, 41), "html", null, true);
         echo " !</h1>
         </div>
 
@@ -222,7 +222,7 @@ class __TwigTemplate_e3ea81a130c20640fa22ff059fe3be06 extends Template
 
     <main>
         <div style=\"text-align: center; margin-top: 50px;\">
-            <h1>Welcome  {{ app.user.lastName}} !</h1>
+            <h1>Welcome  {{ app.user.name}} !</h1>
         </div>
 
         <div >

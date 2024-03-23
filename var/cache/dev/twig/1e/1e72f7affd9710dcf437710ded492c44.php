@@ -98,14 +98,14 @@ class __TwigTemplate_4add266dc986ec6cb0ff04060d8c5385 extends Template
             <div class=\"text-center\">
                 <table class=\"table\">
                     <tr>
-                        <td>FirstName:</td>
+                        <td>Name:</td>
                         <td>";
         // line 20
         echo twig_escape_filter($this->env, twig_get_attribute($this->env, $this->source, (isset($context["user"]) || array_key_exists("user", $context) ? $context["user"] : (function () { throw new RuntimeError('Variable "user" does not exist.', 20, $this->source); })()), "name", [], "any", false, false, false, 20), "html", null, true);
         echo "</td>
                     </tr>
                     <tr>
-                        <td>Name:</td>
+                        <td>Last name:</td>
                         <td>";
         // line 24
         echo twig_escape_filter($this->env, twig_get_attribute($this->env, $this->source, (isset($context["user"]) || array_key_exists("user", $context) ? $context["user"] : (function () { throw new RuntimeError('Variable "user" does not exist.', 24, $this->source); })()), "lastName", [], "any", false, false, false, 24), "html", null, true);
@@ -233,11 +233,11 @@ class __TwigTemplate_4add266dc986ec6cb0ff04060d8c5385 extends Template
             <div class=\"text-center\">
                 <table class=\"table\">
                     <tr>
-                        <td>FirstName:</td>
+                        <td>Name:</td>
                         <td>{{ user.name }}</td>
                     </tr>
                     <tr>
-                        <td>Name:</td>
+                        <td>Last name:</td>
                         <td>{{ user.lastName }}</td>
                     </tr>
                     <tr>

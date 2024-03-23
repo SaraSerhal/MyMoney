@@ -63,10 +63,16 @@ class __TwigTemplate_01eb40a8dcb49e3e040fea28489d1c02 extends Template
 <body>
 <header>
     <nav class=\"navbar navbar-expand-lg navbar-light bg-light\">
-        <a class=\"navbar-brand\" href=\"#\">
+        <a class=\"navbar-brand\" href=\"";
+        // line 16
+        echo $this->extensions['Symfony\Bridge\Twig\Extension\RoutingExtension']->getPath("new_profile");
+        echo "\">
             <i class=\"fas fa-credit-card fa-lg\"></i>
         </a>
-        <a class=\"navbar-brand mx-auto\" href=\"#\">ManageBudget</a>
+        <a class=\"navbar-brand mx-auto\" href=\"";
+        // line 19
+        echo $this->extensions['Symfony\Bridge\Twig\Extension\RoutingExtension']->getPath("new_profile");
+        echo "\">ManageBudget</a>
         <!-- You can add additional navbar elements or links here -->
     </nav>
 </header>
@@ -176,9 +182,17 @@ class __TwigTemplate_01eb40a8dcb49e3e040fea28489d1c02 extends Template
     /**
      * @codeCoverageIgnore
      */
+    public function isTraitable()
+    {
+        return false;
+    }
+
+    /**
+     * @codeCoverageIgnore
+     */
     public function getDebugInfo()
     {
-        return array (  151 => 25,  141 => 9,  131 => 8,  112 => 6,  79 => 26,  77 => 25,  60 => 10,  58 => 8,  53 => 6,  46 => 1,);
+        return array (  157 => 25,  147 => 9,  137 => 8,  118 => 6,  85 => 26,  83 => 25,  74 => 19,  68 => 16,  60 => 10,  58 => 8,  53 => 6,  46 => 1,);
     }
 
     public function getSourceContext()
@@ -198,10 +212,10 @@ class __TwigTemplate_01eb40a8dcb49e3e040fea28489d1c02 extends Template
 <body>
 <header>
     <nav class=\"navbar navbar-expand-lg navbar-light bg-light\">
-        <a class=\"navbar-brand\" href=\"#\">
+        <a class=\"navbar-brand\" href=\"{{ path('new_profile') }}\">
             <i class=\"fas fa-credit-card fa-lg\"></i>
         </a>
-        <a class=\"navbar-brand mx-auto\" href=\"#\">ManageBudget</a>
+        <a class=\"navbar-brand mx-auto\" href=\"{{ path('new_profile') }}\">ManageBudget</a>
         <!-- You can add additional navbar elements or links here -->
     </nav>
 </header>

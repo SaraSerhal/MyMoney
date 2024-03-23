@@ -85,7 +85,7 @@ class __TwigTemplate_ef55d4d25b9f40e73281a62852049b43 extends Template
         $__internal_6f47bbe9983af81f1e7450e9a3e3768f->enter($__internal_6f47bbe9983af81f1e7450e9a3e3768f_prof = new \Twig\Profiler\Profile($this->getTemplateName(), "block", "body"));
 
         // line 6
-        echo "    <h1 class = \"text-center\"> Inscription </h1>
+        echo "    <h1 class = \"text-center\"> Sign up </h1>
 
     ";
         // line 8
@@ -167,7 +167,7 @@ class __TwigTemplate_ef55d4d25b9f40e73281a62852049b43 extends Template
 {% block title %}Register{% endblock %}
 
 {% block body %}
-    <h1 class = \"text-center\"> Inscription </h1>
+    <h1 class = \"text-center\"> Sign up </h1>
 
     {{ form_errors(registrationForm) }}
 
