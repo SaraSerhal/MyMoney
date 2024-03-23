@@ -20,6 +20,9 @@ class HomeController extends AbstractController
     #[Route('/', name: 'home')]
     public function index(): Response
     {
+        if ($this->getUser()) { // Si l'utilisateur est déjà connecté, on le redirige vers la page d'accueil
+            return $this->redirectToRoute('new_profile');
+        }
         return $this->render('home/home.html.twig', [
             'controller_name' => 'HomeController',
         ]);
