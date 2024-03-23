@@ -12,7 +12,7 @@ use Twig\Sandbox\SecurityNotAllowedFunctionError;
 use Twig\Source;
 use Twig\Template;
 
-/* inscription/accueil.html.twig */
+/* inscription/profile.html.twig */
 class __TwigTemplate_81300219e573e318f73085a095befb00 extends Template
 {
     private $source;
@@ -34,10 +34,10 @@ class __TwigTemplate_81300219e573e318f73085a095befb00 extends Template
     {
         $macros = $this->macros;
         $__internal_5a27a8ba21ca79b61932376b2fa922d2 = $this->extensions["Symfony\\Bundle\\WebProfilerBundle\\Twig\\WebProfilerExtension"];
-        $__internal_5a27a8ba21ca79b61932376b2fa922d2->enter($__internal_5a27a8ba21ca79b61932376b2fa922d2_prof = new \Twig\Profiler\Profile($this->getTemplateName(), "template", "inscription/accueil.html.twig"));
+        $__internal_5a27a8ba21ca79b61932376b2fa922d2->enter($__internal_5a27a8ba21ca79b61932376b2fa922d2_prof = new \Twig\Profiler\Profile($this->getTemplateName(), "template", "inscription/profile.html.twig"));
 
         $__internal_6f47bbe9983af81f1e7450e9a3e3768f = $this->extensions["Symfony\\Bridge\\Twig\\Extension\\ProfilerExtension"];
-        $__internal_6f47bbe9983af81f1e7450e9a3e3768f->enter($__internal_6f47bbe9983af81f1e7450e9a3e3768f_prof = new \Twig\Profiler\Profile($this->getTemplateName(), "template", "inscription/accueil.html.twig"));
+        $__internal_6f47bbe9983af81f1e7450e9a3e3768f->enter($__internal_6f47bbe9983af81f1e7450e9a3e3768f_prof = new \Twig\Profiler\Profile($this->getTemplateName(), "template", "inscription/profile.html.twig"));
 
         // line 1
         echo "<!DOCTYPE html>
@@ -161,7 +161,7 @@ class __TwigTemplate_81300219e573e318f73085a095befb00 extends Template
      */
     public function getTemplateName()
     {
-        return "inscription/accueil.html.twig";
+        return "inscription/profile.html.twig";
     }
 
     /**
@@ -265,6 +265,6 @@ class __TwigTemplate_81300219e573e318f73085a095befb00 extends Template
 
 </body>
 </html>
-", "inscription/accueil.html.twig", "/Applications/MAMP/htdocs/Budget/templates/inscription/accueil.html.twig");
+", "inscription/profile.html.twig", "/Applications/MAMP/htdocs/Budget/templates/inscription/profile.html.twig");
     }
 }

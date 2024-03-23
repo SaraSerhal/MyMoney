@@ -12,7 +12,7 @@ use Twig\Sandbox\SecurityNotAllowedFunctionError;
 use Twig\Source;
 use Twig\Template;
 
-/* Profile/useraccount.html.twig */
+/* profile/useraccount.html.twig */
 class __TwigTemplate_f240ccea019b60d701c0ae5b7ad53b36 extends Template
 {
     private $source;
@@ -40,12 +40,12 @@ class __TwigTemplate_f240ccea019b60d701c0ae5b7ad53b36 extends Template
     {
         $macros = $this->macros;
         $__internal_5a27a8ba21ca79b61932376b2fa922d2 = $this->extensions["Symfony\\Bundle\\WebProfilerBundle\\Twig\\WebProfilerExtension"];
-        $__internal_5a27a8ba21ca79b61932376b2fa922d2->enter($__internal_5a27a8ba21ca79b61932376b2fa922d2_prof = new \Twig\Profiler\Profile($this->getTemplateName(), "template", "Profile/useraccount.html.twig"));
+        $__internal_5a27a8ba21ca79b61932376b2fa922d2->enter($__internal_5a27a8ba21ca79b61932376b2fa922d2_prof = new \Twig\Profiler\Profile($this->getTemplateName(), "template", "profile/useraccount.html.twig"));
 
         $__internal_6f47bbe9983af81f1e7450e9a3e3768f = $this->extensions["Symfony\\Bridge\\Twig\\Extension\\ProfilerExtension"];
-        $__internal_6f47bbe9983af81f1e7450e9a3e3768f->enter($__internal_6f47bbe9983af81f1e7450e9a3e3768f_prof = new \Twig\Profiler\Profile($this->getTemplateName(), "template", "Profile/useraccount.html.twig"));
+        $__internal_6f47bbe9983af81f1e7450e9a3e3768f->enter($__internal_6f47bbe9983af81f1e7450e9a3e3768f_prof = new \Twig\Profiler\Profile($this->getTemplateName(), "template", "profile/useraccount.html.twig"));
 
-        $this->parent = $this->loadTemplate("base.html.twig", "Profile/useraccount.html.twig", 1);
+        $this->parent = $this->loadTemplate("base.html.twig", "profile/useraccount.html.twig", 1);
         $this->parent->display($context, array_merge($this->blocks, $blocks));
         
         $__internal_5a27a8ba21ca79b61932376b2fa922d2->leave($__internal_5a27a8ba21ca79b61932376b2fa922d2_prof);
@@ -194,7 +194,7 @@ class __TwigTemplate_f240ccea019b60d701c0ae5b7ad53b36 extends Template
      */
     public function getTemplateName()
     {
-        return "Profile/useraccount.html.twig";
+        return "profile/useraccount.html.twig";
     }
 
     /**
@@ -277,6 +277,6 @@ class __TwigTemplate_f240ccea019b60d701c0ae5b7ad53b36 extends Template
 
 
 {% endblock %}
-", "Profile/useraccount.html.twig", "/Applications/MAMP/htdocs/Budget/templates/Profile/useraccount.html.twig");
+", "profile/useraccount.html.twig", "/Applications/MAMP/htdocs/Budget/templates/profile/useraccount.html.twig");
     }
 }

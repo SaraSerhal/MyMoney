@@ -10,13 +10,13 @@ use Symfony\Component\Security\Http\Authentication\AuthenticationUtils;
 
 class SecurityController extends AbstractController
 {
-    #[Route(path: '/', name: 'app_login')]
+    #[Route(path: '/login', name: 'app_login')]
     public function login(AuthenticationUtils $authenticationUtils): Response
     {
-        /* if ($this->getUser()) { // Si l'utilisateur est déjà connecté, on le redirige vers la page d'accueil
-             return $this->redirectToRoute('budget_accueil');
+        if ($this->getUser()) { // Si l'utilisateur est déjà connecté, on le redirige vers la page d'accueil
+             return $this->redirectToRoute('new_profile');
           }
- */
+
         // get the login error if there is one
         $error = $authenticationUtils->getLastAuthenticationError();
         // last username entered by the user

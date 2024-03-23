@@ -89,7 +89,7 @@ class __TwigTemplate_f9c04172c32716ebfd68814704763129 extends Template
                 <thead>
                     <tr>
                         <th>#</th>
-                        <th>Profile</th>
+                        <th>profile</th>
                         <th>Method</th>
                         <th>Type</th>
                         <th>Status</th>
@@ -162,7 +162,7 @@ class __TwigTemplate_f9c04172c32716ebfd68814704763129 extends Template
                 <thead>
                     <tr>
                         <th>#</th>
-                        <th>Profile</th>
+                        <th>profile</th>
                         <th>Method</th>
                         <th>Type</th>
                         <th>Status</th>
