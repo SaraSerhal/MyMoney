@@ -170,7 +170,7 @@ class __TwigTemplate_4add266dc986ec6cb0ff04060d8c5385 extends Template
         echo "\" class=\"btn btn-danger\">Logout</a>
             <a href=\"";
         // line 53
-        echo $this->extensions['Symfony\Bridge\Twig\Extension\RoutingExtension']->getPath("budget_delete_user_and_profiles");
+        echo $this->extensions['Symfony\Bridge\Twig\Extension\RoutingExtension']->getPath("budget_delete_user");
         echo "\" class=\"btn btn-danger\" onclick=\"return confirm('Are you sure you want to delete your account?')\">Delete Account</a>
 
 
@@ -267,7 +267,7 @@ class __TwigTemplate_4add266dc986ec6cb0ff04060d8c5385 extends Template
 
 
             <a href=\"{{ path('app_logout') }}\" class=\"btn btn-danger\">Logout</a>
-            <a href=\"{{ path('budget_delete_user_and_profiles') }}\" class=\"btn btn-danger\" onclick=\"return confirm('Are you sure you want to delete your account?')\">Delete Account</a>
+            <a href=\"{{ path('budget_delete_user') }}\" class=\"btn btn-danger\" onclick=\"return confirm('Are you sure you want to delete your account?')\">Delete Account</a>
 
 
 

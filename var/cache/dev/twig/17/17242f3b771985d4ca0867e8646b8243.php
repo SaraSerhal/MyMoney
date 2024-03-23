@@ -86,7 +86,7 @@ class __TwigTemplate_adabb17835d42600dd4021a6782a9176 extends Template
 
         // line 5
         echo "    <h1>Welcome ! </h1>
-    <p> This is a simple blog application built with Symfony 5. </p>
+    <p> This is the homepage our site. </p>
 ";
         
         $__internal_6f47bbe9983af81f1e7450e9a3e3768f->leave($__internal_6f47bbe9983af81f1e7450e9a3e3768f_prof);
@@ -127,7 +127,7 @@ class __TwigTemplate_adabb17835d42600dd4021a6782a9176 extends Template
 
 {% block body %}
     <h1>Welcome ! </h1>
-    <p> This is a simple blog application built with Symfony 5. </p>
+    <p> This is the homepage our site. </p>
 {% endblock %}", "home/home.html.twig", "C:\\laragon\\www\\Projet_Dev\\templates\\home\\home.html.twig");
     }
 }

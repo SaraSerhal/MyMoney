@@ -71,7 +71,10 @@ class __TwigTemplate_01eb40a8dcb49e3e040fea28489d1c02 extends Template
         // line 20
         echo $this->extensions['Symfony\Bridge\Twig\Extension\RoutingExtension']->getPath("app_login");
         echo ">Login</a>
-        <a class=\"navbar-brand mx-auto\" href=\"\">Register</a>
+        <a class=\"navbar-brand mx-auto\" href=\"";
+        // line 21
+        echo $this->extensions['Symfony\Bridge\Twig\Extension\RoutingExtension']->getPath("app_register");
+        echo "\">Register</a>
         <!-- You can add additional navbar elements or links here -->
     </nav>
 </header>
@@ -191,7 +194,7 @@ class __TwigTemplate_01eb40a8dcb49e3e040fea28489d1c02 extends Template
      */
     public function getDebugInfo()
     {
-        return array (  156 => 27,  146 => 9,  136 => 8,  117 => 6,  84 => 28,  82 => 27,  72 => 20,  60 => 10,  58 => 8,  53 => 6,  46 => 1,);
+        return array (  159 => 27,  149 => 9,  139 => 8,  120 => 6,  87 => 28,  85 => 27,  76 => 21,  72 => 20,  60 => 10,  58 => 8,  53 => 6,  46 => 1,);
     }
 
     public function getSourceContext()
@@ -216,7 +219,7 @@ class __TwigTemplate_01eb40a8dcb49e3e040fea28489d1c02 extends Template
         </a>
         <a class=\"navbar-brand mx-auto\" href=\"#\">ManageBudget</a>
         <a class=\"navbar-brand mx-auto\" href={{ path('app_login') }}>Login</a>
-        <a class=\"navbar-brand mx-auto\" href=\"\">Register</a>
+        <a class=\"navbar-brand mx-auto\" href=\"{{ path('app_register') }}\">Register</a>
         <!-- You can add additional navbar elements or links here -->
     </nav>
 </header>
