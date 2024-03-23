@@ -12,7 +12,7 @@ use Twig\Sandbox\SecurityNotAllowedFunctionError;
 use Twig\Source;
 use Twig\Template;
 
-/* Profile/parent.html.twig */
+/* profile/parent.html.twig */
 class __TwigTemplate_80c28cf582e63a3bb7ec03c88d4b9e9e extends Template
 {
     private $source;
@@ -40,12 +40,12 @@ class __TwigTemplate_80c28cf582e63a3bb7ec03c88d4b9e9e extends Template
     {
         $macros = $this->macros;
         $__internal_5a27a8ba21ca79b61932376b2fa922d2 = $this->extensions["Symfony\\Bundle\\WebProfilerBundle\\Twig\\WebProfilerExtension"];
-        $__internal_5a27a8ba21ca79b61932376b2fa922d2->enter($__internal_5a27a8ba21ca79b61932376b2fa922d2_prof = new \Twig\Profiler\Profile($this->getTemplateName(), "template", "Profile/parent.html.twig"));
+        $__internal_5a27a8ba21ca79b61932376b2fa922d2->enter($__internal_5a27a8ba21ca79b61932376b2fa922d2_prof = new \Twig\Profiler\Profile($this->getTemplateName(), "template", "profile/parent.html.twig"));
 
         $__internal_6f47bbe9983af81f1e7450e9a3e3768f = $this->extensions["Symfony\\Bridge\\Twig\\Extension\\ProfilerExtension"];
-        $__internal_6f47bbe9983af81f1e7450e9a3e3768f->enter($__internal_6f47bbe9983af81f1e7450e9a3e3768f_prof = new \Twig\Profiler\Profile($this->getTemplateName(), "template", "Profile/parent.html.twig"));
+        $__internal_6f47bbe9983af81f1e7450e9a3e3768f->enter($__internal_6f47bbe9983af81f1e7450e9a3e3768f_prof = new \Twig\Profiler\Profile($this->getTemplateName(), "template", "profile/parent.html.twig"));
 
-        $this->parent = $this->loadTemplate("base.html.twig", "Profile/parent.html.twig", 1);
+        $this->parent = $this->loadTemplate("base.html.twig", "profile/parent.html.twig", 1);
         $this->parent->display($context, array_merge($this->blocks, $blocks));
         
         $__internal_5a27a8ba21ca79b61932376b2fa922d2->leave($__internal_5a27a8ba21ca79b61932376b2fa922d2_prof);
@@ -117,7 +117,7 @@ class __TwigTemplate_80c28cf582e63a3bb7ec03c88d4b9e9e extends Template
      */
     public function getTemplateName()
     {
-        return "Profile/parent.html.twig";
+        return "profile/parent.html.twig";
     }
 
     /**
@@ -152,6 +152,6 @@ class __TwigTemplate_80c28cf582e63a3bb7ec03c88d4b9e9e extends Template
 </div>
 {% endblock %}
 
-", "Profile/parent.html.twig", "/Applications/MAMP/htdocs/Budget/templates/Profile/parent.html.twig");
+", "profile/parent.html.twig", "/Applications/MAMP/htdocs/Budget/templates/profile/parent.html.twig");
     }
 }

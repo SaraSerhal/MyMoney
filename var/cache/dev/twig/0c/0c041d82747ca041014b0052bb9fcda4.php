@@ -112,7 +112,7 @@ class __TwigTemplate_930b4e2c64b939acfa4c9dbacac7ff6f extends Template
 
         // line 32
         echo "    <div class=\"status\">
-        <h2>Profile Search</h2>
+        <h2>profile Search</h2>
     </div>
 ";
         
@@ -486,7 +486,7 @@ class __TwigTemplate_930b4e2c64b939acfa4c9dbacac7ff6f extends Template
 
 {% block summary %}
     <div class=\"status\">
-        <h2>Profile Search</h2>
+        <h2>profile Search</h2>
     </div>
 {% endblock %}
 

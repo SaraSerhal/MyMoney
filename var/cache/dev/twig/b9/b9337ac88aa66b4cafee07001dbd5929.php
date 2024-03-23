@@ -359,7 +359,7 @@ class __TwigTemplate_941b19c89dfa5ee73ada8c0980136210 extends Template
                         if (((isset($context["profiler_token"]) || array_key_exists("profiler_token", $context) ? $context["profiler_token"] : (function () { throw new RuntimeError('Variable "profiler_token" does not exist.', 125, $this->source); })()) && (isset($context["profiler_link"]) || array_key_exists("profiler_link", $context) ? $context["profiler_link"] : (function () { throw new RuntimeError('Variable "profiler_link" does not exist.', 125, $this->source); })()))) {
                             // line 126
                             echo "                                            <th>
-                                                Profile
+                                                profile
                                             </th>
                                         ";
                         }
@@ -637,7 +637,7 @@ class __TwigTemplate_941b19c89dfa5ee73ada8c0980136210 extends Template
                                         </th>
                                         {% if profiler_token and profiler_link %}
                                             <th>
-                                                Profile
+                                                profile
                                             </th>
                                         {% endif %}
                                         {% if trace.curlCommand is defined and trace.curlCommand %}

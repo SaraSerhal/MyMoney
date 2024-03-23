@@ -22,7 +22,7 @@ class ProfileRepository extends ServiceEntityRepository
     }
 
 //    /**
-//     * @return Profile[] Returns an array of Profile objects
+//     * @return profile[] Returns an array of profile objects
 //     */
 //    public function findByExampleField($value): array
 //    {
@@ -36,7 +36,7 @@ class ProfileRepository extends ServiceEntityRepository
 //        ;
 //    }
 
-//    public function findOneBySomeField($value): ?Profile
+//    public function findOneBySomeField($value): ?profile
 //    {
 //        return $this->createQueryBuilder('p')
 //            ->andWhere('p.exampleField = :val')

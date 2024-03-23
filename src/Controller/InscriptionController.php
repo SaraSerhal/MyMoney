@@ -17,9 +17,15 @@ use Symfony\Component\Form\FormTypeInterface;
 
 class InscriptionController extends AbstractController{
 
+/*#[Route('/profile', name: 'profile')]
+    public function profile(): Response
+    {
+        return $this->render('profile/profile.html.twig', [
+            'controller_name' => 'InscriptionController',
+        ]);
+    } */
 
-
-    #[Route('/accueil', name: 'budget_accueil')]
+    #[Route('/profile/new_profile', name: 'new_profile')]
     public function create(Request $request, EntityManagerInterface $entityManager): Response
     {
         $user = new User();
@@ -56,14 +62,14 @@ class InscriptionController extends AbstractController{
 
 
         }
-        return $this->render('inscription/accueil.html.twig', [
+        return $this->render('profile/profile.html.twig', [
             'controller_name' => 'InscriptionController',
             'form' => $form->createView(),
 
         ]);
     }
 
-    #[Route('/student', name: 'budget_student')]
+    #[Route('/profile/student', name: 'budget_student')]
     public function student(Request $request, EntityManagerInterface $entityManager): Response
     {
         $user = $this->getUser();
@@ -77,7 +83,7 @@ class InscriptionController extends AbstractController{
                     // Si le type de profil est "Student", récupérez le budget
                     $profileBudget = $profile->getProfileBudget();
 
-                    return $this->render('Profile/student.html.twig', [
+                    return $this->render('profile/student.html.twig', [
                         'controller_name' => 'InscriptionController',
                         'profile' => $profile,
                         'profileBudget' => $profileBudget,
@@ -87,12 +93,12 @@ class InscriptionController extends AbstractController{
         }
 
 
-        return $this->render('Profile/student.html.twig', [
+        return $this->render('profile/student.html.twig', [
             'controller_name' => 'InscriptionController',
         ]);
     }
 
-    #[Route('/traveler', name: 'budget_traveler')]
+    #[Route('/profile/traveler', name: 'budget_traveler')]
     public function traveler(Request $request, EntityManagerInterface $entityManager): Response
     {
 
@@ -107,7 +113,7 @@ class InscriptionController extends AbstractController{
                     // Si le type de profil est "Student", récupérez le budget
                     $profileBudget = $profile->getProfileBudget();
 
-                    return $this->render('Profile/traveler.html.twig', [
+                    return $this->render('profile/traveler.html.twig', [
                         'controller_name' => 'InscriptionController',
                         'profile' => $profile,
                         'profileBudget' => $profileBudget,
@@ -115,12 +121,12 @@ class InscriptionController extends AbstractController{
                 }
             }
         }
-        return $this->render('Profile/traveler.html.twig', [
+        return $this->render('profile/traveler.html.twig', [
             'controller_name' => 'InscriptionController',
         ]);
     }
 
-    #[Route('/investor', name: 'budget_investor')]
+    #[Route('/profile/investor', name: 'budget_investor')]
     public function investor(Request $request, EntityManagerInterface $entityManager): Response
     {
 
@@ -135,7 +141,7 @@ class InscriptionController extends AbstractController{
                     // Si le type de profil est "Student", récupérez le budget
                     $profileBudget = $profile->getProfileBudget();
 
-                    return $this->render('Profile/investor.html.twig', [
+                    return $this->render('profile/investor.html.twig', [
                         'controller_name' => 'InscriptionController',
                         'profile' => $profile,
                         'profileBudget' => $profileBudget,
@@ -143,12 +149,12 @@ class InscriptionController extends AbstractController{
                 }
             }
         }
-        return $this->render('Profile/investor.html.twig', [
+        return $this->render('profile/investor.html.twig', [
             'controller_name' => 'InscriptionController',
         ]);
     }
 
-    #[Route('/parent', name: 'budget_parent')]
+    #[Route('/profile/parent', name: 'budget_parent')]
     public function parent(Request $request, EntityManagerInterface $entityManager): Response
     {
         $user = $this->getUser();
@@ -162,7 +168,7 @@ class InscriptionController extends AbstractController{
                     // Si le type de profil est "Student", récupérez le budget
                     $profileBudget = $profile->getProfileBudget();
 
-                    return $this->render('Profile/parent.html.twig', [
+                    return $this->render('profile/parent.html.twig', [
                         'controller_name' => 'InscriptionController',
                         'profile' => $profile,
                         'profileBudget' => $profileBudget,
@@ -170,7 +176,7 @@ class InscriptionController extends AbstractController{
                 }
             }
         }
-        return $this->render('Profile/parent.html.twig', [
+        return $this->render('profile/parent.html.twig', [
             'controller_name' => 'InscriptionController',
         ]);
     }
@@ -189,7 +195,7 @@ class InscriptionController extends AbstractController{
                     // Si le type de profil est "Student", récupérez le budget
                     $profileBudget = $profile->getProfileBudget();
 
-                    return $this->render('Profile/couple.html.twig', [
+                    return $this->render('profile/couple.html.twig', [
                         'controller_name' => 'InscriptionController',
                         'profile' => $profile,
                         'profileBudget' => $profileBudget,
@@ -197,7 +203,7 @@ class InscriptionController extends AbstractController{
                 }
             }
         }
-        return $this->render('Profile/couple.html.twig', [
+        return $this->render('profile/couple.html.twig', [
             'controller_name' => 'InscriptionController',
         ]);
     }
@@ -205,16 +211,18 @@ class InscriptionController extends AbstractController{
     #[Route('/useraccount', name: 'budget_useraccount')]
     public function useraccount(Request $request, EntityManagerInterface $entityManager): Response
     {
-        $user = $this->getUser();
+        if ($this->isGranted('IS_AUTHENTICATED_REMEMBERED')){
+            $user = $this->getUser();
+            // Récupérer tous les profils associés à l'utilisateur
+            $profiles = $user->getProfiles();
+            return $this->render('profile/useraccount.html.twig', [
+                'controller_name' => 'InscriptionController',
+                'user' => $user,
+                'profiles' => $profiles,
+            ]);
+        }
+        return $this->redirectToRoute('home');
 
-        // Récupérer tous les profils associés à l'utilisateur
-        $profiles = $user->getProfiles();
-
-        return $this->render('Profile/useraccount.html.twig', [
-            'controller_name' => 'InscriptionController',
-            'user' => $user,
-            'profiles' => $profiles,
-        ]);
     }
     #[Route('/deleteUserAndProfiles', name: 'budget_delete_user_and_profiles')]
     public function deleteUserAndProfiles(EntityManagerInterface $entityManager): Response
@@ -232,10 +240,10 @@ class InscriptionController extends AbstractController{
             $entityManager->flush();
 
             // Rediriger vers la page d'accueil ou une autre page après la suppression du compte
-            return $this->redirectToRoute('budget_accueil');
+            return $this->redirectToRoute('home');
         }
 
-        return $this->redirectToRoute('budget_accueil');
+        return $this->redirectToRoute('home');
     }
 
 

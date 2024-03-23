@@ -12,7 +12,7 @@ use Twig\Sandbox\SecurityNotAllowedFunctionError;
 use Twig\Source;
 use Twig\Template;
 
-/* Profile/traveler.html.twig */
+/* profile/traveler.html.twig */
 class __TwigTemplate_86be0fa28c203186df6c44dc02275216 extends Template
 {
     private $source;
@@ -40,12 +40,12 @@ class __TwigTemplate_86be0fa28c203186df6c44dc02275216 extends Template
     {
         $macros = $this->macros;
         $__internal_5a27a8ba21ca79b61932376b2fa922d2 = $this->extensions["Symfony\\Bundle\\WebProfilerBundle\\Twig\\WebProfilerExtension"];
-        $__internal_5a27a8ba21ca79b61932376b2fa922d2->enter($__internal_5a27a8ba21ca79b61932376b2fa922d2_prof = new \Twig\Profiler\Profile($this->getTemplateName(), "template", "Profile/traveler.html.twig"));
+        $__internal_5a27a8ba21ca79b61932376b2fa922d2->enter($__internal_5a27a8ba21ca79b61932376b2fa922d2_prof = new \Twig\Profiler\Profile($this->getTemplateName(), "template", "profile/traveler.html.twig"));
 
         $__internal_6f47bbe9983af81f1e7450e9a3e3768f = $this->extensions["Symfony\\Bridge\\Twig\\Extension\\ProfilerExtension"];
-        $__internal_6f47bbe9983af81f1e7450e9a3e3768f->enter($__internal_6f47bbe9983af81f1e7450e9a3e3768f_prof = new \Twig\Profiler\Profile($this->getTemplateName(), "template", "Profile/traveler.html.twig"));
+        $__internal_6f47bbe9983af81f1e7450e9a3e3768f->enter($__internal_6f47bbe9983af81f1e7450e9a3e3768f_prof = new \Twig\Profiler\Profile($this->getTemplateName(), "template", "profile/traveler.html.twig"));
 
-        $this->parent = $this->loadTemplate("base.html.twig", "Profile/traveler.html.twig", 1);
+        $this->parent = $this->loadTemplate("base.html.twig", "profile/traveler.html.twig", 1);
         $this->parent->display($context, array_merge($this->blocks, $blocks));
         
         $__internal_5a27a8ba21ca79b61932376b2fa922d2->leave($__internal_5a27a8ba21ca79b61932376b2fa922d2_prof);
@@ -118,7 +118,7 @@ class __TwigTemplate_86be0fa28c203186df6c44dc02275216 extends Template
      */
     public function getTemplateName()
     {
-        return "Profile/traveler.html.twig";
+        return "profile/traveler.html.twig";
     }
 
     /**
@@ -154,6 +154,6 @@ class __TwigTemplate_86be0fa28c203186df6c44dc02275216 extends Template
 
 {% endblock %}
 
-", "Profile/traveler.html.twig", "/Applications/MAMP/htdocs/Budget/templates/Profile/traveler.html.twig");
+", "profile/traveler.html.twig", "/Applications/MAMP/htdocs/Budget/templates/profile/traveler.html.twig");
     }
 }
