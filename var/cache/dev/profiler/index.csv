@@ -318,3 +318,10 @@ f36005,::1,GET,http://localhost/Projet_Dev/public/,1711229378,,302,request
 49de5d,::1,GET,http://localhost/Projet_Dev/public/profile/new_profile,1711229379,,200,request
 9678a2,::1,GET,http://localhost/Projet_Dev/public/,1711229387,,302,request
 298e6d,::1,GET,http://localhost/Projet_Dev/public/profile/new_profile,1711229387,,200,request
+eb2963,::1,GET,http://localhost/Projet_Dev/public/useraccount,1711229645,,200,request
+ba18a8,::1,GET,http://localhost/Projet_Dev/public/useraccount,1711229646,,200,request
+ec11b6,::1,GET,http://localhost/Projet_Dev/public/logout,1711229650,,302,request
+003ca6,::1,GET,http://localhost/Projet_Dev/public/,1711229650,,200,request
+a11449,::1,GET,http://localhost/Projet_Dev/public/,1711229665,,200,request
+e8dd60,::1,GET,http://localhost/Projet_Dev/public/,1711229707,,200,request
+cc588e,::1,GET,http://localhost/Projet_Dev/public/login,1711229711,,200,request

@@ -67,23 +67,15 @@ class __TwigTemplate_01eb40a8dcb49e3e040fea28489d1c02 extends Template
             <i class=\"fas fa-credit-card fa-lg\"></i>
         </a>
         <a class=\"navbar-brand mx-auto\" href=\"#\">ManageBudget</a>
-        <a class=\"navbar-brand mx-auto\" href=";
-        // line 20
-        echo $this->extensions['Symfony\Bridge\Twig\Extension\RoutingExtension']->getPath("app_login");
-        echo ">Login</a>
-        <a class=\"navbar-brand mx-auto\" href=\"";
-        // line 21
-        echo $this->extensions['Symfony\Bridge\Twig\Extension\RoutingExtension']->getPath("app_register");
-        echo "\">Register</a>
         <!-- You can add additional navbar elements or links here -->
     </nav>
 </header>
 
 <div class=\"container\">
     ";
-        // line 27
+        // line 25
         $this->displayBlock('body', $context, $blocks);
-        // line 28
+        // line 26
         echo "</div>
 
 <footer class=\"\">
@@ -155,7 +147,7 @@ class __TwigTemplate_01eb40a8dcb49e3e040fea28489d1c02 extends Template
 
     }
 
-    // line 27
+    // line 25
     public function block_body($context, array $blocks = [])
     {
         $macros = $this->macros;
@@ -184,17 +176,9 @@ class __TwigTemplate_01eb40a8dcb49e3e040fea28489d1c02 extends Template
     /**
      * @codeCoverageIgnore
      */
-    public function isTraitable()
-    {
-        return false;
-    }
-
-    /**
-     * @codeCoverageIgnore
-     */
     public function getDebugInfo()
     {
-        return array (  159 => 27,  149 => 9,  139 => 8,  120 => 6,  87 => 28,  85 => 27,  76 => 21,  72 => 20,  60 => 10,  58 => 8,  53 => 6,  46 => 1,);
+        return array (  151 => 25,  141 => 9,  131 => 8,  112 => 6,  79 => 26,  77 => 25,  60 => 10,  58 => 8,  53 => 6,  46 => 1,);
     }
 
     public function getSourceContext()
@@ -218,8 +202,6 @@ class __TwigTemplate_01eb40a8dcb49e3e040fea28489d1c02 extends Template
             <i class=\"fas fa-credit-card fa-lg\"></i>
         </a>
         <a class=\"navbar-brand mx-auto\" href=\"#\">ManageBudget</a>
-        <a class=\"navbar-brand mx-auto\" href={{ path('app_login') }}>Login</a>
-        <a class=\"navbar-brand mx-auto\" href=\"{{ path('app_register') }}\">Register</a>
         <!-- You can add additional navbar elements or links here -->
     </nav>
 </header>
