@@ -265,6 +265,6 @@ class __TwigTemplate_7cbc455c3e7b9e0d37e2342eb6d6a906 extends Template
 
 </body>
 </html>
-", "profile/profile.html.twig", "/Applications/MAMP/htdocs/ManageBudget/Projet_Dev/templates/profile/profile.html.twig");
+", "profile/profile.html.twig", "/Applications/MAMP/htdocs/Budget/Projet_Dev/templates/profile/profile.html.twig");
     }
 }

@@ -163,6 +163,7 @@ class __TwigTemplate_fa451727d352fa8df7e324ab3c0d36af extends Template
         .container {
             text-align: center;
             margin-top: 0px;
+
         }
 
         .image-container {
@@ -183,6 +184,11 @@ class __TwigTemplate_fa451727d352fa8df7e324ab3c0d36af extends Template
         .image-container img:hover {
             transform: translateY(-20px);
         }
+        .pink-link {
+            color: #FF698D;
+        }
+
+
 
     </style>
 </head>
@@ -217,7 +223,7 @@ class __TwigTemplate_fa451727d352fa8df7e324ab3c0d36af extends Template
             <!-- Dropdown menu -->
             <div class=\"dropdown mt-auto\">
                 <a href=\"";
-        // line 222
+        // line 228
         echo $this->extensions['Symfony\Bridge\Twig\Extension\RoutingExtension']->getPath("home");
         echo "\" class=\"d-flex align-items-center justify-content-center text-white text-decoration-none\">
                     <i class=\"fas fa-user-circle me-2\" style=\"margin-right: 10px;\"></i> <!-- Icône Font Awesome pour \"Profile\" avec une marge à droite -->
@@ -238,20 +244,23 @@ class __TwigTemplate_fa451727d352fa8df7e324ab3c0d36af extends Template
                 </div>
 
                 <ul class=\"nav col-12 col-md-auto mb-2 justify-content-center mb-md-0\" style=\"margin-right: 70px\">
-                    <li><a href=\"#\" class=\"nav-link px-2 link-secondary\">Home</a></li>
-                    <li><a href=\"#\" class=\"nav-link px-2\">Features</a></li>
-                    <li><a href=\"#\" class=\"nav-link px-2\">Contact</a></li>
-                    <li><a href=\"#\" class=\"nav-link px-2\">FAQs</a></li>
-                    <li><a href=\"#\" class=\"nav-link px-2\" style=\"margin-right: 10px;\">About</a></li>
+                    <li><a href=\"";
+        // line 247
+        echo $this->extensions['Symfony\Bridge\Twig\Extension\RoutingExtension']->getPath("home");
+        echo "\" class=\"nav-link px-2 link-secondary pink-link\">Home</a></li>
+                    <li><a href=\"#\" class=\"nav-link px-2 pink-link\">Contact</a></li>
+                    <li><a href=\"#\" class=\"nav-link px-2 pink-link\">FAQs</a></li>
+                    <li><a href=\"#\" class=\"nav-link px-2 pink-link\" style=\"margin-right: 10px;\">About</a></li>
                 </ul>
+
 
                 <div class=\"col-md-3 text-end\">
                     <a href=\"";
-        // line 249
+        // line 255
         echo $this->extensions['Symfony\Bridge\Twig\Extension\RoutingExtension']->getPath("app_login");
         echo "\" class=\"btn btn-outline-primary me-2 btn-custom\">Login</a>
                     <a href=\"";
-        // line 250
+        // line 256
         echo $this->extensions['Symfony\Bridge\Twig\Extension\RoutingExtension']->getPath("app_register");
         echo "\" class=\"btn btn-primary btn-custom\">Sign-up</a>
                 </div>
@@ -265,7 +274,12 @@ class __TwigTemplate_fa451727d352fa8df7e324ab3c0d36af extends Template
         <h1 style=\"margin-top: 20px\">Your Pathway to Financial Freedom and Stability</h1>
         <br>
         <p>
-            Discover the convenience and empowerment of managing your finances effortlessly with <b>MYMONEY</b>. Whether you're a seasoned investor or just starting out, our intuitive platform provides personalized solutions tailored to your goals. Say goodbye to financial stress with easy-to-use budgeting tools, track your progress, and access educational resources to enhance your financial literacy. Rest assured, your data is secure, and join a supportive community dedicated to financial success. With our mobile app, stay connected and take control of your finances wherever you go.
+            Discover the convenience and empowerment of managing your finances effortlessly with <b>MYMONEY</b>.
+            Whether you're a seasoned investor or just starting out, our intuitive platform provides personalized solutions tailored to your goals.
+            Say goodbye to financial stress with easy-to-use budgeting tools, track your progress, and access educational resources to enhance your financial literacy.
+            Rest assured, your data is secure, and join a supportive community dedicated to financial success.
+            With our mobile app, stay connected and take control of your finances wherever you go.
+
         </p>
         <br>
         <div class=\"image-container\">
@@ -273,7 +287,8 @@ class __TwigTemplate_fa451727d352fa8df7e324ab3c0d36af extends Template
             <img src=\"https://i.pinimg.com/564x/54/f0/0c/54f00c29a66595ceea2e1a139434ed80.jpg\" alt=\"Graph\" width=\"300\" height=\"200\">
         </div>
     </div>
-
+<br>
+    <br>
     <!-- Sidebar toggle button -->
     <button class=\"sidebar-toggle\" onclick=\"toggleSidebar()\">
         <i class=\"fas fa-bars\"></i>
@@ -281,12 +296,11 @@ class __TwigTemplate_fa451727d352fa8df7e324ab3c0d36af extends Template
 
     <footer class=\"py-3 my-4\">
         <div class=\"container\">
-            <ul class=\"nav justify-content-center border-bottom pb-3 mb-3\">
-                <li class=\"nav-item\"><a href=\"#\" class=\"nav-link px-2 text-body-secondary\">Home</a></li>
-                <li class=\"nav-item\"><a href=\"#\" class=\"nav-link px-2 text-body-secondary\"></a></li>
-                <li class=\"nav-item\"><a href=\"#\" class=\"nav-link px-2 text-body-secondary\">Contact</a></li>
-                <li class=\"nav-item\"><a href=\"#\" class=\"nav-link px-2 text-body-secondary\">FAQs</a></li>
-                <li class=\"nav-item\"><a href=\"#\" class=\"nav-link px-2 text-body-secondary\">About</a></li>
+            <ul class=\"nav col-12 col-md-auto mb-2 justify-content-center mb-md-0\" >
+                <li><a href=\"#\" class=\"nav-link px-2 link-secondary pink-link\">Home</a></li>
+                <li><a href=\"#\" class=\"nav-link px-2 pink-link\">Contact</a></li>
+                <li><a href=\"#\" class=\"nav-link px-2 pink-link\">FAQs</a></li>
+                <li><a href=\"#\" class=\"nav-link px-2 pink-link\" >About</a></li>
             </ul>
             <p class=\"text-center text-body-secondary\">&copy; 2024 Company, Inc</p>
         </div>
@@ -402,7 +416,7 @@ class __TwigTemplate_fa451727d352fa8df7e324ab3c0d36af extends Template
      */
     public function getDebugInfo()
     {
-        return array (  375 => 62,  365 => 61,  346 => 59,  255 => 250,  251 => 249,  221 => 222,  60 => 63,  58 => 61,  53 => 59,  45 => 53,);
+        return array (  389 => 62,  379 => 61,  360 => 59,  264 => 256,  260 => 255,  249 => 247,  227 => 228,  60 => 63,  58 => 61,  53 => 59,  45 => 53,);
     }
 
     public function getSourceContext()
@@ -575,6 +589,7 @@ class __TwigTemplate_fa451727d352fa8df7e324ab3c0d36af extends Template
         .container {
             text-align: center;
             margin-top: 0px;
+
         }
 
         .image-container {
@@ -595,6 +610,11 @@ class __TwigTemplate_fa451727d352fa8df7e324ab3c0d36af extends Template
         .image-container img:hover {
             transform: translateY(-20px);
         }
+        .pink-link {
+            color: #FF698D;
+        }
+
+
 
     </style>
 </head>
@@ -647,12 +667,12 @@ class __TwigTemplate_fa451727d352fa8df7e324ab3c0d36af extends Template
                 </div>
 
                 <ul class=\"nav col-12 col-md-auto mb-2 justify-content-center mb-md-0\" style=\"margin-right: 70px\">
-                    <li><a href=\"#\" class=\"nav-link px-2 link-secondary\">Home</a></li>
-                    <li><a href=\"#\" class=\"nav-link px-2\">Features</a></li>
-                    <li><a href=\"#\" class=\"nav-link px-2\">Contact</a></li>
-                    <li><a href=\"#\" class=\"nav-link px-2\">FAQs</a></li>
-                    <li><a href=\"#\" class=\"nav-link px-2\" style=\"margin-right: 10px;\">About</a></li>
+                    <li><a href=\"{{ path ('home') }}\" class=\"nav-link px-2 link-secondary pink-link\">Home</a></li>
+                    <li><a href=\"#\" class=\"nav-link px-2 pink-link\">Contact</a></li>
+                    <li><a href=\"#\" class=\"nav-link px-2 pink-link\">FAQs</a></li>
+                    <li><a href=\"#\" class=\"nav-link px-2 pink-link\" style=\"margin-right: 10px;\">About</a></li>
                 </ul>
+
 
                 <div class=\"col-md-3 text-end\">
                     <a href=\"{{ path('app_login') }}\" class=\"btn btn-outline-primary me-2 btn-custom\">Login</a>
@@ -668,7 +688,12 @@ class __TwigTemplate_fa451727d352fa8df7e324ab3c0d36af extends Template
         <h1 style=\"margin-top: 20px\">Your Pathway to Financial Freedom and Stability</h1>
         <br>
         <p>
-            Discover the convenience and empowerment of managing your finances effortlessly with <b>MYMONEY</b>. Whether you're a seasoned investor or just starting out, our intuitive platform provides personalized solutions tailored to your goals. Say goodbye to financial stress with easy-to-use budgeting tools, track your progress, and access educational resources to enhance your financial literacy. Rest assured, your data is secure, and join a supportive community dedicated to financial success. With our mobile app, stay connected and take control of your finances wherever you go.
+            Discover the convenience and empowerment of managing your finances effortlessly with <b>MYMONEY</b>.
+            Whether you're a seasoned investor or just starting out, our intuitive platform provides personalized solutions tailored to your goals.
+            Say goodbye to financial stress with easy-to-use budgeting tools, track your progress, and access educational resources to enhance your financial literacy.
+            Rest assured, your data is secure, and join a supportive community dedicated to financial success.
+            With our mobile app, stay connected and take control of your finances wherever you go.
+
         </p>
         <br>
         <div class=\"image-container\">
@@ -676,7 +701,8 @@ class __TwigTemplate_fa451727d352fa8df7e324ab3c0d36af extends Template
             <img src=\"https://i.pinimg.com/564x/54/f0/0c/54f00c29a66595ceea2e1a139434ed80.jpg\" alt=\"Graph\" width=\"300\" height=\"200\">
         </div>
     </div>
-
+<br>
+    <br>
     <!-- Sidebar toggle button -->
     <button class=\"sidebar-toggle\" onclick=\"toggleSidebar()\">
         <i class=\"fas fa-bars\"></i>
@@ -684,12 +710,11 @@ class __TwigTemplate_fa451727d352fa8df7e324ab3c0d36af extends Template
 
     <footer class=\"py-3 my-4\">
         <div class=\"container\">
-            <ul class=\"nav justify-content-center border-bottom pb-3 mb-3\">
-                <li class=\"nav-item\"><a href=\"#\" class=\"nav-link px-2 text-body-secondary\">Home</a></li>
-                <li class=\"nav-item\"><a href=\"#\" class=\"nav-link px-2 text-body-secondary\"></a></li>
-                <li class=\"nav-item\"><a href=\"#\" class=\"nav-link px-2 text-body-secondary\">Contact</a></li>
-                <li class=\"nav-item\"><a href=\"#\" class=\"nav-link px-2 text-body-secondary\">FAQs</a></li>
-                <li class=\"nav-item\"><a href=\"#\" class=\"nav-link px-2 text-body-secondary\">About</a></li>
+            <ul class=\"nav col-12 col-md-auto mb-2 justify-content-center mb-md-0\" >
+                <li><a href=\"#\" class=\"nav-link px-2 link-secondary pink-link\">Home</a></li>
+                <li><a href=\"#\" class=\"nav-link px-2 pink-link\">Contact</a></li>
+                <li><a href=\"#\" class=\"nav-link px-2 pink-link\">FAQs</a></li>
+                <li><a href=\"#\" class=\"nav-link px-2 pink-link\" >About</a></li>
             </ul>
             <p class=\"text-center text-body-secondary\">&copy; 2024 Company, Inc</p>
         </div>

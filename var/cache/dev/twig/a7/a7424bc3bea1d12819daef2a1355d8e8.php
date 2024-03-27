@@ -30,6 +30,7 @@ class __TwigTemplate_35abe972ba5fdc6d96a9a2ed8534f04b extends Template
             'title' => [$this, 'block_title'],
             'stylesheets' => [$this, 'block_stylesheets'],
             'body' => [$this, 'block_body'],
+            'javascripts' => [$this, 'block_javascripts'],
         ];
     }
 
@@ -42,70 +43,58 @@ class __TwigTemplate_35abe972ba5fdc6d96a9a2ed8534f04b extends Template
         $__internal_6f47bbe9983af81f1e7450e9a3e3768f = $this->extensions["Symfony\\Bridge\\Twig\\Extension\\ProfilerExtension"];
         $__internal_6f47bbe9983af81f1e7450e9a3e3768f->enter($__internal_6f47bbe9983af81f1e7450e9a3e3768f_prof = new \Twig\Profiler\Profile($this->getTemplateName(), "template", "base.html.twig"));
 
-        // line 1
-        echo "<!DOCTYPE html>
+        // line 54
+        echo "
+<!DOCTYPE html>
 <html lang=\"en\">
 <head>
     <meta charset=\"UTF-8\">
     <meta name=\"viewport\" content=\"width=device-width, initial-scale=1.0\">
     <title>";
-        // line 6
+        // line 60
         $this->displayBlock('title', $context, $blocks);
         echo "</title>
     <link rel=\"icon\" href=\"data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 128 128%22><text y=%221.2em%22 font-size=%2296%22>⚫️</text></svg>\">
     ";
-        // line 8
+        // line 62
         $this->displayBlock('stylesheets', $context, $blocks);
-        // line 10
-        echo "    <link rel=\"stylesheet\" href=\"https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css\">
-    <link rel=\"stylesheet\" href=\"https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css\">
-</head>
+        // line 70
+        echo "</head>
 <body>
-<header>
-    <nav class=\"navbar navbar-expand-lg navbar-light bg-light\">
-        <a class=\"navbar-brand\" href=\"";
-        // line 16
-        echo $this->extensions['Symfony\Bridge\Twig\Extension\RoutingExtension']->getPath("new_profile");
-        echo "\">
-            <i class=\"fas fa-credit-card fa-lg\"></i>
-        </a>
-        <a class=\"navbar-brand mx-auto\" href=\"";
-        // line 19
-        echo $this->extensions['Symfony\Bridge\Twig\Extension\RoutingExtension']->getPath("new_profile");
-        echo "\">ManageBudget</a>
-        <!-- You can add additional navbar elements or links here -->
-    </nav>
-</header>
 
 <div class=\"container\">
+    <!-- Contenu de la page -->
     ";
-        // line 25
+        // line 75
         $this->displayBlock('body', $context, $blocks);
-        // line 26
+        // line 76
         echo "</div>
 
-<footer class=\"\" style=\"position: relative\">
-    <nav class=\"navbar navbar-expand-lg navbar-light bg-light\">
-        <h4>Helpful Links </h4>
-        <ul class=\"navbar-nav mx-auto\">
-            <li class=\"nav-item\">
-                <a class=\"nav-link\" href=\"#\">Terms and Conditions</a>
-            </li>
-            <li class=\"nav-item\">
-                <a class=\"nav-link\" href=\"#\">Privacy Policy</a>
-            </li>
-            <li class=\"nav-item\">
-                <a class=\"nav-link\" href=\"#\">Contact</a>
-            </li>
+<footer class=\"mt-auto\">
+    <!-- Contenu du footer -->
+    <div class=\"container\">
+        <ul class=\"nav justify-content-center\">
+            <li class=\"nav-item\"><a href=\"";
+        // line 82
+        echo $this->extensions['Symfony\Bridge\Twig\Extension\RoutingExtension']->getPath("home");
+        echo "\" class=\"nav-link link-secondary pink-link\">Home</a></li>
+            <li class=\"nav-item\"><a href=\"#\" class=\"nav-link link-secondary pink-link\">Contact</a></li>
+            <li class=\"nav-item\"><a href=\"#\" class=\"nav-link link-secondary pink-link\">FAQs</a></li>
+            <li class=\"nav-item\"><a href=\"#\" class=\"nav-link link-secondary pink-link\">About</a></li>
         </ul>
+        <p class=\"text-center\">&copy; 2024 Company, Inc</p>
+    </div>
+</footer>
+
+";
+        // line 91
+        $this->displayBlock('javascripts', $context, $blocks);
+        // line 93
+        echo "</body>
+</html>
 
 
-    </nav>
-
-
-        <p>&copy; 2024 Budget Management. All rights reserved.
-        </p>
-</footer>";
+";
         
         $__internal_5a27a8ba21ca79b61932376b2fa922d2->leave($__internal_5a27a8ba21ca79b61932376b2fa922d2_prof);
 
@@ -114,7 +103,7 @@ class __TwigTemplate_35abe972ba5fdc6d96a9a2ed8534f04b extends Template
 
     }
 
-    // line 6
+    // line 60
     public function block_title($context, array $blocks = [])
     {
         $macros = $this->macros;
@@ -133,7 +122,7 @@ class __TwigTemplate_35abe972ba5fdc6d96a9a2ed8534f04b extends Template
 
     }
 
-    // line 8
+    // line 62
     public function block_stylesheets($context, array $blocks = [])
     {
         $macros = $this->macros;
@@ -143,8 +132,14 @@ class __TwigTemplate_35abe972ba5fdc6d96a9a2ed8534f04b extends Template
         $__internal_6f47bbe9983af81f1e7450e9a3e3768f = $this->extensions["Symfony\\Bridge\\Twig\\Extension\\ProfilerExtension"];
         $__internal_6f47bbe9983af81f1e7450e9a3e3768f->enter($__internal_6f47bbe9983af81f1e7450e9a3e3768f_prof = new \Twig\Profiler\Profile($this->getTemplateName(), "block", "stylesheets"));
 
-        // line 9
-        echo "    ";
+        // line 63
+        echo "        <link rel=\"stylesheet\" href=\"https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css\">
+        <link rel=\"stylesheet\" href=\"https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css\">
+        <link href=\"https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&display=swap\" rel=\"stylesheet\">
+        <style>
+            /* Vos styles CSS ici */
+        </style>
+    ";
         
         $__internal_6f47bbe9983af81f1e7450e9a3e3768f->leave($__internal_6f47bbe9983af81f1e7450e9a3e3768f_prof);
 
@@ -153,7 +148,7 @@ class __TwigTemplate_35abe972ba5fdc6d96a9a2ed8534f04b extends Template
 
     }
 
-    // line 25
+    // line 75
     public function block_body($context, array $blocks = [])
     {
         $macros = $this->macros;
@@ -162,6 +157,24 @@ class __TwigTemplate_35abe972ba5fdc6d96a9a2ed8534f04b extends Template
 
         $__internal_6f47bbe9983af81f1e7450e9a3e3768f = $this->extensions["Symfony\\Bridge\\Twig\\Extension\\ProfilerExtension"];
         $__internal_6f47bbe9983af81f1e7450e9a3e3768f->enter($__internal_6f47bbe9983af81f1e7450e9a3e3768f_prof = new \Twig\Profiler\Profile($this->getTemplateName(), "block", "body"));
+
+        
+        $__internal_6f47bbe9983af81f1e7450e9a3e3768f->leave($__internal_6f47bbe9983af81f1e7450e9a3e3768f_prof);
+
+        
+        $__internal_5a27a8ba21ca79b61932376b2fa922d2->leave($__internal_5a27a8ba21ca79b61932376b2fa922d2_prof);
+
+    }
+
+    // line 91
+    public function block_javascripts($context, array $blocks = [])
+    {
+        $macros = $this->macros;
+        $__internal_5a27a8ba21ca79b61932376b2fa922d2 = $this->extensions["Symfony\\Bundle\\WebProfilerBundle\\Twig\\WebProfilerExtension"];
+        $__internal_5a27a8ba21ca79b61932376b2fa922d2->enter($__internal_5a27a8ba21ca79b61932376b2fa922d2_prof = new \Twig\Profiler\Profile($this->getTemplateName(), "block", "javascripts"));
+
+        $__internal_6f47bbe9983af81f1e7450e9a3e3768f = $this->extensions["Symfony\\Bridge\\Twig\\Extension\\ProfilerExtension"];
+        $__internal_6f47bbe9983af81f1e7450e9a3e3768f->enter($__internal_6f47bbe9983af81f1e7450e9a3e3768f_prof = new \Twig\Profiler\Profile($this->getTemplateName(), "block", "javascripts"));
 
         
         $__internal_6f47bbe9983af81f1e7450e9a3e3768f->leave($__internal_6f47bbe9983af81f1e7450e9a3e3768f_prof);
@@ -192,12 +205,12 @@ class __TwigTemplate_35abe972ba5fdc6d96a9a2ed8534f04b extends Template
      */
     public function getDebugInfo()
     {
-        return array (  157 => 25,  147 => 9,  137 => 8,  118 => 6,  85 => 26,  83 => 25,  74 => 19,  68 => 16,  60 => 10,  58 => 8,  53 => 6,  46 => 1,);
+        return array (  170 => 91,  152 => 75,  136 => 63,  126 => 62,  107 => 60,  93 => 93,  91 => 91,  79 => 82,  71 => 76,  69 => 75,  62 => 70,  60 => 62,  55 => 60,  47 => 54,);
     }
 
     public function getSourceContext()
     {
-        return new Source("<!DOCTYPE html>
+        return new Source("{#  <!DOCTYPE html>
 <html lang=\"en\">
 <head>
     <meta charset=\"UTF-8\">
@@ -224,7 +237,7 @@ class __TwigTemplate_35abe972ba5fdc6d96a9a2ed8534f04b extends Template
     {% block body %}{% endblock %}
 </div>
 
-<footer class=\"\" style=\"position: relative\">
+
     <nav class=\"navbar navbar-expand-lg navbar-light bg-light\">
         <h4>Helpful Links </h4>
         <ul class=\"navbar-nav mx-auto\">
@@ -245,6 +258,54 @@ class __TwigTemplate_35abe972ba5fdc6d96a9a2ed8534f04b extends Template
 
         <p>&copy; 2024 Budget Management. All rights reserved.
         </p>
-</footer>", "base.html.twig", "/Applications/MAMP/htdocs/ManageBudget/Projet_Dev/templates/base.html.twig");
+</footer>
+{% block javascripts %}
+{% endblock %}
+</body>
+</html> #}
+
+<!DOCTYPE html>
+<html lang=\"en\">
+<head>
+    <meta charset=\"UTF-8\">
+    <meta name=\"viewport\" content=\"width=device-width, initial-scale=1.0\">
+    <title>{% block title %}Gestion de Budget{% endblock %}</title>
+    <link rel=\"icon\" href=\"data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 128 128%22><text y=%221.2em%22 font-size=%2296%22>⚫️</text></svg>\">
+    {% block stylesheets %}
+        <link rel=\"stylesheet\" href=\"https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css\">
+        <link rel=\"stylesheet\" href=\"https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css\">
+        <link href=\"https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&display=swap\" rel=\"stylesheet\">
+        <style>
+            /* Vos styles CSS ici */
+        </style>
+    {% endblock %}
+</head>
+<body>
+
+<div class=\"container\">
+    <!-- Contenu de la page -->
+    {% block body %}{% endblock %}
+</div>
+
+<footer class=\"mt-auto\">
+    <!-- Contenu du footer -->
+    <div class=\"container\">
+        <ul class=\"nav justify-content-center\">
+            <li class=\"nav-item\"><a href=\"{{ path ('home') }}\" class=\"nav-link link-secondary pink-link\">Home</a></li>
+            <li class=\"nav-item\"><a href=\"#\" class=\"nav-link link-secondary pink-link\">Contact</a></li>
+            <li class=\"nav-item\"><a href=\"#\" class=\"nav-link link-secondary pink-link\">FAQs</a></li>
+            <li class=\"nav-item\"><a href=\"#\" class=\"nav-link link-secondary pink-link\">About</a></li>
+        </ul>
+        <p class=\"text-center\">&copy; 2024 Company, Inc</p>
+    </div>
+</footer>
+
+{% block javascripts %}
+{% endblock %}
+</body>
+</html>
+
+
+", "base.html.twig", "/Applications/MAMP/htdocs/Budget/Projet_Dev/templates/base.html.twig");
     }
 }

@@ -2,21 +2,79 @@
 
 {% block title %}Register{% endblock %}
 
+{% block stylesheets %}
+    {{ parent() }} {# Inclure d'abord les feuilles de style du parent #}
+
+    <style>
+        /* Votre CSS personnalisé */
+        /* Par exemple */
+        body {
+            background-color: #e4e4e4;
+        }
+        .pink-link{
+            color: #FF698D;
+        }
+        .btn-custom {
+            background-color: transparent;
+            color: #FF698D;
+            border-color: #FF698D;
+        }
+
+        .btn-custom:hover {
+            background-color: #FF698D;
+            border-color: #FF698D;
+            color: white;
+        }
+        .btn {
+            background-color: #FF698D;
+            border: none;
+            color: white;
+            text-align: center;
+            text-decoration: none;
+            display: inline-block;
+            margin: 4px 2px;
+            cursor: pointer;
+        }
+        .form-control {
+            padding: 5px 10px; /* Ajustez les valeurs selon vos besoins */
+        }
+
+        /* Ajoutez d'autres styles selon vos besoins */
+    </style>
+{% endblock %}
+
 {% block body %}
-    <h1 class = "text-center"> Sign up </h1>
+    <header class="d-flex flex-wrap align-items-center justify-content-between py-3 mb-4 border-bottom">
+        <div class="b-example-divider"></div>
+        <div class="col-md-3 mb-2 mb-md-0">
+            <a href="/" class="d-inline-flex link-body-emphasis text-decoration-none">
+                <svg class="bi" width="40" height="32" role="img" aria-label="Bootstrap"><use xlink:href="#bootstrap"/></svg>
+            </a>
+        </div>
 
-    {{ form_errors(registrationForm) }}
+        <ul class="nav col-12 col-md-auto mb-2 justify-content-center mb-md-0" style="margin-right: 70px">
+            <li><a href="{{ path ('home') }}" class="nav-link px-2 link-secondary pink-link">Home</a></li>
+            <li><a href="#" class="nav-link px-2 pink-link">Contact</a></li>
+            <li><a href="#" class="nav-link px-2 pink-link">FAQs</a></li>
+            <li><a href="#" class="nav-link px-2 pink-link" style="margin-right: 10px;">About</a></li>
+        </ul>
 
-    {{ form_start(registrationForm) }}
-        {{ form_row(registrationForm.name) }}
-        {{ form_row(registrationForm.lastName) }}
-        {{ form_row(registrationForm.email) }}
-        {{ form_row(registrationForm.age) }}
-        {{ form_row(registrationForm.plainPassword, {
-            label: 'Password'
-        }) }}
-        {{ form_row(registrationForm.AgreeTerms) }}
+        <div class="col-md-3 text-end">
+            <a href="{{ path('app_login') }}" class="btn btn-outline-primary me-2 btn-custom">Login</a>
+            <a href="{{ path('app_register') }}" class="btn btn-primary btn-custom">Sign-up</a>
+        </div>
+    </header>
 
-        <button type="submit" class="btn">Register</button>
+    <h1 class="text-center" style="margin-top: -20px">Sign up</h1>
+
+    {{ form_row(registrationForm.name, {'attr': {'class': 'form-control'}}) }}
+    {{ form_row(registrationForm.lastName, {'attr': {'class': 'form-control'}}) }}
+    {{ form_row(registrationForm.email, {'attr': {'class': 'form-control'}}) }}
+    {{ form_row(registrationForm.age, {'attr': {'class': 'form-control', 'min': 0}}) }}
+    {{ form_row(registrationForm.plainPassword, {'attr': {'class': 'form-control'}, 'label': 'Password'}) }}
+    {{ form_row(registrationForm.AgreeTerms) }}
+    {{ form_row(registrationForm._token) }}
+
+    <button type="submit" class="btn">Register</button>
     {{ form_end(registrationForm) }}
 {% endblock %}

@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+{#  <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
@@ -47,3 +47,50 @@
         <p>&copy; 2024 Budget Management. All rights reserved.
         </p>
 </footer>
+{% block javascripts %}
+{% endblock %}
+</body>
+</html> #}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{% block title %}Gestion de Budget{% endblock %}</title>
+    <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 128 128%22><text y=%221.2em%22 font-size=%2296%22>⚫️</text></svg>">
+    {% block stylesheets %}
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
+        <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&display=swap" rel="stylesheet">
+        <style>
+            /* Vos styles CSS ici */
+        </style>
+    {% endblock %}
+</head>
+<body>
+
+<div class="container">
+    <!-- Contenu de la page -->
+    {% block body %}{% endblock %}
+</div>
+
+<footer class="mt-auto">
+    <!-- Contenu du footer -->
+    <div class="container">
+        <ul class="nav justify-content-center">
+            <li class="nav-item"><a href="{{ path ('home') }}" class="nav-link link-secondary pink-link">Home</a></li>
+            <li class="nav-item"><a href="#" class="nav-link link-secondary pink-link">Contact</a></li>
+            <li class="nav-item"><a href="#" class="nav-link link-secondary pink-link">FAQs</a></li>
+            <li class="nav-item"><a href="#" class="nav-link link-secondary pink-link">About</a></li>
+        </ul>
+        <p class="text-center">&copy; 2024 Company, Inc</p>
+    </div>
+</footer>
+
+{% block javascripts %}
+{% endblock %}
+</body>
+</html>
+
+
