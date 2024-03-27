@@ -394,3 +394,4 @@ a3af73,127.0.0.1,GET,http://drupal.test/ManageBudget/Projet_Dev/public/register,
 9e5115,127.0.0.1,GET,http://drupal.test/ManageBudget/Projet_Dev/public/register,1711462777,,200,request
 888ec5,127.0.0.1,POST,http://drupal.test/ManageBudget/Projet_Dev/public/login,1711462791,,302,request
 4ccaeb,127.0.0.1,GET,http://drupal.test/ManageBudget/Projet_Dev/public/profile/new_profile,1711462792,,200,request
+f44443,::1,GET,http://localhost:8888/Budget/Projet_Dev/public/,1711557685,,200,request

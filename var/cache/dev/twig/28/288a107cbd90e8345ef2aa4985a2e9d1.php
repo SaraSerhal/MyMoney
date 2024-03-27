@@ -311,6 +311,6 @@ class __TwigTemplate_57708592612e2286a028aa76ca2e1da5 extends Template
         {% block body '' %}
     </body>
 </html>
-", "@WebProfiler/Profiler/base.html.twig", "/Applications/MAMP/htdocs/ManageBudget/Projet_Dev/vendor/symfony/web-profiler-bundle/Resources/views/Profiler/base.html.twig");
+", "@WebProfiler/Profiler/base.html.twig", "/Applications/MAMP/htdocs/Budget/Projet_Dev/vendor/symfony/web-profiler-bundle/Resources/views/Profiler/base.html.twig");
     }
 }

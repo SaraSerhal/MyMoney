@@ -1837,6 +1837,6 @@ class __TwigTemplate_e180a57e4410a7d27ef0ab6af9d2a50f extends Template
         </tbody>
     </table>
 {% endmacro %}
-", "@Doctrine/Collector/db.html.twig", "/Applications/MAMP/htdocs/ManageBudget/Projet_Dev/vendor/doctrine/doctrine-bundle/Resources/views/Collector/db.html.twig");
+", "@Doctrine/Collector/db.html.twig", "/Applications/MAMP/htdocs/Budget/Projet_Dev/vendor/doctrine/doctrine-bundle/Resources/views/Collector/db.html.twig");
     }
 }

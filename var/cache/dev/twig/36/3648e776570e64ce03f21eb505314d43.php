@@ -990,6 +990,6 @@ class __TwigTemplate_6c8d5d9a31c4efa9c6d8e56d2bd58014 extends Template
         </table>
     {% endif %}
 {% endblock %}
-", "@WebProfiler/Collector/config.html.twig", "/Applications/MAMP/htdocs/ManageBudget/Projet_Dev/vendor/symfony/web-profiler-bundle/Resources/views/Collector/config.html.twig");
+", "@WebProfiler/Collector/config.html.twig", "/Applications/MAMP/htdocs/Budget/Projet_Dev/vendor/symfony/web-profiler-bundle/Resources/views/Collector/config.html.twig");
     }
 }
