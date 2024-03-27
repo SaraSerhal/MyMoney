@@ -63,10 +63,16 @@ class __TwigTemplate_35abe972ba5fdc6d96a9a2ed8534f04b extends Template
 <body>
 <header>
     <nav class=\"navbar navbar-expand-lg navbar-light bg-light\">
-        <a class=\"navbar-brand\" href=\"#\">
+        <a class=\"navbar-brand\" href=\"";
+        // line 16
+        echo $this->extensions['Symfony\Bridge\Twig\Extension\RoutingExtension']->getPath("new_profile");
+        echo "\">
             <i class=\"fas fa-credit-card fa-lg\"></i>
         </a>
-        <a class=\"navbar-brand mx-auto\" href=\"#\">ManageBudget</a>
+        <a class=\"navbar-brand mx-auto\" href=\"";
+        // line 19
+        echo $this->extensions['Symfony\Bridge\Twig\Extension\RoutingExtension']->getPath("new_profile");
+        echo "\">ManageBudget</a>
         <!-- You can add additional navbar elements or links here -->
     </nav>
 </header>
@@ -78,7 +84,7 @@ class __TwigTemplate_35abe972ba5fdc6d96a9a2ed8534f04b extends Template
         // line 26
         echo "</div>
 
-<footer class=\"fixed-bottom\">
+<footer class=\"\" style=\"position: relative\">
     <nav class=\"navbar navbar-expand-lg navbar-light bg-light\">
         <h4>Helpful Links </h4>
         <ul class=\"navbar-nav mx-auto\">
@@ -176,9 +182,17 @@ class __TwigTemplate_35abe972ba5fdc6d96a9a2ed8534f04b extends Template
     /**
      * @codeCoverageIgnore
      */
+    public function isTraitable()
+    {
+        return false;
+    }
+
+    /**
+     * @codeCoverageIgnore
+     */
     public function getDebugInfo()
     {
-        return array (  151 => 25,  141 => 9,  131 => 8,  112 => 6,  79 => 26,  77 => 25,  60 => 10,  58 => 8,  53 => 6,  46 => 1,);
+        return array (  157 => 25,  147 => 9,  137 => 8,  118 => 6,  85 => 26,  83 => 25,  74 => 19,  68 => 16,  60 => 10,  58 => 8,  53 => 6,  46 => 1,);
     }
 
     public function getSourceContext()
@@ -198,10 +212,10 @@ class __TwigTemplate_35abe972ba5fdc6d96a9a2ed8534f04b extends Template
 <body>
 <header>
     <nav class=\"navbar navbar-expand-lg navbar-light bg-light\">
-        <a class=\"navbar-brand\" href=\"#\">
+        <a class=\"navbar-brand\" href=\"{{ path('new_profile') }}\">
             <i class=\"fas fa-credit-card fa-lg\"></i>
         </a>
-        <a class=\"navbar-brand mx-auto\" href=\"#\">ManageBudget</a>
+        <a class=\"navbar-brand mx-auto\" href=\"{{ path('new_profile') }}\">ManageBudget</a>
         <!-- You can add additional navbar elements or links here -->
     </nav>
 </header>
@@ -210,7 +224,7 @@ class __TwigTemplate_35abe972ba5fdc6d96a9a2ed8534f04b extends Template
     {% block body %}{% endblock %}
 </div>
 
-<footer class=\"fixed-bottom\">
+<footer class=\"\" style=\"position: relative\">
     <nav class=\"navbar navbar-expand-lg navbar-light bg-light\">
         <h4>Helpful Links </h4>
         <ul class=\"navbar-nav mx-auto\">
@@ -231,6 +245,6 @@ class __TwigTemplate_35abe972ba5fdc6d96a9a2ed8534f04b extends Template
 
         <p>&copy; 2024 Budget Management. All rights reserved.
         </p>
-</footer>", "base.html.twig", "/Applications/MAMP/htdocs/Budget/templates/base.html.twig");
+</footer>", "base.html.twig", "/Applications/MAMP/htdocs/ManageBudget/Projet_Dev/templates/base.html.twig");
     }
 }

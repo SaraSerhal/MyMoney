@@ -85,7 +85,7 @@ class __TwigTemplate_b62f668b047af41911ca33f334556205 extends Template
         $__internal_6f47bbe9983af81f1e7450e9a3e3768f->enter($__internal_6f47bbe9983af81f1e7450e9a3e3768f_prof = new \Twig\Profiler\Profile($this->getTemplateName(), "block", "body"));
 
         // line 6
-        echo "    <h1 class = \"text-center\"> Inscription </h1>
+        echo "    <h1 class = \"text-center\"> Sign up </h1>
 
     ";
         // line 8
@@ -167,7 +167,7 @@ class __TwigTemplate_b62f668b047af41911ca33f334556205 extends Template
 {% block title %}Register{% endblock %}
 
 {% block body %}
-    <h1 class = \"text-center\"> Inscription </h1>
+    <h1 class = \"text-center\"> Sign up </h1>
 
     {{ form_errors(registrationForm) }}
 
@@ -184,6 +184,6 @@ class __TwigTemplate_b62f668b047af41911ca33f334556205 extends Template
         <button type=\"submit\" class=\"btn\">Register</button>
     {{ form_end(registrationForm) }}
 {% endblock %}
-", "registration/register.html.twig", "/Applications/MAMP/htdocs/Budget/templates/registration/register.html.twig");
+", "registration/register.html.twig", "/Applications/MAMP/htdocs/ManageBudget/Projet_Dev/templates/registration/register.html.twig");
     }
 }
