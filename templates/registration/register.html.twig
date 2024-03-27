@@ -72,16 +72,17 @@
 
     <h1 class="text-center" style="margin-top: -20px">Create an account</h1>
 
-<div class="custom-form">
-    {{ form_row(registrationForm.name, {'attr': {'class': 'form-control'}}) }}
-    {{ form_row(registrationForm.lastName, {'attr': {'class': 'form-control'}}) }}
-    {{ form_row(registrationForm.email, {'attr': {'class': 'form-control'}}) }}
-    {{ form_row(registrationForm.age, {'attr': {'class': 'form-control', 'min': 0}}) }}
-    {{ form_row(registrationForm.plainPassword, {'attr': {'class': 'form-control'}, 'label': 'Password'}) }}
-    {{ form_row(registrationForm.AgreeTerms) }}
-    {{ form_row(registrationForm._token) }}
+    <div class="custom-form">
+        <form method="post">
+            {{ form_row(registrationForm.name, {'attr': {'class': 'form-control'}}) }}
+            {{ form_row(registrationForm.lastName, {'attr': {'class': 'form-control'}}) }}
+            {{ form_row(registrationForm.email, {'attr': {'class': 'form-control'}}) }}
+            {{ form_row(registrationForm.age, {'attr': {'class': 'form-control', 'min': 0}}) }}
+            {{ form_row(registrationForm.plainPassword, {'attr': {'class': 'form-control'}, 'label': 'Password'}) }}
+            {{ form_row(registrationForm.AgreeTerms) }}
+            {{ form_row(registrationForm._token) }}
 
-    <button type="submit" class="btn">Register</button>
-    {{ form_end(registrationForm) }}
-</div>
+            <button type="submit" class="btn">Register</button>
+        </form>
+    </div>
 {% endblock %}
