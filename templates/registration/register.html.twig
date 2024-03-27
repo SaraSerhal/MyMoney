@@ -35,11 +35,16 @@
             margin: 4px 2px;
             cursor: pointer;
         }
-        .form-control {
-            padding: 5px 10px; /* Ajustez les valeurs selon vos besoins */
+
+        .custom-form {
+            margin-left: 90px;
+            margin-right: 90px;
         }
 
-        /* Ajoutez d'autres styles selon vos besoins */
+        .custom-form {
+            margin-left: 300px;
+            margin-right: 300px;
+        }
     </style>
 {% endblock %}
 
@@ -65,8 +70,9 @@
         </div>
     </header>
 
-    <h1 class="text-center" style="margin-top: -20px">Sign up</h1>
+    <h1 class="text-center" style="margin-top: -20px">Create an account</h1>
 
+<div class="custom-form">
     {{ form_row(registrationForm.name, {'attr': {'class': 'form-control'}}) }}
     {{ form_row(registrationForm.lastName, {'attr': {'class': 'form-control'}}) }}
     {{ form_row(registrationForm.email, {'attr': {'class': 'form-control'}}) }}
@@ -77,4 +83,5 @@
 
     <button type="submit" class="btn">Register</button>
     {{ form_end(registrationForm) }}
+</div>
 {% endblock %}
