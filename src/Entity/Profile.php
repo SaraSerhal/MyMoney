@@ -38,6 +38,11 @@ class Profile
         $this->expensesCategory = new ArrayCollection();
     }
 
+    public function getExpensesCategories(): Collection
+    {
+        return $this->expensesCategory;
+    }
+
     public function getId(): ?int
     {
         return $this->id;
@@ -79,6 +84,8 @@ class Profile
     {
         return $this->users;
     }
+
+
 
     public function addUser(User $user): static
     {

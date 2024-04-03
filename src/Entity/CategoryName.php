@@ -16,7 +16,8 @@ class CategoryName
     #[ORM\Column(length: 255)]
     private ?string $name = null;
 
-    #[ORM\ManyToOne(inversedBy: 'namesCategory')]
+
+    #[ORM\ManyToOne(inversedBy: 'categoryNames')]
     #[ORM\JoinColumn(nullable: false)]
     private ?ExpensesCategory $expensesCategory = null;
 

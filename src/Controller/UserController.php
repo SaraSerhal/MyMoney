@@ -3,6 +3,7 @@
 
 namespace App\Controller;
 
+use App\Entity\ExpensesCategory;
 use App\Entity\Profile;
 use App\Entity\User;
 use App\Form\AccueilFormType;
@@ -36,26 +37,32 @@ class UserController extends AbstractController
 
     }
     #[Route('/useraccount/deleteUser', name: 'budget_delete_user')]
-    public function deleteUserAndProfiles(Request $request, TokenStorageInterface $tokenStorage, EntityManagerInterface $entityManager): Response
-    {
+    public function deleteUserAndProfiles(Request $request, TokenStorageInterface $tokenStorage, EntityManagerInterface $entityManager): Response {
         $user = $this->getUser();
 
         if ($user) {
-            // Supprimer les profils associés à l'utilisateur
+            $orphanExpensesCategories = $entityManager->getRepository(ExpensesCategory::class)->findBy(['profile' => null]);
+            foreach ($orphanExpensesCategories as $orphan) {
+                $entityManager->remove($orphan);
+            }
+
             foreach ($user->getProfiles() as $profile) {
+                foreach ($profile->getExpensesCategories() as $expensesCategory) {
+                    $entityManager->remove($expensesCategory);
+                }
                 $entityManager->remove($profile);
             }
 
-            // Supprimer l'utilisateur lui-même
             $entityManager->remove($user);
             $entityManager->flush();
+
             $request->getSession()->invalidate();
             $tokenStorage->setToken(null);
 
-            // Rediriger vers la page d'accueil ou une autre page après la suppression du compte
             return $this->redirectToRoute('home');
         }
 
         return $this->redirectToRoute('home');
     }
+
 }
