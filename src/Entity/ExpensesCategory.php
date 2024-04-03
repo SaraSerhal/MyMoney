@@ -26,9 +26,13 @@ class ExpensesCategory{
     #[ORM\JoinColumn(nullable: false)]
     private ?Profile $profile = null;
 
+    #[ORM\OneToMany(mappedBy: 'categoryExpenses', targetEntity: Expenses::class)]
+    private Collection $expenses;
+
     public function __construct()
     {
         $this->categoryNames = new ArrayCollection();
+        $this->expenses = new ArrayCollection();
     }
 
     public function getCategoryNames(): Collection
@@ -71,6 +75,36 @@ class ExpensesCategory{
     public function setProfile(?Profile $profile): self
     {
         $this->profile = $profile;
+        return $this;
+    }
+
+    /**
+     * @return Collection<int, Expenses>
+     */
+    public function getExpenses(): Collection
+    {
+        return $this->expenses;
+    }
+
+    public function addExpense(Expenses $expense): static
+    {
+        if (!$this->expenses->contains($expense)) {
+            $this->expenses->add($expense);
+            $expense->setCategoryExpenses($this);
+        }
+
+        return $this;
+    }
+
+    public function removeExpense(Expenses $expense): static
+    {
+        if ($this->expenses->removeElement($expense)) {
+            // set the owning side to null (unless already changed)
+            if ($expense->getCategoryExpenses() === $this) {
+                $expense->setCategoryExpenses(null);
+            }
+        }
+
         return $this;
     }
 }
