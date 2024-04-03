@@ -2,9 +2,12 @@
 
 namespace App\Controller;
 
+use App\Entity\CategoryName;
+use App\Entity\ExpensesCategory;
 use App\Entity\Profile;
 use App\Entity\User;
 use App\Form\AccueilFormType;
+use App\Form\ExpensesCategoryType;
 use App\Form\RegistrationFormType;
 use App\Repository\UserRepository;
 use Doctrine\ORM\EntityManagerInterface;
@@ -75,24 +78,39 @@ class ProfileController extends AbstractController{
     {
         $user = $this->getUser();
 
-
-        // Vérifiez si l'utilisateur a des profils
         if ($user && $profiles = $user->getProfiles()) {
-            // Parcourez les profils pour trouver le type "Student"
             foreach ($profiles as $profile) {
                 if ($profile->getProfileType() === 'Student') {
-                    // Si le type de profil est "Student", récupérez le budget
                     $profileBudget = $profile->getProfileBudget();
+                    $expensesCategory = new ExpensesCategory();
+                    $expensesCategory->setProfile($profile);
+
+                    for ($i = 0; $i < 5; $i++) {
+                        $categoryName = new CategoryName();
+                        $expensesCategory->addCategoryName($categoryName);
+                        $entityManager->persist($categoryName);
+                    }
+
+                    $form = $this->createForm(ExpensesCategoryType::class, $expensesCategory);
+
+                    $form->handleRequest($request);
+                    if ($form->isSubmitted() && $form->isValid()) {
+                        $entityManager->persist($expensesCategory);
+                        $entityManager->flush();
+                        return $this->redirectToRoute('budget_student');
+                    }
 
                     return $this->render('profile/student.html.twig', [
                         'controller_name' => 'ProfileController',
                         'profile' => $profile,
                         'profileBudget' => $profileBudget,
+                        'form' => $form->createView(),
                     ]);
                 }
             }
+            $this->addFlash('error', 'Aucun profil étudiant trouvé.');
+            return $this->redirectToRoute('some_other_route');
         }
-
 
         return $this->render('profile/student.html.twig', [
             'controller_name' => 'ProfileController',
@@ -102,26 +120,42 @@ class ProfileController extends AbstractController{
     #[Route('/profile/traveler', name: 'budget_traveler')]
     public function traveler(Request $request, EntityManagerInterface $entityManager): Response
     {
-
         $user = $this->getUser();
 
-
-        // Vérifiez si l'utilisateur a des profils
         if ($user && $profiles = $user->getProfiles()) {
-            // Parcourez les profils pour trouver le type "Student"
             foreach ($profiles as $profile) {
                 if ($profile->getProfileType() === 'Traveler') {
-                    // Si le type de profil est "Student", récupérez le budget
                     $profileBudget = $profile->getProfileBudget();
+                    $expensesCategory = new ExpensesCategory();
+                    $expensesCategory->setProfile($profile);
+
+                    for ($i = 0; $i < 5; $i++) {
+                        $categoryName = new CategoryName();
+                        $expensesCategory->addCategoryName($categoryName);
+                        $entityManager->persist($categoryName);
+                    }
+
+                    $form = $this->createForm(ExpensesCategoryType::class, $expensesCategory);
+
+                    $form->handleRequest($request);
+                    if ($form->isSubmitted() && $form->isValid()) {
+                        $entityManager->persist($expensesCategory);
+                        $entityManager->flush();
+                        return $this->redirectToRoute('budget_traveler');
+                    }
 
                     return $this->render('profile/traveler.html.twig', [
                         'controller_name' => 'ProfileController',
                         'profile' => $profile,
                         'profileBudget' => $profileBudget,
+                        'form' => $form->createView(),
                     ]);
                 }
             }
+            $this->addFlash('error', 'Aucun profil étudiant trouvé.');
+            return $this->redirectToRoute('some_other_route');
         }
+
         return $this->render('profile/traveler.html.twig', [
             'controller_name' => 'ProfileController',
         ]);
@@ -130,26 +164,42 @@ class ProfileController extends AbstractController{
     #[Route('/profile/investor', name: 'budget_investor')]
     public function investor(Request $request, EntityManagerInterface $entityManager): Response
     {
-
         $user = $this->getUser();
 
-
-        // Vérifiez si l'utilisateur a des profils
         if ($user && $profiles = $user->getProfiles()) {
-            // Parcourez les profils pour trouver le type "Student"
             foreach ($profiles as $profile) {
                 if ($profile->getProfileType() === 'Investor') {
-                    // Si le type de profil est "Student", récupérez le budget
                     $profileBudget = $profile->getProfileBudget();
+                    $expensesCategory = new ExpensesCategory();
+                    $expensesCategory->setProfile($profile);
+
+                    for ($i = 0; $i < 5; $i++) {
+                        $categoryName = new CategoryName();
+                        $expensesCategory->addCategoryName($categoryName);
+                        $entityManager->persist($categoryName);
+                    }
+
+                    $form = $this->createForm(ExpensesCategoryType::class, $expensesCategory);
+
+                    $form->handleRequest($request);
+                    if ($form->isSubmitted() && $form->isValid()) {
+                        $entityManager->persist($expensesCategory);
+                        $entityManager->flush();
+                        return $this->redirectToRoute('budget_investor');
+                    }
 
                     return $this->render('profile/investor.html.twig', [
                         'controller_name' => 'ProfileController',
                         'profile' => $profile,
                         'profileBudget' => $profileBudget,
+                        'form' => $form->createView(),
                     ]);
                 }
             }
+            $this->addFlash('error', 'Aucun profil étudiant trouvé.');
+            return $this->redirectToRoute('some_other_route');
         }
+
         return $this->render('profile/investor.html.twig', [
             'controller_name' => 'ProfileController',
         ]);
@@ -160,23 +210,40 @@ class ProfileController extends AbstractController{
     {
         $user = $this->getUser();
 
-
-        // Vérifiez si l'utilisateur a des profils
         if ($user && $profiles = $user->getProfiles()) {
-            // Parcourez les profils pour trouver le type "Student"
             foreach ($profiles as $profile) {
                 if ($profile->getProfileType() === 'Parent') {
-                    // Si le type de profil est "Student", récupérez le budget
                     $profileBudget = $profile->getProfileBudget();
+                    $expensesCategory = new ExpensesCategory();
+                    $expensesCategory->setProfile($profile);
+
+                    for ($i = 0; $i < 5; $i++) {
+                        $categoryName = new CategoryName();
+                        $expensesCategory->addCategoryName($categoryName);
+                        $entityManager->persist($categoryName);
+                    }
+
+                    $form = $this->createForm(ExpensesCategoryType::class, $expensesCategory);
+
+                    $form->handleRequest($request);
+                    if ($form->isSubmitted() && $form->isValid()) {
+                        $entityManager->persist($expensesCategory);
+                        $entityManager->flush();
+                        return $this->redirectToRoute('budget_parent');
+                    }
 
                     return $this->render('profile/parent.html.twig', [
                         'controller_name' => 'ProfileController',
                         'profile' => $profile,
                         'profileBudget' => $profileBudget,
+                        'form' => $form->createView(),
                     ]);
                 }
             }
+            $this->addFlash('error', 'Aucun profil étudiant trouvé.');
+            return $this->redirectToRoute('some_other_route');
         }
+
         return $this->render('profile/parent.html.twig', [
             'controller_name' => 'ProfileController',
         ]);
@@ -187,23 +254,40 @@ class ProfileController extends AbstractController{
     {
         $user = $this->getUser();
 
-
-        // Vérifiez si l'utilisateur a des profils
         if ($user && $profiles = $user->getProfiles()) {
-            // Parcourez les profils pour trouver le type "Student"
             foreach ($profiles as $profile) {
                 if ($profile->getProfileType() === 'Couple') {
-                    // Si le type de profil est "Student", récupérez le budget
                     $profileBudget = $profile->getProfileBudget();
+                    $expensesCategory = new ExpensesCategory();
+                    $expensesCategory->setProfile($profile);
+
+                    for ($i = 0; $i < 5; $i++) {
+                        $categoryName = new CategoryName();
+                        $expensesCategory->addCategoryName($categoryName);
+                        $entityManager->persist($categoryName);
+                    }
+
+                    $form = $this->createForm(ExpensesCategoryType::class, $expensesCategory);
+
+                    $form->handleRequest($request);
+                    if ($form->isSubmitted() && $form->isValid()) {
+                        $entityManager->persist($expensesCategory);
+                        $entityManager->flush();
+                        return $this->redirectToRoute('budget_couple');
+                    }
 
                     return $this->render('profile/couple.html.twig', [
                         'controller_name' => 'ProfileController',
                         'profile' => $profile,
                         'profileBudget' => $profileBudget,
+                        'form' => $form->createView(),
                     ]);
                 }
             }
+            $this->addFlash('error', 'Aucun profil étudiant trouvé.');
+            return $this->redirectToRoute('some_other_route');
         }
+
         return $this->render('profile/couple.html.twig', [
             'controller_name' => 'ProfileController',
         ]);

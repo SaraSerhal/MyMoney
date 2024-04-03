@@ -27,7 +27,7 @@ class Profile
     #[ORM\ManyToMany(targetEntity: User::class, mappedBy: 'profiles')]
     private Collection $users;
 
-    #[ORM\OneToMany(mappedBy: 'profile', targetEntity: ExpensesCategory::class)]
+    #[ORM\OneToMany(mappedBy: 'profile', targetEntity: ExpensesCategory::class, cascade: ['persist', 'remove'])]
     private Collection $expensesCategory;
 
     public function __construct()

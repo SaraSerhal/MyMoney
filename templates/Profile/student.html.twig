@@ -1,18 +1,23 @@
 {% extends 'base.html.twig' %}
-{% block title %} Student  {% endblock %}
+
+{% block title %} Student {% endblock %}
+
 {% block body %}
-<div class="text-center">
-    <h1>Student</h1>
+    <div class="text-center">
+        <h1>Student</h1>
 
-    {% if profile is defined %}
-        <h4>Your budget is {{ profile.profileBudget }} $</h4>
-    {% else %}
-        <p>No profile found.</p>
-    {% endif %}
-</div>
-
-
-
-
+        {% if profile is defined %}
+            <h4>Your budget is {{ profileBudget }} $</h4>
+        {% else %}
+            <p>No profile found.</p>
+        {% endif %}
+    </div>
+    <div class="container">
+        {{ form_start(form) }}
+        {% for categoryNameForm in form.categoryNames %}
+            {{ form_row(categoryNameForm) }}
+        {% endfor %}
+        <button type="submit" class="btn btn-primary">Submit</button>
+        {{ form_end(form) }}
+    </div>
 {% endblock %}
-
