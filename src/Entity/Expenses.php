@@ -76,7 +76,12 @@ class Expenses
     public function calculerDepenseJour(): float
     {
 
-        return $this->amountSpent;
+        $profileBudget = $this->getCategoryExpenses()->getProfile()->getProfileBudget();
+        $dailyBudget = $profileBudget / 7;
+        $dailyCategoryBudget = $dailyBudget / 5;
+
+        return $dailyCategoryBudget;
+
     }
 
     public function getCategoryExpenses(): ?ExpensesCategory

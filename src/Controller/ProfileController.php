@@ -97,7 +97,7 @@ class ProfileController extends AbstractController{
                     if ($form->isSubmitted() && $form->isValid()) {
                         $entityManager->persist($expensesCategory);
                         $entityManager->flush();
-                        return $this->redirectToRoute('budget_student');
+                        return $this->redirectToRoute('budget_chart');
                     }
 
                     return $this->render('profile/student.html.twig', [
