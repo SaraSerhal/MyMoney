@@ -12,17 +12,20 @@ class ChartController extends AbstractController
 {
     #[Route('/chart', name: 'budget_chart')]
     public function chart(ExpensesRepository $expensesRepository): Response
-    {
-        $user = $this->getUser();
+    { $user = $this->getUser();
 
         if (!$user || !$user->getProfiles() || $user->getProfiles()->isEmpty()) {
 
             throw $this->createNotFoundException('Profil ou budget non trouvé pour l\'utilisateur.');
         }
 
+        if ($user && $profiles = $user->getProfiles()) {
+            foreach ($profiles as $profile) {
 
-        $profile = $user->getProfiles()->first();
-        $profileBudget = $profile->getProfileBudget();
+
+                $profileBudget = $profile->getProfileBudget();
+            }}
+
         $dailyBudget = $profileBudget / 7;
         $categories = $profile->getExpensesCategories();
         $numberOfCategories = count($categories);
