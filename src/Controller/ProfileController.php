@@ -141,7 +141,7 @@ class ProfileController extends AbstractController{
                     if ($form->isSubmitted() && $form->isValid()) {
                         $entityManager->persist($expensesCategory);
                         $entityManager->flush();
-                        return $this->redirectToRoute('budget_traveler');
+                        return $this->redirectToRoute('budget_chart');
                     }
 
                     return $this->render('profile/traveler.html.twig', [
@@ -185,7 +185,7 @@ class ProfileController extends AbstractController{
                     if ($form->isSubmitted() && $form->isValid()) {
                         $entityManager->persist($expensesCategory);
                         $entityManager->flush();
-                        return $this->redirectToRoute('budget_investor');
+                        return $this->redirectToRoute('budget_chart');
                     }
 
                     return $this->render('profile/investor.html.twig', [
@@ -229,7 +229,7 @@ class ProfileController extends AbstractController{
                     if ($form->isSubmitted() && $form->isValid()) {
                         $entityManager->persist($expensesCategory);
                         $entityManager->flush();
-                        return $this->redirectToRoute('budget_parent');
+                        return $this->redirectToRoute('budget_chart');
                     }
 
                     return $this->render('profile/parent.html.twig', [
@@ -273,7 +273,7 @@ class ProfileController extends AbstractController{
                     if ($form->isSubmitted() && $form->isValid()) {
                         $entityManager->persist($expensesCategory);
                         $entityManager->flush();
-                        return $this->redirectToRoute('budget_couple');
+                        return $this->redirectToRoute('budget_chart');
                     }
 
                     return $this->render('profile/couple.html.twig', [
