@@ -7,7 +7,6 @@
     <h1>Graphique des dépenses</h1>
     <canvas id="myChart" width="400" height="200"></canvas>
 
-    {# Inclure Chart.js depuis un CDN #}
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 
     <script>
@@ -16,18 +15,16 @@
             var chartData = {{ chartData|raw }};
             var days = chartData.map(function(dataPoint) { return dataPoint.name; });
 
-            // Préparation des données de datasets pour chaque catégorie
             var datasets = [];
-            var categoryColors = ['rgba(255, 99, 132, 0.2)', 'rgba(54, 162, 235, 0.2)', 'rgba(255, 206, 86, 0.2)', 'rgba(75, 192, 192, 0.2)', 'rgba(153, 102, 255, 0.2)']; // Ajoutez plus de couleurs si vous avez plus de catégories
+            var categoryColors = ['rgba(255, 99, 132, 0.2)', 'rgba(54, 162, 235, 0.2)', 'rgba(255, 206, 86, 0.2)', 'rgba(75, 192, 192, 0.2)', 'rgba(153, 102, 255, 0.2)'];
 
-            // Supposons que 'categories' est un tableau de noms de catégories passés du contrôleur
             var categories = Object.keys(chartData[0]).filter(key => key !== 'name');
             categories.forEach(function(category, index) {
                 datasets.push({
                     label: category,
                     data: chartData.map(function(dataPoint) { return dataPoint[category]; }),
-                    backgroundColor: categoryColors[index % categoryColors.length], // Bouclez sur les couleurs si nécessaire
-                    stack: 'Stack 0' // Utilisé pour l'empilement
+                    backgroundColor: categoryColors[index % categoryColors.length],
+                    stack: 'Stack 0'
                 });
             });
 
@@ -40,13 +37,13 @@
                 options: {
                     scales: {
                         yAxes: [{
-                            stacked: true, // Active l'empilement
+                            stacked: true,
                             ticks: {
                                 beginAtZero: true
                             }
                         }],
                         xAxes: [{
-                            stacked: true // Active l'empilement
+                            stacked: true
                         }]
                     }
                 }

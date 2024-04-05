@@ -4,6 +4,7 @@ namespace App\Controller;
 
 use App\Repository\ExpensesRepository;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
+use Symfony\Component\BrowserKit\Request;
 use Symfony\Component\HttpFoundation\JsonResponse;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
@@ -35,10 +36,8 @@ class ChartController extends AbstractController
             $dayName = date('l', strtotime("Sunday +{$day} days"));
             $chartEntry = ['name' => $dayName];
 
-            // Initialisez les valeurs de chaque catégorie pour chaque jour
             foreach ($categories as $category) {
                 foreach ($category->getCategoryNames() as $categoryName) {
-                    // Utilisez le nom de la catégorie comme clé et divisez le budget
                     $chartEntry[$categoryName->getName()] = $dailyBudget / $numberOfCategories;
                 }
             }
