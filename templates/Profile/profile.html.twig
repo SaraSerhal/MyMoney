@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+{# <!DOCTYPE html>
 <html lang="en">
 <head>
     <title>Axentix Layout - Sidenav</title>
@@ -79,5 +79,303 @@
     });
 </script>
 
+</body>
+</html>
+#}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{% block title %}Gestion de Budget{% endblock %}</title>
+    <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 128 128%22><text y=%221.2em%22 font-size=%2296%22>⚫️</text></svg>">
+    {% block stylesheets %}
+    {% endblock %}
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&display=swap" rel="stylesheet">
+    <style>
+        .sidebar {
+            position: fixed;
+            top: 0;
+            bottom: 0;
+            left: -250px; /* sidebar initially hidden */
+            z-index: 100;
+            padding: 48px 0; /* Adjust as needed */
+            overflow-x: hidden;
+            overflow-y: auto; /* Show scrollbar if necessary */
+            background-color: black; /* Background color */
+            border-right: 1px solid #FF698D; /* Right border */
+            transition: left 0.3s; /* Smooth transition */
+        }
+
+        .sidebar.active {
+            left: 0; /* Sidebar visible */
+        }
+
+        .sidebar-heading {
+            text-align: center;
+            padding: 10px 15px;
+        }
+
+        .sidebar ul {
+            flex-direction: column;
+            padding-left: 0;
+            margin-bottom: 0;
+            list-style: none;
+        }
+
+        .sidebar ul li {
+            margin: 0;
+            padding: 0;
+        }
+
+        .sidebar ul li a {
+            display: flex;
+            align-items: center; /* Align icon and text vertically */
+            padding: .5rem 4rem;
+            color: #ffffff;
+            text-decoration: none;
+        }
+
+        .sidebar ul li a:hover {
+            background-color: #FF698D; /* Highlight on hover */
+        }
+
+        /* Button style */
+        .sidebar-toggle {
+            position: fixed;
+            left: 10px;
+            top: 10px;
+            background-color: #FF698D;
+            color: white;
+            border: none;
+            border-radius: 50%;
+            padding: 15px;
+            cursor: pointer;
+        }
+
+        .sidebar-toggle:focus {
+            outline: none;
+        }
+
+        /* Icon style */
+        .sidebar ul li a i {
+            margin-right: 10px; /* Add spacing between icon and text */
+        }
+
+        /* Custom button styles */
+        .btn-custom {
+            background-color: transparent;
+            color: #FF698D;
+            border-color: #FF698D;
+        }
+
+        .btn-custom:hover {
+            background-color: #FF698D;
+            border-color: #FF698D;
+            color: white;
+        }
+        body {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            background-color: #e4e4e4;
+            margin: 0;
+            font-family: 'Montserrat', sans-serif;
+        }
+
+
+        .image-container img {
+            max-width: 100%;
+            height: auto;
+            transition: transform 0.3s ease;
+            border-radius: 10px;
+            margin: 0 10px;
+        }
+
+        .image-container img:hover {
+            transform: translateY(-20px);
+        }
+        .pink-link {
+            color: #FF698D;
+        }
+        .intro{
+            margin: 50px auto;
+            padding: 20px;
+            background-color: white;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            max-width: 800px;
+        }
+        {# .intro {
+            margin: 50px auto; /* Modifier les marges pour centrer le cadre horizontalement */
+            padding: 20px; /* Modifier le remplissage intérieur */
+            background-color: #ffffff; /* Changer la couleur de fond en blanc */
+            border-radius: 10px; /* Garder la bordure arrondie */
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1); /* Garder l'ombre */
+            max-width: 600px; /* Limiter la largeur du cadre */
+        }
+    #}
+        .b-example-divider {
+            flex-shrink: 0;
+            width: 2px;
+            background-color: rgba(0, 0, 0, .1);
+        }
+        .register {
+            margin-top: 20px;
+            background-color: #FF698D;
+            border-color: #FF698D;
+        }
+        .register:hover {
+            background-color: #FF698D;
+            border-color: #FF698D;
+        }
+
+    </style>
+</head>
+<body>
+<div class="container-fluid">
+    <div class="row">
+        <!-- Sidebar -->
+        <nav class="col-md-3 col-lg-2 d-md-block sidebar">
+            <div class="sidebar-heading" style="margin-top: -30px; margin-bottom: 40px; font-weight: bold; font-size: 20px;">
+                <span style="color: #FF698D;">MY</span><span style="color: white;">MONEY</span>
+            </div>
+            <div class="sidebar-sticky"></div>
+
+            <ul class="nav flex-column">
+                <li class="nav-item">
+                    <a class="nav-link" href="#"><i class="fas fa-chart-line"></i> Dashboard</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="#"><i class="fas fa-file-alt"></i> Orders</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="#"><i class="fas fa-box"></i> Products</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="#"><i class="fas fa-users"></i> Customers</a>
+                </li>
+
+            </ul>
+
+            <!-- Séparateur -->
+            <hr class="dropdown-divider" style="margin-top: 470px; margin-bottom: 20px;">
+
+            <div class="dropdown mt-auto">
+                {% if app.user %}
+                    <a href="#" class="d-flex align-items-center justify-content-center text-white text-decoration-none" data-bs-toggle="dropdown">
+                        <i class="fas fa-user-circle me-2" style="margin-right: 10px;"></i> <!-- Icône Font Awesome pour "Profile" avec une marge à droite -->
+                        <span class="ms-2">{{ app.user.userIdentifier }}</span><br> <!-- Nom de l'utilisateur avec un saut de ligne -->
+                    </a>
+                    <ul class="dropdown-menu">
+                        <li><a class="dropdown-item" href="#">Profile</a></li>
+                        <li><hr class="dropdown-divider"></li>
+                        <li><a class="dropdown-item" href="{{ path('app_logout') }}">Logout</a></li> <!-- Lien de déconnexion -->
+                    </ul>
+                {% else %}
+                    <a href="{{ path ('app_register') }}" class="d-flex align-items-center justify-content-center text-white text-decoration-none">
+                        <i class="fas fa-user-circle me-2" style="margin-right: 10px;"></i> <!-- Icône Font Awesome pour "Profile" avec une marge à droite -->
+                        <strong class="ms-2">Profile</strong> <!-- Texte "Profile" avec une marge à gauche -->
+                    </a>
+                {% endif %}
+            </div>
+
+
+
+        </nav>
+        <!-- Main Content -->
+        <main class="col">
+            <header class="d-flex flex-wrap align-items-center justify-content-between py-3 mb-4 border-bottom">
+
+                <div class="b-example-divider"></div>
+                <div class="col-md-3 mb-2 mb-md-0">
+                    <a href="/" class="d-inline-flex link-body-emphasis text-decoration-none">
+                        <svg class="bi" width="40" height="32" role="img" aria-label="Bootstrap"><use xlink:href="#bootstrap"/></svg>
+                    </a>
+                </div>
+
+                <ul class="nav col-12 col-md-auto mb-2 justify-content-center mb-md-0" style="margin-right: 70px">
+                    <li><a href="{{ path ('home') }}" class="nav-link px-2 link-secondary pink-link">Home</a></li>
+                    <li><a href="#" class="nav-link px-2 pink-link">Contact</a></li>
+                    <li><a href="#" class="nav-link px-2 pink-link">FAQs</a></li>
+                    <li><a href="#" class="nav-link px-2 pink-link" style="margin-right: 10px;">About</a></li>
+                </ul>
+
+
+                <div class="col-md-3 text-end">
+                    <a href="{{ path('app_login') }}" class="btn btn-outline-primary me-2 btn-custom">Login</a>
+                    <a href="{{ path('app_register') }}" class="btn btn-primary btn-custom">Sign-up</a>
+                </div>
+
+
+            </header>
+
+            <div style="text-align: center; margin-top: 50px;">
+                <h1>Welcome {{ app.user.name }}!</h1>
+            </div>
+            <div class="intro" style="text-align: justify;">
+                <p>You have 5 different profiles:</p>
+                <ul>
+                    <li>If you are a student and need help managing your budget, select this profile.</li>
+                    <li>If you are a traveler and need guidance on budget management, select this profile.</li>
+                    <li>If you are an investor and unsure where to allocate your budget, select this profile.</li>
+                    <li>If you are a parent and need assistance with budgeting, select this profile.</li>
+                    <li>If you are a couple and need guidance on budget management, select this profile.</li>
+                </ul>
+                <p>Select the profile that best fits your situation to get assistance.</p>
+            </div>
+
+
+
+            {{ form_start(form, {'attr': {'style': 'margin-left: 300px; margin-right: 300px;'}}) }}
+
+    {{ form_row(form.profileType, {'attr': {'class': 'form-control'}}) }}
+    {{ form_row(form.profileBudget, {
+        'attr': {
+            'class': 'form-control',
+            'placeholder': 'Enter your budget in €...',
+
+        }
+    }) }}
+            <button type="submit" class="btn btn-primary register">Register</button>
+    {{ form_end(form) }}
+
+    </main>
+
+
+    </div>
+    <!-- Sidebar toggle button -->
+    <button class="sidebar-toggle" onclick="toggleSidebar()">
+        <i class="fas fa-bars"></i>
+    </button>
+</div>
+
+<script>
+    document.addEventListener("DOMContentLoaded", function() {
+        const sidebar = document.querySelector('.sidebar');
+        const sidebarToggle = document.querySelector('.sidebar-toggle');
+
+        // Fonction pour ouvrir et fermer la barre latérale
+        function toggleSidebar() {
+            sidebar.classList.toggle('active');
+        }
+
+        // Événement de clic sur le bouton de basculement de la barre latérale
+        sidebarToggle.addEventListener('click', toggleSidebar);
+
+        // Événement de clic sur le contenu principal pour fermer la barre latérale
+        document.addEventListener('click', function(event) {
+            const isClickInsideSidebar = sidebar.contains(event.target);
+            const isClickInsideSidebarToggle = sidebarToggle.contains(event.target);
+
+            // Si le clic n'est pas à l'intérieur de la barre latérale ni sur le bouton de basculement, fermez la barre latérale
+            if (!isClickInsideSidebar && !isClickInsideSidebarToggle) {
+                sidebar.classList.remove('active');
+            }
+        });
+    });
+</script>
 </body>
 </html>

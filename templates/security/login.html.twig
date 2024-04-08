@@ -179,10 +179,7 @@
                 <label for="inputPassword" style="margin-top: 20px">Password</label>
                 <input type="password" name="password" id="inputPassword" class="form-control" autocomplete="current-password" required>
 
-                <input type="hidden" name="_csrf_token"
-                       value="{{ csrf_token('authenticate') }}">
-
-
+                <input type="hidden" name="_csrf_token" value="{{ csrf_token('authenticate') }}">
                 <button class="btn btn-outline-primary me-2 btn-custom" style="padding-left: 154px; padding-right: 154px; margin-top: 30px">Login</button>
 
                 <div class="divider">
