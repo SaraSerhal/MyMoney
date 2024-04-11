@@ -45,9 +45,6 @@ class ChartController extends AbstractController
             $chartData[] = $chartEntry;
         }
 
-
-
-
         return $this->render('home/chart.html.twig', [
             'controller_name' => 'ChartController',
             'chartData' => json_encode($chartData),

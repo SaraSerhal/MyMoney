@@ -1,87 +1,3 @@
-{# <!DOCTYPE html>
-<html lang="en">
-<head>
-    <title>Axentix Layout - Sidenav</title>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/axentix@2.4.0/dist/axentix.min.css">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
-</head>
-<body class="layout-sidenav">
-
-<header>
-    <nav class="navbar navbar-expand-lg navbar-light bg-light">
-        <a class="navbar-brand" href="#">
-            <i class="fas fa-credit-card fa-lg"></i>
-        </a>
-        <a class="navbar-brand mx-auto" href="#">ManageBudget</a>
-    </nav>
-</header>
-
-<div id="example-sidenav" data-ax="sidenav" class="sidenav shadow-1 sidenav-fixed white">
-    <div class="sidenav-header">
-        <b>My profile</b>
-    </div>
-    <a  href="{{ path('budget_useraccount') }}" class="sidenav-link active">User Account</a>
-    <a href="#" class="sidenav-link">My Expenses</a>
-    <a href="#" class="sidenav-link">My Review</a>
-
-    {% if app.user %}
-        <div class="mb-3" style="margin-top: 400px;">
-            You are logged in as {{ app.user.userIdentifier }}, <a href="{{ path('app_logout') }}">Logout</a>
-        </div>
-    {% endif %}
-</div>
-
-<main>
-
-    <main>
-        <div style="text-align: center; margin-top: 50px;">
-            <h1>Welcome  {{ app.user.name}} !</h1>
-        </div>
-
-        <div >
-            <p>You have 5 different profiles:</p>
-            <ul>
-                <li>If you are a student and need help managing your budget, select this profile.</li>
-                <li>If you are a traveler and need guidance on budget management, select this profile.</li>
-                <li>If you are an investor and unsure where to allocate your budget, select this profile.</li>
-                <li>If you are a parent and need assistance with budgeting, select this profile.</li>
-                <li>If you are a couple and need guidance on budget management, select this profile.</li>
-            </ul>
-            <p>Select the profile that best fits your situation to get assistance.</p>
-        </div>
-        </div>
-
-        {{ form_start(form) }}
-
-        {{ form_row(form.profileType, {'attr': {'class': 'form-control'}}) }}
-        {{ form_row(form.profileBudget, {
-            'attr': {
-                'class': 'form-control',
-                'placeholder': 'Enter your budget in $...',
-            }
-        }) }}
-
-
-        <button type="submit" class="btn btn-primary">Register</button>
-
-        {{ form_end(form) }}
-
-
-</main>
-
-<script src="https://cdn.jsdelivr.net/npm/axentix@2.4.0/dist/axentix.min.js"></script>
-<script>
-    document.getElementById('openSidenav').addEventListener('click', function() {
-        document.getElementById('example-sidenav').axOpen();
-    });
-</script>
-
-</body>
-</html>
-#}
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -126,14 +42,14 @@
         }
 
         .sidebar ul li {
-            margin: 0;
-            padding: 0;
+            margin: -5px;
+            padding: 7px;
         }
 
         .sidebar ul li a {
             display: flex;
             align-items: center; /* Align icon and text vertically */
-            padding: .5rem 4rem;
+            padding: .3rem 2rem;
             color: #ffffff;
             text-decoration: none;
         }
@@ -208,15 +124,7 @@
             box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
             max-width: 800px;
         }
-        {# .intro {
-            margin: 50px auto; /* Modifier les marges pour centrer le cadre horizontalement */
-            padding: 20px; /* Modifier le remplissage intérieur */
-            background-color: #ffffff; /* Changer la couleur de fond en blanc */
-            border-radius: 10px; /* Garder la bordure arrondie */
-            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1); /* Garder l'ombre */
-            max-width: 600px; /* Limiter la largeur du cadre */
-        }
-    #}
+
         .b-example-divider {
             flex-shrink: 0;
             width: 2px;
@@ -251,16 +159,13 @@
 
             <ul class="nav flex-column">
                 <li class="nav-item">
-                    <a class="nav-link" href="#"><i class="fas fa-chart-line"></i> Dashboard</a>
+                    <a class="nav-link" href="#"><i class="fa-regular fa-user"></i> My User Account</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="#"><i class="fas fa-file-alt"></i> Orders</a>
+                    <a class="nav-link" href="#"><i class="fa-solid fa-receipt"></i> My Expenses </a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="#"><i class="fas fa-box"></i> Products</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="#"><i class="fas fa-users"></i> Customers</a>
+                    <a class="nav-link" href="#"><i class="fa-solid fa-chart-area"></i>My Review</a>
                 </li>
 
             </ul>
@@ -356,7 +261,6 @@
 
 
     </div>
-    <!-- Sidebar toggle button -->
     <button class="sidebar-toggle" onclick="toggleSidebar()">
         <i class="fas fa-bars"></i>
     </button>
@@ -396,3 +300,4 @@
 </script>
 </body>
 </html>
+
