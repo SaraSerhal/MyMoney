@@ -57,6 +57,8 @@ class ProfileController extends AbstractController{
                     return $this->redirectToRoute('budget_investor', ['id' => $profileId]);
                 case 'Parent':
                     return $this->redirectToRoute('budget_parent', ['id' => $profileId]);
+                case 'Couple':
+                    return $this->redirectToRoute('budget_couple', ['id' => $profileId]);
                 default:
                     break;
             }

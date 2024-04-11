@@ -231,6 +231,11 @@
             background-color: #FF698D;
             border-color: #FF698D;
         }
+        .btn btn-secondary dropdown-toggle {
+            background-color: #FF698D;
+            border-color: #FF698D;
+            margin-left: 10px
+        }
 
     </style>
 </head>
@@ -263,24 +268,29 @@
             <!-- Séparateur -->
             <hr class="dropdown-divider" style="margin-top: 470px; margin-bottom: 20px;">
 
-            <div class="dropdown mt-auto">
-                {% if app.user %}
-                    <a href="#" class="d-flex align-items-center justify-content-center text-white text-decoration-none" data-bs-toggle="dropdown">
-                        <i class="fas fa-user-circle me-2" style="margin-right: 10px;"></i> <!-- Icône Font Awesome pour "Profile" avec une marge à droite -->
-                        <span class="ms-2">{{ app.user.userIdentifier }}</span><br> <!-- Nom de l'utilisateur avec un saut de ligne -->
-                    </a>
-                    <ul class="dropdown-menu">
-                        <li><a class="dropdown-item" href="#">Profile</a></li>
-                        <li><hr class="dropdown-divider"></li>
-                        <li><a class="dropdown-item" href="{{ path('app_logout') }}">Logout</a></li> <!-- Lien de déconnexion -->
-                    </ul>
-                {% else %}
-                    <a href="{{ path ('app_register') }}" class="d-flex align-items-center justify-content-center text-white text-decoration-none">
-                        <i class="fas fa-user-circle me-2" style="margin-right: 10px;"></i> <!-- Icône Font Awesome pour "Profile" avec une marge à droite -->
-                        <strong class="ms-2">Profile</strong> <!-- Texte "Profile" avec une marge à gauche -->
-                    </a>
-                {% endif %}
+            <div class="dropdown mt-auto text-center">
+                <a class="btn btn-secondary dropdown-toggle" href="#" role="button" id="dropdownMenuLink" data-bs-toggle="dropdown" aria-expanded="false">
+                    {% if app.user %}
+                        <i class="fas fa-user-circle me-2" style="margin-right: 10px"></i>{{ app.user.userIdentifier }}
+                    {% else %}
+                        <i class="fas fa-user-circle me-2"></i>Profile
+                    {% endif %}
+                </a>
+
+                <ul class="dropdown-menu" aria-labelledby="dropdownMenuLink">
+                    {% if app.user %}
+                        <li><a class="dropdown-item" href="{{ path('app_logout') }}" style="color: black">Logout</a></li>
+                        <div class="dropdown-divider"></div>
+                    {% else %}
+                        <li><a class="dropdown-item" href="{{ path('app_register') }}">Register</a></li>
+                    {% endif %}
+                </ul>
             </div>
+
+
+
+
+
 
 
 
@@ -361,6 +371,13 @@
         function toggleSidebar() {
             sidebar.classList.toggle('active');
         }
+        function toggleDropdown() {
+            const dropdownMenu = document.querySelector('.dropdown-menu');
+            dropdownMenu.classList.toggle('show');
+        }
+
+        // Événement de clic sur le lien du profil pour ouvrir le dropdown
+        document.querySelector('.dropdown-toggle').addEventListener('click', toggleDropdown);
 
         // Événement de clic sur le bouton de basculement de la barre latérale
         sidebarToggle.addEventListener('click', toggleSidebar);
