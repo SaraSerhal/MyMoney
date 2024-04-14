@@ -17,52 +17,25 @@ use Symfony\Component\Routing\Annotation\Route;
 use Symfony\Component\Security\Core\Authentication\Token\Storage\TokenStorageInterface;
 use function PHPUnit\Framework\returnArgument;
 use Symfony\Component\Form\FormTypeInterface;
+use App\Services\UserHandlerService;
 
 class UserController extends AbstractController
 {
+    private UserHandlerService $userHandlerService;
+
+    public function __construct(UserHandlerService $userHandlerService)
+    {
+        $this->userHandlerService = $userHandlerService;
+    }
     #[Route('/useraccount', name: 'budget_useraccount')]
     public function useraccount(Request $request, EntityManagerInterface $entityManager): Response
     {
-        if ($this->isGranted('IS_AUTHENTICATED_REMEMBERED')){
-            $user = $this->getUser();
-            // Récupérer tous les profils associés à l'utilisateur
-            $profiles = $user->getProfiles();
-            return $this->render('user/useraccount.html.twig', [
-                'controller_name' => 'UserController',
-                'user' => $user,
-                'profiles' => $profiles,
-            ]);
-        }
-        return $this->redirectToRoute('home');
+        return $this->userHandlerService->handleUseraccount($request, $entityManager);
 
     }
     #[Route('/useraccount/deleteUser', name: 'budget_delete_user')]
     public function deleteUserAndProfiles(Request $request, TokenStorageInterface $tokenStorage, EntityManagerInterface $entityManager): Response {
-        $user = $this->getUser();
-
-        if ($user) {
-            $orphanExpensesCategories = $entityManager->getRepository(ExpensesCategory::class)->findBy(['profile' => null]);
-            foreach ($orphanExpensesCategories as $orphan) {
-                $entityManager->remove($orphan);
-            }
-
-            foreach ($user->getProfiles() as $profile) {
-                foreach ($profile->getExpensesCategories() as $expensesCategory) {
-                    $entityManager->remove($expensesCategory);
-                }
-                $entityManager->remove($profile);
-            }
-
-            $entityManager->remove($user);
-            $entityManager->flush();
-
-            $request->getSession()->invalidate();
-            $tokenStorage->setToken(null);
-
-            return $this->redirectToRoute('home');
-        }
-
-        return $this->redirectToRoute('home');
+        return $this->userHandlerService->HandledeleteUserAndProfiles($request, $tokenStorage, $entityManager);
     }
 
 }
