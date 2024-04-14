@@ -2,23 +2,12 @@
 
 namespace App\Controller;
 
-use App\Entity\CategoryName;
-use App\Entity\ExpensesCategory;
-use App\Entity\Profile;
-use App\Entity\User;
-use App\Form\AccueilFormType;
-use App\Form\ExpensesCategoryType;
-use App\Form\RegistrationFormType;
-use App\Repository\UserRepository;
 use App\Services\ProfileHandlerService;
 use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
-use Symfony\Component\Security\Core\Authentication\Token\Storage\TokenStorageInterface;
-use function PHPUnit\Framework\returnArgument;
-use Symfony\Component\Form\FormTypeInterface;
 
 class ProfileController extends AbstractController{
 
@@ -72,11 +61,5 @@ class ProfileController extends AbstractController{
     {
         return $this->profileHandlerService->createCoupleProfile($id, $request, $entityManager);
     }
-
-
-
-
-
-
 
 }
