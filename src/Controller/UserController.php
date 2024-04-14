@@ -35,7 +35,7 @@ class UserController extends AbstractController
     }
     #[Route('/useraccount/deleteUser', name: 'budget_delete_user')]
     public function deleteUserAndProfiles(Request $request, TokenStorageInterface $tokenStorage, EntityManagerInterface $entityManager): Response {
-        return $this->userHandlerService->HandledeleteUserAndProfiles($request, $tokenStorage, $entityManager);
+        return $this->userHandlerService->handledeleteUserAndProfiles($request, $tokenStorage, $entityManager);
     }
 
 }

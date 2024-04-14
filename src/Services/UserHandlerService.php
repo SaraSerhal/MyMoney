@@ -42,7 +42,7 @@ class UserHandlerService extends AbstractController
         return $this->redirectToRoute('home');
     }
 
-    public function HandledeleteUserAndProfiles(Request $request): Response
+    public function handledeleteUserAndProfiles(Request $request): Response
     {
         $user = $this->tokenStorage->getToken()->getUser();
 
