@@ -1,5 +1,5 @@
 <?php
-
+/**
 declare(strict_types=1);
 
 namespace DoctrineMigrations;
@@ -7,9 +7,6 @@ namespace DoctrineMigrations;
 use Doctrine\DBAL\Schema\Schema;
 use Doctrine\Migrations\AbstractMigration;
 
-/**
- * Auto-generated Migration: Please modify to your needs!
- */
 final class Version20240403212545 extends AbstractMigration
 {
     public function getDescription(): string
@@ -33,3 +30,4 @@ final class Version20240403212545 extends AbstractMigration
         $this->addSql('ALTER TABLE expenses_category CHANGE profile_id profile_id INT DEFAULT NULL');
     }
 }
+**/

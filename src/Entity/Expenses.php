@@ -22,6 +22,11 @@ class Expenses
 
     #[ORM\Column(type: Types::DATE_MUTABLE)]
     private ?\DateTimeInterface $spendDay = null;
+    #[ORM\Column(type: Types::FLOAT)]
+    private ?float $dailyCategoryBudget = null;
+
+    #[ORM\Column(type: Types::FLOAT)]
+    private ?float $dailyBudget = null;
 
     #[ORM\ManyToOne(inversedBy: 'expenses')]
     private ?ExpensesCategory $categoryExpenses = null;
@@ -66,23 +71,8 @@ class Expenses
 
         return $this;
     }
-    public function gererDepenses(): bool
-    {
-
-        return $this->amountSpent <= $this->amountToSpend;
-    }
 
 
-    public function calculerDepenseJour(): float
-    {
-
-        $profileBudget = $this->getCategoryExpenses()->getProfile()->getProfileBudget();
-        $dailyBudget = $profileBudget / 7;
-        $dailyCategoryBudget = $dailyBudget / 5;
-
-        return $dailyCategoryBudget;
-
-    }
 
     public function getCategoryExpenses(): ?ExpensesCategory
     {
@@ -92,6 +82,29 @@ class Expenses
     public function setCategoryExpenses(?ExpensesCategory $categoryExpenses): static
     {
         $this->categoryExpenses = $categoryExpenses;
+
+        return $this;
+    }
+    public function getDailyCategoryBudget(): ?float
+    {
+        return $this->dailyCategoryBudget;
+    }
+
+    public function setDailyCategoryBudget(float $dailyCategoryBudget): static
+    {
+        $this->dailyCategoryBudget = $dailyCategoryBudget;
+
+        return $this;
+    }
+
+    public function getDailyBudget(): ?float
+    {
+        return $this->dailyBudget;
+    }
+
+    public function setDailyBudget(float $dailyBudget): static
+    {
+        $this->dailyBudget = $dailyBudget;
 
         return $this;
     }
