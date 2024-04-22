@@ -32,6 +32,22 @@ class ChartController extends AbstractController
         $dailyBudget = $profileBudget / 7;
         $categories = $profile->getExpensesCategories();
 
+        foreach ($categories as $category) {
+            $dailyCategoryBudget = $dailyBudget /5;
+
+            // Initialize and persist each category's budget
+            $expense = new Expenses();
+            $expense->setCategoryExpenses($category);
+            $expense->setDailyBudget($dailyBudget);
+            $expense->setDailyCategoryBudget($dailyCategoryBudget);
+            $expense->setAmountToSpend($dailyCategoryBudget);
+            $expense->setAmountSpent(0); // Setting amount spent to 0 or appropriate value
+
+            // Set the spend day to today's date for demonstration purposes
+            $expense->setSpendDay(new \DateTime('now'));
+            $entityManager->persist($expense);
+        }
+
 
         $chartData = [];
         for ($day = 1; $day <= 7; ++$day) {
@@ -41,21 +57,13 @@ class ChartController extends AbstractController
             foreach ($categories as $category) {
                 foreach ($category->getCategoryNames() as $categoryName) {
                     $chartEntry[$categoryName->getName()] = $dailyBudget / 5;
-                    $expense = new Expenses();
-                    $expense->setCategoryExpenses($category);
-                    $expense->setDailyBudget($dailyBudget);
-                    $expense->setDailyCategoryBudget($dailyBudget / 5);
-                    $expense->setAmountToSpend($dailyBudget / 5);
-                    $expense->setAmountSpent(0); // Setting amount spent to 0 or appropriate value
 
-                    // Set the spend day to today's date for demonstration purposes
-                    $expense->setSpendDay(new \DateTime('now'));
-                    $entityManager->persist($expense);
                 }
             }
-
             $chartData[] = $chartEntry;
-        } return $this->render('home/chart.html.twig', [
+        }
+        $entityManager->flush();
+        return $this->render('home/chart.html.twig', [
         'controller_name' => 'ChartController',
         'chartData' => json_encode($chartData),
     ]);
