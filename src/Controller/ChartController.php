@@ -14,57 +14,53 @@ use Symfony\Component\Routing\Annotation\Route;
 class ChartController extends AbstractController
 {
     #[Route('/chart', name: 'budget_chart')]
-    public function chart(ExpensesRepository $expensesRepository, EntityManagerInterface $entityManager): Response
-    {
-        $user = $this->getUser();
+    public function chart(ExpensesRepository $expensesRepository,EntityManagerInterface $entityManager): Response
+    { $user = $this->getUser();
 
         if (!$user || !$user->getProfiles() || $user->getProfiles()->isEmpty()) {
+
             throw $this->createNotFoundException('Profil ou budget non trouvé pour l\'utilisateur.');
         }
 
-        $profiles = $user->getProfiles();
-        $chartData = [];
+        if ($user && $profiles = $user->getProfiles()) {
+            foreach ($profiles as $profile) {
 
-        foreach ($profiles as $profile) {
-            $profileBudget = $profile->getProfileBudget();
-            $dailyBudget = $profileBudget / 7;
-            $categories = $profile->getExpensesCategories();
-            $numberOfCategories = count($categories);
+
+                $profileBudget = $profile->getProfileBudget();
+            }}
+
+        $dailyBudget = $profileBudget / 7;
+        $categories = $profile->getExpensesCategories();
+
+
+        $chartData = [];
+        for ($day = 1; $day <= 7; ++$day) {
+            $dayName = date('l', strtotime("Sunday +{$day} days"));
+            $chartEntry = ['name' => $dayName];
 
             foreach ($categories as $category) {
-                $dailyCategoryBudget = $dailyBudget /5;
+                foreach ($category->getCategoryNames() as $categoryName) {
+                    $chartEntry[$categoryName->getName()] = $dailyBudget / 5;
+                    $expense = new Expenses();
+                    $expense->setCategoryExpenses($category);
+                    $expense->setDailyBudget($dailyBudget);
+                    $expense->setDailyCategoryBudget($dailyBudget / 5);
+                    $expense->setAmountToSpend($dailyBudget / 5);
+                    $expense->setAmountSpent(0); // Setting amount spent to 0 or appropriate value
 
-                // Initialize and persist each category's budget
-                $expense = new Expenses();
-                $expense->setCategoryExpenses($category);
-                $expense->setDailyBudget($dailyBudget);
-                $expense->setDailyCategoryBudget($dailyCategoryBudget);
-                $expense->setAmountToSpend($dailyCategoryBudget);
-                $expense->setAmountSpent(0); // Setting amount spent to 0 or appropriate value
-
-                // Set the spend day to today's date for demonstration purposes
-                $expense->setSpendDay(new \DateTime('now'));
-                $entityManager->persist($expense);
-            }
-
-            for ($day = 1; $day <= 7; ++$day) {
-                $dayName = date('l', strtotime("Sunday +{$day} days"));
-                $chartEntry = ['name' => $dayName];
-
-                foreach ($categories as $category) {
-                    foreach ($category->getCategoryNames() as $categoryName) {
-                        $chartEntry[$categoryName->getName()] = $dailyBudget / 5;
-                    }
+                    // Set the spend day to today's date for demonstration purposes
+                    $expense->setSpendDay(new \DateTime('now'));
+                    $entityManager->persist($expense);
                 }
-                $chartData[] = $chartEntry;
             }
-        }
 
-        $entityManager->flush();
-
-        return $this->render('home/chart.html.twig', [
-            'controller_name' => 'ChartController',
-            'chartData' => json_encode($chartData),
-        ]);
+            $chartData[] = $chartEntry;
+        } return $this->render('home/chart.html.twig', [
+        'controller_name' => 'ChartController',
+        'chartData' => json_encode($chartData),
+    ]);
     }
 }
+
+
+
