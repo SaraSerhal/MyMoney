@@ -1,94 +1,6 @@
-{# templates/chart.html.twig #}
-{#{% extends 'base.html.twig' %}
-
-{% block title %}Graphique des dépenses{% endblock %}
-
-{% block body %}
-    <h1>Graphique des dépenses</h1>
-    <canvas id="myChart" width="400" height="200"></canvas>
-
-    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
-
-    <script>
-        document.addEventListener('DOMContentLoaded', function () {
-            var ctx = document.getElementById('myChart').getContext('2d');
-            var chartData = {{ chartData|raw }};
-            var days = chartData.map(function(dataPoint) { return dataPoint.name; });
-
-            var datasets = [];
-            var categoryColors = ['rgba(255, 99, 132, 0.2)', 'rgba(54, 162, 235, 0.2)', 'rgba(255, 206, 86, 0.2)', 'rgba(75, 192, 192, 0.2)', 'rgba(153, 102, 255, 0.2)'];
-
-            var categories = Object.keys(chartData[0]).filter(key => key !== 'name');
-            categories.forEach(function(category, index) {
-                datasets.push({
-                    label: category,
-                    data: chartData.map(function(dataPoint) { return dataPoint[category]; }),
-                    backgroundColor: categoryColors[index % categoryColors.length],
-                    stack: 'Stack 0'
-                });
-            });
-
-            var myChart = new Chart(ctx, {
-                type: 'bar',
-                data: {
-                    labels: days,
-                    datasets: datasets
-                },
-                options: {
-                    scales: {
-                        yAxes: [{
-                            stacked: true,
-                            ticks: {
-                                beginAtZero: true
-                            }
-                        }],
-                        xAxes: [{
-                            stacked: true
-                        }]
-                    }
-                }
-            });
-        });
-    </script>
-{% endblock %}
- #}
-
 {% extends 'base.html.twig' %}
 
 {% block title %}Visualisation des dépenses de la semaine{% endblock %}
-{% block stylesheets %}
-    {{ parent() }}
-<style>
-    .btn-custom {
-        background-color: transparent;
-        color: #FF698D;
-        border-color: #FF698D;
-    }
-
-    .btn-custom:hover {
-        background-color: #FF698D;
-        border-color: #FF698D;
-        color: white;
-    }
-    .mb-3 {
-        margin-right: 300px;
-        margin-left: 300px;
-    }
-    .btn-custom {
-        background-color: #FF698D;
-        border-color: #FF698D;
-        color: white;
-    }
-
-    .btn-custom:hover {
-        background-color: #FF698D;
-        border-color: #FF698D;
-        color: white;
-    }
-
-
-</style>
-{% endblock %}
 
 {% block body %}
     <header class="d-flex flex-wrap align-items-center justify-content-between py-3 mb-4 border-bottom">
@@ -171,15 +83,15 @@
     </script>
     <br><br>
     <h2 style=" text-align: center">Mettre à jour le budget</h2>
-    <form action="{#  {{ path('update_budget') }}#}" method="post">
-        <div class="mb-3">
-            <label for="new_budget" class="form-label">Nouveau budget:</label>
-            <input type="number" class="form-control" id="new_budget" name="new_budget" placeholder="Entrez le nouveau budget">
-        </div>
-        <div class="text-center">
-            <button type="submit" class="btn btn-custom">Mettre à jour le budget</button>
-        </div>
-    </form>
-
-
+    {{ form_start(form) }}
+    <div class="mb-3">
+        {{ form_row(form.dailyBudget, {'label': 'Nouveau budget:', 'attr': {'class': 'form-control', 'placeholder': 'Entrez le nouveau budget'}}) }}
+    </div>
+    <div class="mb-3">
+        {{ form_row(form.categoryDailyBudget, {'label': 'Nouveau budget par catégorie:', 'attr': {'class': 'form-control', 'placeholder': 'Entrez le nouveau budget par catégorie'}}) }}
+    </div>
+    <div class="text-center">
+        <button type="submit" class="btn btn-custom">Mettre à jour le budget</button>
+    </div>
+    {{ form_end(form) }}
 {% endblock %}

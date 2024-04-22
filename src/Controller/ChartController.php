@@ -10,18 +10,18 @@ use Symfony\Component\BrowserKit\Request;
 use Symfony\Component\HttpFoundation\JsonResponse;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
+use App\Form\ExpensesType; // Assurez-vous d'importer le formulaire
 
 class ChartController extends AbstractController
 {
     #[Route('/chart', name: 'budget_chart')]
-    public function chart(ExpensesRepository $expensesRepository,EntityManagerInterface $entityManager): Response
-    { $user = $this->getUser();
+    public function chart(ExpensesRepository $expensesRepository, EntityManagerInterface $entityManager): Response
+    {
+        $user = $this->getUser();
 
         if (!$user || !$user->getProfiles() || $user->getProfiles()->isEmpty()) {
-
             throw $this->createNotFoundException('Profil ou budget non trouvé pour l\'utilisateur.');
         }
-
         if ($user && $profiles = $user->getProfiles()) {
             foreach ($profiles as $profile) {
 
@@ -34,7 +34,6 @@ class ChartController extends AbstractController
 
         foreach ($categories as $category) {
             $dailyCategoryBudget = $dailyBudget /5;
-
             // Initialize and persist each category's budget
             $expense = new Expenses();
             $expense->setCategoryExpenses($category);
@@ -47,9 +46,8 @@ class ChartController extends AbstractController
             $expense->setSpendDay(new \DateTime('now'));
             $entityManager->persist($expense);
         }
-
-
         $chartData = [];
+
         for ($day = 1; $day <= 7; ++$day) {
             $dayName = date('l', strtotime("Sunday +{$day} days"));
             $chartEntry = ['name' => $dayName];
@@ -62,13 +60,18 @@ class ChartController extends AbstractController
             }
             $chartData[] = $chartEntry;
         }
-        $entityManager->flush();
+
+        $form = $this->createForm(ExpensesType::class); // Créer une instance de votre formulaire une seule fois
+
+
+
+        $entityManager->flush(); // Enregistrer les entités Expense persistées
+
+        // Passer le formulaire au rendu du template
         return $this->render('home/chart.html.twig', [
-        'controller_name' => 'ChartController',
-        'chartData' => json_encode($chartData),
-    ]);
+            'controller_name' => 'ChartController',
+            'chartData' => json_encode($chartData),
+            'form' => $form->createView(), // Passer le formulaire créé à la vue
+        ]);
     }
 }
-
-
-
