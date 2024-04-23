@@ -13,74 +13,7 @@
 
 
     <style>
-        .sidebar {
-            position: fixed;
-            top: 0;
-            bottom: 0;
-            left: -250px; /* sidebar initially hidden */
-            z-index: 100;
-            padding: 48px 0; /* Adjust as needed */
-            overflow-x: hidden;
-            overflow-y: auto; /* Show scrollbar if necessary */
-            background-color: black; /* Background color */
-            border-right: 1px solid #FF698D; /* Right border */
-            transition: left 0.3s; /* Smooth transition */
-        }
 
-        .sidebar.active {
-            left: 0; /* Sidebar visible */
-        }
-
-        .sidebar-heading {
-            text-align: center;
-            padding: 10px 15px;
-        }
-
-        .sidebar ul {
-            flex-direction: column;
-            padding-left: 0;
-            margin-bottom: 0;
-            list-style: none;
-        }
-
-        .sidebar ul li {
-            margin: 0;
-            padding: 0;
-        }
-
-        .sidebar ul li a {
-            display: flex;
-            align-items: center; /* Align icon and text vertically */
-            padding: .5rem 4rem;
-            color: #ffffff;
-            text-decoration: none;
-        }
-
-        .sidebar ul li a:hover {
-            background-color: #FF698D; /* Highlight on hover */
-        }
-
-        /* Button style */
-        .sidebar-toggle {
-            position: fixed;
-            left: 10px;
-            top: 10px;
-            background-color: #FF698D;
-            color: white;
-            border: none;
-            border-radius: 50%;
-            padding: 15px;
-            cursor: pointer;
-        }
-
-        .sidebar-toggle:focus {
-            outline: none;
-        }
-
-        /* Icon style */
-        .sidebar ul li a i {
-            margin-right: 10px; /* Add spacing between icon and text */
-        }
 
         /* Custom button styles */
         .btn-custom {
@@ -131,8 +64,74 @@
         .pink-link {
             color: #FF698D;
         }
+        .sidebar {
+            position: fixed;
+            top: 0;
+            bottom: 0;
+            left: -250px; /* barre latérale initialement cachée */
+            z-index: 100;
+            padding: 48px 0; /* Ajustez au besoin */
+            overflow-x: hidden;
+            overflow-y: auto; /* Afficher la barre de défilement si nécessaire */
+            background-color: black; /* Couleur de fond */
+            border-right: 1px solid #FF698D; /* Bordure droite */
+            transition: left 0.3s; /* Transition fluide */
+        }
 
+        .sidebar.active {
+            left: 0; /* Barre latérale visible */
+        }
 
+        .sidebar-heading {
+            text-align: center;
+            padding: 10px 15px;
+        }
+
+        .sidebar ul {
+            flex-direction: column;
+            padding-left: 0;
+            margin-bottom: 0;
+            list-style: none;
+        }
+
+        .sidebar ul li {
+            margin: -5px;
+            padding: 7px;
+        }
+
+        .sidebar ul li a {
+            display: flex;
+            align-items: center; /* Aligner l'icône et le texte verticalement */
+            padding: .3rem 2rem;
+            color: #ffffff;
+            text-decoration: none;
+        }
+
+        .sidebar ul li a:hover {
+            background-color: #FF698D; /* Surligner au survol */
+        }
+
+        /* Style du bouton */
+        .sidebar-toggle {
+            position: fixed;
+            left: 10px;
+            top: 10px;
+            background-color: #FF698D;
+            color: white;
+            border: none;
+            border-radius: 50%;
+            padding: 15px;
+            cursor: pointer;
+        }
+
+        .sidebar-toggle:focus {
+            outline: none;
+        }
+
+        /* Icône */
+        .sidebar ul li a i {
+            margin-right: 10px; /* Ajouter de l'espace entre l'icône et le texte */
+        }
 
     </style>
 </head>
