@@ -1,18 +1,80 @@
 {% extends 'base.html.twig' %}
+{% block title %}UserAccount{% endblock %}
 
-{% block title %} useraccount {% endblock %}
 {% block stylesheets %}
-    {{ parent() }} {# Inclure d'abord les feuilles de style du parent #}
-
+    {{ parent() }}
     <style>
-        /* Votre CSS personnalisé */
-        /* Par exemple */
-        body {
-            background-color: #e4e4e4;
+        /* Styles pour la barre latérale */
+        .sidebar {
+            position: fixed;
+            top: 0;
+            bottom: 0;
+            left: -250px; /* barre latérale initialement cachée */
+            z-index: 100;
+            padding: 48px 0; /* Ajustez au besoin */
+            overflow-x: hidden;
+            overflow-y: auto; /* Afficher la barre de défilement si nécessaire */
+            background-color: black; /* Couleur de fond */
+            border-right: 1px solid #FF698D; /* Bordure droite */
+            transition: left 0.3s; /* Transition fluide */
         }
-        .pink-link{
-            color: #FF698D;
+
+        .sidebar.active {
+            left: 0; /* Barre latérale visible */
         }
+
+        .sidebar-heading {
+            text-align: center;
+            padding: 10px 15px;
+        }
+
+        .sidebar ul {
+            flex-direction: column;
+            padding-left: 0;
+            margin-bottom: 0;
+            list-style: none;
+        }
+
+        .sidebar ul li {
+            margin: -5px;
+            padding: 7px;
+        }
+
+        .sidebar ul li a {
+            display: flex;
+            align-items: center; /* Aligner l'icône et le texte verticalement */
+            padding: .3rem 2rem;
+            color: #ffffff;
+            text-decoration: none;
+        }
+
+        .sidebar ul li a:hover {
+            background-color: #FF698D; /* Surligner au survol */
+        }
+
+        /* Style du bouton */
+        .sidebar-toggle {
+            position: fixed;
+            left: 10px;
+            top: 10px;
+            background-color: #FF698D;
+            color: white;
+            border: none;
+            border-radius: 50%;
+            padding: 15px;
+            cursor: pointer;
+        }
+
+        .sidebar-toggle:focus {
+            outline: none;
+        }
+
+        /* Icône */
+        .sidebar ul li a i {
+            margin-right: 10px; /* Ajouter de l'espace entre l'icône et le texte */
+        }
+
+        /* Styles des boutons personnalisés */
         .btn-custom {
             background-color: transparent;
             color: #FF698D;
@@ -24,77 +86,139 @@
             border-color: #FF698D;
             color: white;
         }
-        .btn {
-            background-color: #FF698D;
-            border: none;
-            color: white;
-            text-align: center;
-            text-decoration: none;
-            display: inline-block;
-            margin: 4px 2px;
-            cursor: pointer;
+
+        /* Contenu principal */
+        body {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            background-color: #e4e4e4;
+            margin: 0;
+            font-family: 'Montserrat', sans-serif;
         }
 
+        /* Styles pour les images */
+        .image-container img {
+            max-width: 100%;
+            height: auto;
+            transition: transform 0.3s ease;
+            border-radius: 10px;
+            margin: 0 10px;
+        }
+
+        .image-container img:hover {
+            transform: translateY(-20px);
+        }
+
+        /* Lien rose */
+        .pink-link {
+            color: #FF698D;
+        }
+
+        /* Séparateur */
+        .b-example-divider {
+            flex-shrink: 0;
+            width: 2px;
+            background-color: rgba(0, 0, 0, .1);
+        }
+
+        /* Dropdown */
+        .btn-secondary.dropdown-toggle {
+            background-color: #FF698D;
+            border-color: #FF698D;
+            margin-left: 10px;
+        }
+
+        /* Tableau avec bordures */
+        .table-bordered td,
+        .table-bordered th {
+            border: 2px solid black; /* Couleur et épaisseur de la bordure */
+        }
 
     </style>
 {% endblock %}
+
 {% block body %}
-
 <div class="container-fluid">
-    <div class="row">
-        <!-- Sidebar -->
-        <nav class="col-md-3 col-lg-2 d-md-block sidebar">
-            <div class="sidebar-heading" style="margin-top: -30px; margin-bottom: 40px; font-weight: bold; font-size: 20px;">
-                <span style="color: #FF698D;">MY</span><span style="color: white;">MONEY</span>
-            </div>
+    <!-- Barre latérale -->
+    <nav class="col-md-3 col-lg-2 d-md-block sidebar">
+        <div class="sidebar-heading" style="margin-top: -30px; margin-bottom: 40px; font-weight: bold; font-size: 20px;">
+            <span style="color: #FF698D;">MY</span><span style="color: white;">MONEY</span>
+        </div>
+        <div class="sidebar-sticky"></div>
 
-            <div class="sidebar-sticky"></div>
-            <ul class="nav flex-column">
-                <li><a href="#"><i class="fa fa-user"></i> My User Account</a></li>
-                <li><a href="#"><i class="fa fa-receipt"></i> My Expenses</a></li>
-                <li><a href="#"><i class="fa fa-chart-area"></i> My Review</a></li>
+        <ul class="nav flex-column">
+            <li class="nav-item">
+                <a class="nav-link" href="{{ path('budget_useraccount') }}"><i class="fa-regular fa-user"></i> My User Account</a>
+            </li>
+
+            <li class="nav-item">
+                <a class="nav-link" href="#"><i class="fa-solid fa-receipt"></i> My Expenses </a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="#"><i class="fa-solid fa-chart-area"></i>My Review</a>
+            </li>
+
+        </ul>
+
+        <!-- Séparateur -->
+        <hr class="dropdown-divider" style="margin-top: 470px; margin-bottom: 20px;">
+
+        <div class="dropdown mt-auto text-center">
+            <a class="btn btn-secondary dropdown-toggle" href="#" role="button" id="dropdownMenuLink" data-bs-toggle="dropdown" aria-expanded="false">
+                {% if app.user %}
+                    <i class="fas fa-user-circle me-2" style="margin-right: 10px"></i>{{ app.user.userIdentifier }}
+                {% else %}
+                    <i class="fas fa-user-circle me-2"></i>Profile
+                {% endif %}
+            </a>
+
+            <ul class="dropdown-menu" aria-labelledby="dropdownMenuLink">
+                {% if app.user %}
+                    <li><a class="dropdown-item" href="{{ path('app_logout') }}" style="color: black">Logout</a></li>
+                    <div class="dropdown-divider"></div>
+                {% else %}
+                    <li><a class="dropdown-item" href="{{ path('app_register') }}">Register</a></li>
+                {% endif %}
             </ul>
+        </div>
+    </nav>
 
-            <!-- Séparateur -->
-            <hr class="dropdown-divider" style="margin-top: 470px; margin-bottom: 20px;">
-
-            <!-- Dropdown menu -->
-            <div class="dropdown mt-auto">
-                <a href="{{ path ('app_register') }}" class="d-flex align-items-center justify-content-center text-white text-decoration-none">
-                    <i class="fas fa-user-circle me-2" style="margin-right: 10px;"></i> <!-- Icône Font Awesome pour "Profile" avec une marge à droite -->
-                    <strong class="ms-2">Profile</strong> <!-- Texte "Profile" avec une marge à gauche -->
+    <!-- Contenu principal -->
+    <main class="col">
+        <header class="d-flex flex-wrap align-items-center justify-content-between py-3 mb-4 border-bottom">
+            <div class="b-example-divider"></div>
+            <div class="col-md-3 mb-2 mb-md-0">
+                <a href="/" class="d-inline-flex link-body-emphasis text-decoration-none">
+                    <svg class="bi" width="40" height="32" role="img" aria-label="Bootstrap"><use xlink:href="#bootstrap"/></svg>
                 </a>
             </div>
 
-        </nav>
-    <header class="d-flex flex-wrap align-items-center justify-content-between py-3 mb-4 border-bottom">
-        <div class="b-example-divider"></div>
-        <div class="col-md-3 mb-2 mb-md-0">
-            <a href="/" class="d-inline-flex link-body-emphasis text-decoration-none">
-                <svg class="bi" width="40" height="32" role="img" aria-label="Bootstrap"><use xlink:href="#bootstrap"/></svg>
-            </a>
-        </div>
+            <ul class="nav col-12 col-md-auto mb-2 justify-content-center mb-md-0" style="margin-right: 70px">
+                <li><a href="{{ path ('home') }}" class="nav-link px-2 link-secondary pink-link">Home</a></li>
+                <li><a href="#" class="nav-link px-2 pink-link">Contact</a></li>
+                <li><a href="#" class="nav-link px-2 pink-link">FAQs</a></li>
+                <li><a href="#" class="nav-link px-2 pink-link" style="margin-right: 10px;">About</a></li>
+            </ul>
 
-        <ul class="nav col-12 col-md-auto mb-2 justify-content-center mb-md-0" style="margin-right: 70px">
-            <li><a href="{{ path ('home') }}" class="nav-link px-2 link-secondary pink-link">Home</a></li>
-            <li><a href="#" class="nav-link px-2 pink-link">Contact</a></li>
-            <li><a href="#" class="nav-link px-2 pink-link">FAQs</a></li>
-            <li><a href="#" class="nav-link px-2 pink-link" style="margin-right: 10px;">About</a></li>
-        </ul>
+            <div class="col-md-3 text-end">
+                <a href="{{ path('app_login') }}" class="btn btn-outline-primary me-2 btn-custom">Login</a>
+                <a href="{{ path('app_register') }}" class="btn btn-primary btn-custom">Sign-up</a>
+            </div>
+        </header>
 
-        <div class="col-md-3 text-end">
-            <a href="{{ path('app_login') }}" class="btn btn-outline-primary me-2 btn-custom">Login</a>
-            <a href="{{ path('app_register') }}" class="btn btn-primary btn-custom">Sign-up</a>
-        </div>
-    </header>
+        <!-- Bouton pour basculer la barre latérale -->
+        <button class="sidebar-toggle" onclick="toggleSidebar()">
+            <i class="fas fa-bars"></i>
+        </button>
 
-    <main>
         <div style="text-align: center; margin-top: 50px;">
-            <h1>This is your User Account  </h1><br>
-            <h5> Here you can manage your account  </h5><br>
-
+            <h1>User Account  </h1>
+            <br>
+            <h5> Here you can manage your account  </h5>
+            <br>
             <div class="text-center">
-                <table class="table">
+                <table class="table table-bordered">
                     <tr>
                         <td>Name:</td>
                         <td>{{ user.name }}</td>
@@ -116,27 +240,50 @@
                             <td>Profiles & Budgets:</td>
                             <td>
                                 {% for profile in profiles %}
-                                    Your profile {{ profile.profileType }} and your Budget is: {{ profile.profileBudget }}<br>
+                                    Your profile {{ profile.profileType }} and your Budget {{ profile.profileBudget }}<br>
                                 {% endfor %}
                             </td>
                         {% else %}
-                            <p>No profiles found</p>
+                            <td colspan="2"><p>No profiles found</p></td>
                         {% endif %}
                     </tr>
                 </table>
             </div>
-
             <br>
-
-
-            <a href="{{ path('app_logout') }}" class="btn btn-danger">Logout</a>
-            <a href="{{ path('budget_delete_user') }}" class="btn btn-danger" onclick="return confirm('Are you sure you want to delete your account?')">Delete Account</a>
-
-
-
         </div>
-
     </main>
 
+    <!-- Script pour la barre latérale -->
+    <script>
+        document.addEventListener("DOMContentLoaded", function() {
+            const sidebar = document.querySelector('.sidebar');
+            const sidebarToggle = document.querySelector('.sidebar-toggle');
 
-{% endblock %}
+            // Fonction pour ouvrir et fermer la barre latérale
+            function toggleSidebar() {
+                sidebar.classList.toggle('active');
+            }
+            function toggleDropdown() {
+                const dropdownMenu = document.querySelector('.dropdown-menu');
+                dropdownMenu.classList.toggle('show');
+            }
+
+            // Événement de clic sur le lien du profil pour ouvrir le dropdown
+            document.querySelector('.dropdown-toggle').addEventListener('click', toggleDropdown);
+
+            // Événement de clic sur le bouton de basculement de la barre latérale
+            sidebarToggle.addEventListener('click', toggleSidebar);
+
+            // Événement de clic sur le contenu principal pour fermer la barre latérale
+            document.addEventListener('click', function(event) {
+                const isClickInsideSidebar = sidebar.contains(event.target);
+                const isClickInsideSidebarToggle = sidebarToggle.contains(event.target);
+
+                // Si le clic n'est pas à l'intérieur de la barre latérale ni sur le bouton de basculement, fermez la barre latérale
+                if (!isClickInsideSidebar && !isClickInsideSidebarToggle) {
+                    sidebar.classList.remove('active');
+                }
+            });
+        });
+    </script>
+    {% endblock %}
