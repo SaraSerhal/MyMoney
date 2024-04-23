@@ -94,6 +94,7 @@ class ChartController extends AbstractController
             'controller_name' => 'ChartController',
             'chartData' => json_encode($chartData),
             'form' => $form->createView(),
+            'profileBudget' => $profileBudget
         ]);
     }
 }
