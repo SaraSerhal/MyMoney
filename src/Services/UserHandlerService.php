@@ -47,13 +47,12 @@ class UserHandlerService extends AbstractController
         $user = $this->tokenStorage->getToken()->getUser();
 
         if ($user) {
-            $orphanExpensesCategories = $this->entityManager->getRepository(ExpensesCategory::class)->findBy(['profile' => null]);
-            foreach ($orphanExpensesCategories as $orphan) {
-                $this->entityManager->remove($orphan);
-            }
-
             foreach ($user->getProfiles() as $profile) {
                 foreach ($profile->getExpensesCategories() as $expensesCategory) {
+                    // Supprimer les dépenses liées à cette catégorie
+                    foreach ($expensesCategory->getExpenses() as $expense) {
+                        $this->entityManager->remove($expense);
+                    }
                     $this->entityManager->remove($expensesCategory);
                 }
                 $this->entityManager->remove($profile);
@@ -70,6 +69,7 @@ class UserHandlerService extends AbstractController
 
         return $this->redirectToRoute('home');
     }
+
 
 
 }

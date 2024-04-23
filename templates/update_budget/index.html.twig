@@ -1,20 +1,50 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Hello UpdateBudgetController!{% endblock %}
+{% block title %}Nouveau diagramme de budget{% endblock %}
 
 {% block body %}
-<style>
-    .example-wrapper { margin: 1em auto; max-width: 800px; width: 95%; font: 18px/1.5 sans-serif; }
-    .example-wrapper code { background: #F5F5F5; padding: 2px 6px; }
-</style>
+    <h1>Nouveau diagramme de budget</h1>
 
-<div class="example-wrapper">
-    <h1>Hello {{ controller_name }}! ✅</h1>
+    <canvas id="myChart" width="800" height="400"></canvas>
 
-    This friendly message is coming from:
-    <ul>
-        <li>Your controller at <code><a href="{{ '/Applications/MAMP/htdocs/untitled/Projet_Dev/src/Controller/UpdateBudgetController.php'|file_link(0) }}">src/Controller/UpdateBudgetController.php</a></code></li>
-        <li>Your template at <code><a href="{{ '/Applications/MAMP/htdocs/untitled/Projet_Dev/templates/update_budget/index.html.twig'|file_link(0) }}">templates/update_budget/index.html.twig</a></code></li>
-    </ul>
-</div>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            var ctx = document.getElementById('myChart').getContext('2d');
+
+            // Utiliser les nouvelles données pour construire le diagramme
+            var newBudget = {{ newBudget }};
+            var newCategoryDailyBudget = {{ newCategoryDailyBudget }};
+
+            // Construire le diagramme avec les nouvelles données
+            var myChart = new Chart(ctx, {
+                type: 'bar',
+                data: {
+                    labels: ['Catégorie 1', 'Catégorie 2', 'Catégorie 3', 'Catégorie 4', 'Catégorie 5'],
+                    datasets: [{
+                        label: 'Budget quotidien par catégorie',
+                        data: [newCategoryDailyBudget, newCategoryDailyBudget, newCategoryDailyBudget, newCategoryDailyBudget, newCategoryDailyBudget],
+                        backgroundColor: [
+                            'rgba(255, 99, 132, 0.6)',
+                            'rgba(54, 162, 235, 0.6)',
+                            'rgba(255, 206, 86, 0.6)',
+                            'rgba(75, 192, 192, 0.6)',
+                            'rgba(153, 102, 255, 0.6)'
+                        ],
+                        borderWidth: 1
+                    }]
+                },
+                options: {
+                    scales: {
+                        yAxes: [{
+                            ticks: {
+                                beginAtZero: true
+                            }
+                        }]
+                    }
+                }
+            });
+        });
+    </script>
 {% endblock %}

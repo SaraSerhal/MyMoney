@@ -1,6 +1,52 @@
 {% extends 'base.html.twig' %}
 
 {% block title %}Visualisation des dépenses de la semaine{% endblock %}
+{% block stylesheets %}
+    {{ parent() }}
+    <style>
+        .btn-custom {
+            background-color: transparent;
+            color: #FF698D;
+            border-color: #FF698D;
+        }
+
+        .btn-custom:hover {
+            background-color: #FF698D;
+            border-color: #FF698D;
+            color: white;
+        }
+
+        body {
+            align-items: center;
+            background-color: #e4e4e4;
+            font-family: 'Montserrat', sans-serif;
+        }
+
+        .custom-link {
+            color: #FF698D;
+        }
+
+        .custom-link:hover {
+            color: white;
+            background-color: #FF698D;
+            border-color: #FF698D;
+        }
+
+        /* Définir le style pour .btn.btn-primary */
+        .btn.btn-primary {
+            background-color: #FF698D;
+            border-color: #FF698D;
+            color: white;
+        }
+
+        /* Définir le style pour .btn.btn-primary:hover */
+        .btn.btn-primary:hover {
+            background-color: #FF5C7D; /* Couleur de survol légèrement plus sombre */
+            border-color: #FF5C7D; /* Couleur de bordure de survol légèrement plus sombre */
+            color: white;
+        }
+    </style>
+{% endblock %}
 
 {% block body %}
     <header class="d-flex flex-wrap align-items-center justify-content-between py-3 mb-4 border-bottom">
@@ -85,7 +131,7 @@
     <h2 style=" text-align: center">Mettre à jour le budget</h2>
     {{ form_start(form) }}
     <div class="mb-3">
-        {{ form_row(form.dailyBudget, {'label': 'Nouveau budget:', 'attr': {'class': 'form-control', 'placeholder': 'Entrez le nouveau budget'}}) }}
+        {{ form_row(form.dailyBudget, {'label': 'Nouveau budget par jour:', 'attr': {'class': 'form-control', 'placeholder': 'Entrez le nouveau budget par jour'}}) }}
     </div>
     <div class="mb-3">
         {{ form_row(form.categoryDailyBudget, {'label': 'Nouveau budget par catégorie:', 'attr': {'class': 'form-control', 'placeholder': 'Entrez le nouveau budget par catégorie'}}) }}

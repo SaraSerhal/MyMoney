@@ -1,17 +1,97 @@
 {% extends 'base.html.twig' %}
 
 {% block title %} useraccount {% endblock %}
+{% block stylesheets %}
+    {{ parent() }} {# Inclure d'abord les feuilles de style du parent #}
 
+    <style>
+        /* Votre CSS personnalisé */
+        /* Par exemple */
+        body {
+            background-color: #e4e4e4;
+        }
+        .pink-link{
+            color: #FF698D;
+        }
+        .btn-custom {
+            background-color: transparent;
+            color: #FF698D;
+            border-color: #FF698D;
+        }
+
+        .btn-custom:hover {
+            background-color: #FF698D;
+            border-color: #FF698D;
+            color: white;
+        }
+        .btn {
+            background-color: #FF698D;
+            border: none;
+            color: white;
+            text-align: center;
+            text-decoration: none;
+            display: inline-block;
+            margin: 4px 2px;
+            cursor: pointer;
+        }
+
+
+    </style>
+{% endblock %}
 {% block body %}
 
+<div class="container-fluid">
+    <div class="row">
+        <!-- Sidebar -->
+        <nav class="col-md-3 col-lg-2 d-md-block sidebar">
+            <div class="sidebar-heading" style="margin-top: -30px; margin-bottom: 40px; font-weight: bold; font-size: 20px;">
+                <span style="color: #FF698D;">MY</span><span style="color: white;">MONEY</span>
+            </div>
+
+            <div class="sidebar-sticky"></div>
+            <ul class="nav flex-column">
+                <li><a href="#"><i class="fa fa-user"></i> My User Account</a></li>
+                <li><a href="#"><i class="fa fa-receipt"></i> My Expenses</a></li>
+                <li><a href="#"><i class="fa fa-chart-area"></i> My Review</a></li>
+            </ul>
+
+            <!-- Séparateur -->
+            <hr class="dropdown-divider" style="margin-top: 470px; margin-bottom: 20px;">
+
+            <!-- Dropdown menu -->
+            <div class="dropdown mt-auto">
+                <a href="{{ path ('app_register') }}" class="d-flex align-items-center justify-content-center text-white text-decoration-none">
+                    <i class="fas fa-user-circle me-2" style="margin-right: 10px;"></i> <!-- Icône Font Awesome pour "Profile" avec une marge à droite -->
+                    <strong class="ms-2">Profile</strong> <!-- Texte "Profile" avec une marge à gauche -->
+                </a>
+            </div>
+
+        </nav>
+    <header class="d-flex flex-wrap align-items-center justify-content-between py-3 mb-4 border-bottom">
+        <div class="b-example-divider"></div>
+        <div class="col-md-3 mb-2 mb-md-0">
+            <a href="/" class="d-inline-flex link-body-emphasis text-decoration-none">
+                <svg class="bi" width="40" height="32" role="img" aria-label="Bootstrap"><use xlink:href="#bootstrap"/></svg>
+            </a>
+        </div>
+
+        <ul class="nav col-12 col-md-auto mb-2 justify-content-center mb-md-0" style="margin-right: 70px">
+            <li><a href="{{ path ('home') }}" class="nav-link px-2 link-secondary pink-link">Home</a></li>
+            <li><a href="#" class="nav-link px-2 pink-link">Contact</a></li>
+            <li><a href="#" class="nav-link px-2 pink-link">FAQs</a></li>
+            <li><a href="#" class="nav-link px-2 pink-link" style="margin-right: 10px;">About</a></li>
+        </ul>
+
+        <div class="col-md-3 text-end">
+            <a href="{{ path('app_login') }}" class="btn btn-outline-primary me-2 btn-custom">Login</a>
+            <a href="{{ path('app_register') }}" class="btn btn-primary btn-custom">Sign-up</a>
+        </div>
+    </header>
 
     <main>
         <div style="text-align: center; margin-top: 50px;">
-            <h1>User Account  </h1>
-
-            <br>
-            <h5> Here you can manage your account  </h5>
-<br>
+            <h1>This is your User Account  </h1><br>
+            <h5> Here you can manage your account  </h5><br>
 
             <div class="text-center">
                 <table class="table">
@@ -36,7 +116,7 @@
                             <td>Profiles & Budgets:</td>
                             <td>
                                 {% for profile in profiles %}
-                                    Your profile {{ profile.profileType }} and your Budget {{ profile.profileBudget }}<br>
+                                    Your profile {{ profile.profileType }} and your Budget is: {{ profile.profileBudget }}<br>
                                 {% endfor %}
                             </td>
                         {% else %}
