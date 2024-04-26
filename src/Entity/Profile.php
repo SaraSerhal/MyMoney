@@ -21,6 +21,9 @@ class Profile
     #[ORM\Column]
     private ?float $profileBudget = null;
 
+    #[ORM\Column(nullable: true)]
+    private ?float $UpdatedProfileBudget = null;
+
     #[ORM\Column(type: 'datetime_immutable')]
     private ?\DateTimeImmutable $createdAt = null;
 
@@ -133,6 +136,18 @@ class Profile
                 $expensesCategory->setProfile(null);
             }
         }
+
+        return $this;
+    }
+
+    public function getUpdatedProfileBudget(): ?float
+    {
+        return $this->UpdatedProfileBudget;
+    }
+
+    public function setUpdatedProfileBudget(float $UpdatedProfileBudget): static
+    {
+        $this->UpdatedProfileBudget = $UpdatedProfileBudget;
 
         return $this;
     }

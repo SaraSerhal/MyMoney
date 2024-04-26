@@ -28,10 +28,11 @@ class ChartController extends AbstractController
 
 
                 $profileBudget = $profile->getProfileBudget();
+                $updatedProfileBudget = $profile->getUpdatedProfileBudget();
             }}
 
-
-        $dailyBudget = $profileBudget / 7;
+        $budgetToUse = $updatedProfileBudget ?? $profileBudget;
+        $dailyBudget = $budgetToUse / 7;
         $categories = $profile->getExpensesCategories();
 
         foreach ($categories as $category) {
@@ -73,7 +74,7 @@ class ChartController extends AbstractController
 
             // Mettre à jour le profileBudget de l'utilisateur avec le nouveau budget quotidien
             $newProfileBudget = $formData['dailyBudget'] ;
-            $profile->setProfileBudget($newProfileBudget*7);
+            $profile->setUpdatedProfileBudget($newProfileBudget*7);
             $entityManager->persist($profile);
             $entityManager->flush();
 
