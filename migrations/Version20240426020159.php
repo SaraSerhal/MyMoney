@@ -1,6 +1,6 @@
 <?php
 
-declare(strict_types=1);
+/*declare(strict_types=1);
 
 namespace DoctrineMigrations;
 
@@ -9,7 +9,7 @@ use Doctrine\Migrations\AbstractMigration;
 
 /**
  * Auto-generated Migration: Please modify to your needs!
- */
+
 final class Version20240426020159 extends AbstractMigration
 {
     public function getDescription(): string
@@ -50,4 +50,4 @@ final class Version20240426020159 extends AbstractMigration
         $this->addSql('DROP TABLE user_profile');
         $this->addSql('DROP TABLE messenger_messages');
     }
-}
+} */

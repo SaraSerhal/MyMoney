@@ -1,0 +1,310 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Review{% endblock %}
+
+{% block stylesheets %}
+    {{ parent() }}
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+    <style>
+
+        .btn-custom {
+            background-color: transparent;
+            color: #FF698D;
+            border-color: #FF698D;
+        }
+
+        .btn-custom:hover {
+            background-color: #FF698D;
+            border-color: #FF698D;
+            color: white;
+        }
+
+        body {
+            align-items: center;
+            background-color: #e4e4e4;
+            font-family: 'Montserrat', sans-serif;
+        }
+
+        .custom-link {
+            color: #FF698D;
+        }
+
+        .custom-link:hover {
+            color: white;
+            background-color: #FF698D;
+            border-color: #FF698D;
+        }
+
+        /* Définir le style pour .btn.btn-primary */
+        .btn.btn-primary {
+            background-color: #FF698D;
+            border-color: #FF698D;
+            color: white;
+        }
+
+        /* Définir le style pour .btn.btn-primary:hover */
+        .btn.btn-primary:hover {
+            background-color: #FF5C7D; /* Couleur de survol légèrement plus sombre */
+            border-color: #FF5C7D; /* Couleur de bordure de survol légèrement plus sombre */
+            color: white;
+        }
+        .sidebar {
+            position: fixed;
+            top: 0;
+            bottom: 0;
+            left: -250px; /* sidebar initially hidden */
+            z-index: 100;
+            padding: 48px 0; /* Adjust as needed */
+            overflow-x: hidden;
+            overflow-y: auto; /* Show scrollbar if necessary */
+            background-color: black; /* Background color */
+            border-right: 1px solid #FF698D; /* Right border */
+            transition: left 0.3s; /* Smooth transition */
+        }
+
+        .sidebar.active {
+            left: 0; /* Sidebar visible */
+        }
+
+        .sidebar-heading {
+            text-align: center;
+            padding: 10px 15px;
+        }
+
+        .sidebar ul {
+            flex-direction: column;
+            padding-left: 0;
+            margin-bottom: 0;
+            list-style: none;
+        }
+
+        .sidebar ul li {
+            margin: -5px;
+            padding: 7px;
+        }
+
+        .sidebar ul li a {
+            display: flex;
+            align-items: center; /* Align icon and text vertically */
+            padding: .3rem 2rem;
+            color: #ffffff;
+            text-decoration: none;
+        }
+
+        .sidebar ul li a:hover {
+            background-color: #FF698D; /* Highlight on hover */
+        }
+
+        /* Button style */
+        .sidebar-toggle {
+            position: fixed;
+            left: 10px;
+            top: 10px;
+            background-color: #FF698D;
+            color: white;
+            border: none;
+            border-radius: 50%;
+            padding: 15px;
+            cursor: pointer;
+        }
+
+        .sidebar-toggle:focus {
+            outline: none;
+        }
+
+        /* Icon style */
+        .sidebar ul li a i {
+            margin-right: 10px; /* Add spacing between icon and text */
+        }
+    </style>
+{% endblock %}
+
+{% block body %}
+<div class="container-fluid">
+    <div class="row">
+        <!-- Sidebar -->
+        <nav class="col-md-3 col-lg-2 d-md-block sidebar">
+            <div class="sidebar-heading" style="margin-top: -30px; margin-bottom: 40px; font-weight: bold; font-size: 20px;">
+                <span style="color: #FF698D;">MY</span><span style="color: white;">MONEY</span>
+            </div>
+            <div class="sidebar-sticky"></div>
+            <ul class="nav flex-column">
+                <li> <a class="nav-link" href="{{ path('budget_useraccount') }}"><i class="fa-regular fa-user"></i> My User Account</a></li>
+                <li><a href="#"><i class="fa fa-receipt"></i> My Expenses</a></li>
+                <li><a class="nav-link" href="{{ path('review') }}"><i class="fa fa-chart-area"></i> My Review</a></li>
+            </ul>
+            <!-- Séparateur -->
+            <hr class="dropdown-divider" style="margin-top: 470px; margin-bottom: 20px;">
+
+            <!-- Dropdown for user profile -->
+            <div class="dropdown mt-auto text-center">
+                <a class="btn btn-secondary dropdown-toggle" href="#" role="button" id="dropdownMenuLink" data-bs-toggle="dropdown" aria-expanded="false">
+                    {% if app.user %}
+                        <i class="fas fa-user-circle me-2" style="margin-right: 10px"></i>{{ app.user.userIdentifier }}
+                    {% else %}
+                        <i class="fas fa-user-circle me-2"></i>Profile
+                    {% endif %}
+                </a>
+
+                <ul class="dropdown-menu" aria-labelledby="dropdownMenuLink">
+                    {% if app.user %}
+                        <li><a class="dropdown-item" href="{{ path('app_logout') }}" style="color: black">Logout</a></li>
+                        <div class="dropdown-divider"></div>
+                    {% else %}
+                        <li><a class="dropdown-item" href="{{ path('app_register') }}">Register</a></li>
+                    {% endif %}
+                </ul>
+            </div>
+        </nav>
+
+        <!-- Main Content -->
+        <main class="col">
+    <header class="d-flex flex-wrap align-items-center justify-content-between py-3 mb-4 border-bottom">
+        <div class="b-example-divider"></div>
+        <div class="col-md-3 mb-2 mb-md-0">
+            <a href="/" class="d-inline-flex link-body-emphasis text-decoration-none">
+                <svg class="bi" width="40" height="32" role="img" aria-label="Bootstrap"><use xlink:href="#bootstrap"/></svg>
+            </a>
+        </div>
+
+        <ul class="nav col-12 col-md-auto mb-2 justify-content-center mb-md-0" style="margin-right: 70px">
+            <li><a href="{{ path ('home') }}" class="nav-link px-2 link-secondary pink-link custom-link">Home</a></li>
+            <li><a href="#" class="nav-link px-2 pink-link custom-link">Contact</a></li>
+            <li><a href="#" class="nav-link px-2 pink-link custom-link">FAQs</a></li>
+            <li><a href="#" class="nav-link px-2 pink-link custom-link" style="margin-right: 10px;">About</a></li>
+        </ul>
+
+        <div class="col-md-3 text-end">
+            <a href="{{ path('app_login') }}" class="btn btn-outline-primary me-2 btn-custom">Login</a>
+            <a href="{{ path('app_register') }}" class="btn btn-primary btn-custom">Sign-up</a>
+        </div>
+    </header>
+
+
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12">
+                <div class="card">
+                    <div class="card-header">
+                        <h4 style="text-align: center">My Review</h4>
+                    </div>
+                    <div class="card-body">
+                        <div class="row">
+                            <div class="col-md-12">
+                                <a href="{{ path('budget_useraccount') }}" class="btn btn-primary">Back to Budget</a>
+                            </div>
+                        </div>
+                        <br>
+                        <div class="row">
+                            <div class="col-md-12">
+                                <div class="chart-container">
+                                    <canvas id="myChart" width="800" height="400"></canvas>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- Sidebar toggle button -->
+        <button class="sidebar-toggle" onclick="toggleSidebar()">
+            <i class="fas fa-bars"></i>
+        </button>
+    </div>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script>
+        const chartData = {{ chartData | raw }};
+
+        // Conversion des données au format Chart.js
+        const labels = chartData.map(data => data.name);
+        const initialBudgetData = chartData.map(data => data.initialBudget);
+        const updatedBudgetData = chartData.map(data => data.updatedBudget);
+        const isUpdatedBudgetHigher = updatedBudgetData.some((value, index) => value > initialBudgetData[index]);
+        const updatedBudgetColor = isUpdatedBudgetHigher ? 'rgba(255, 0, 0, 0.5)' : 'rgba(0, 255, 0, 0.5)'; // Rouge si supérieur, vert sinon
+
+        // Configuration du graphique
+        const ctx = document.getElementById('myChart').getContext('2d');
+        const myChart = new Chart(ctx, {
+            type: 'line',
+            data: {
+                labels: labels,
+                datasets: [{
+                    label: 'Updated Budget',
+                    data: updatedBudgetData,
+                    borderColor: isUpdatedBudgetHigher ? 'red' : 'green',
+                    backgroundColor: updatedBudgetColor,
+                    fill: true, // Fill the area under the line
+                    order: 1 // Draw this dataset on top
+                }, {
+                    label: 'Initial Budget',
+                    data: initialBudgetData,
+                    borderColor: 'blue',
+                    backgroundColor: 'rgba(0, 0, 255, 0.5)', // Semi-transparent blue fill
+                    fill: true, // Fill the area under the line
+                    order: 2 // Draw this dataset below the updated budget
+                }]
+            },
+            options: {
+                responsive: true,
+                maintainAspectRatio: false,
+                scales: {
+                    y: {
+                        beginAtZero: true,
+                        title: {
+                            display: true,
+                            text: 'Budget ($)'
+                        }
+                    },
+                    x: {
+                        display: true,
+                        title: {
+                            display: true,
+                            text: 'Categories'
+                        }
+                    }
+                },
+                plugins: {
+                    legend: {
+                        display: true,
+                        position: 'top'
+                    }
+                }
+            }
+        });
+
+
+            document.addEventListener("DOMContentLoaded", function() {
+                const sidebar = document.querySelector('.sidebar');
+                const sidebarToggle = document.querySelector('.sidebar-toggle');
+
+                // Fonction pour ouvrir et fermer la barre latérale
+                function toggleSidebar() {
+                    sidebar.classList.toggle('active');
+                }
+                function toggleDropdown() {
+                    const dropdownMenu = document.querySelector('.dropdown-menu');
+                    dropdownMenu.classList.toggle('show');
+                }
+
+                // Événement de clic sur le lien du profil pour ouvrir le dropdown
+                document.querySelector('.dropdown-toggle').addEventListener('click', toggleDropdown);
+
+                // Événement de clic sur le bouton de basculement de la barre latérale
+                sidebarToggle.addEventListener('click', toggleSidebar);
+
+                // Événement de clic sur le contenu principal pour fermer la barre latérale
+                document.addEventListener('click', function(event) {
+                    const isClickInsideSidebar = sidebar.contains(event.target);
+                    const isClickInsideSidebarToggle = sidebarToggle.contains(event.target);
+
+                    // Si le clic n'est pas à l'intérieur de la barre latérale ni sur le bouton de basculement, fermez la barre latérale
+                    if (!isClickInsideSidebar && !isClickInsideSidebarToggle) {
+                        sidebar.classList.remove('active');
+                    }
+                });
+            });
+
+
+
+    </script>
+{% endblock %}
