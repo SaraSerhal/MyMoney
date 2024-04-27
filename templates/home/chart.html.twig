@@ -16,6 +16,14 @@
             border-color: #FF698D;
             color: white;
         }
+        .review-button{
+            background-color: #FF698D;
+            color: white;
+            padding: 10px 20px;
+            border-radius: 5px;
+            text-decoration: none;
+
+        }
 
         body {
             align-items: center;
@@ -39,6 +47,7 @@
             border-color: #FF698D;
             color: white;
         }
+
 
         /* Définir le style pour .btn.btn-primary:hover */
         .btn.btn-primary:hover {
@@ -295,6 +304,11 @@
         <button type="submit" class="btn btn-custom">Mettre à jour le budget</button>
     </div>
     {{ form_end(form) }}
+            <br>
+            <div class="button-container" style="text-align: center">
+                <p>Do you want to see a review of your expenses? Click here:</p>
+                <a href="{{ path('review') }}" class="review-button" type="submit">See my review</a>
+            </div>
 
 
 {% endblock %}
