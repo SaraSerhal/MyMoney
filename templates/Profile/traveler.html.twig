@@ -94,106 +94,116 @@
 {% endblock %}
 
 {% block body %}
-<div class="container-fluid">
-    <div class="row">
-        <!-- Sidebar -->
-        <nav class="col-md-3 col-lg-2 d-md-block sidebar">
-            <div class="sidebar-heading" style="margin-top: -30px; margin-bottom: 40px; font-weight: bold; font-size: 20px;">
-                <span style="color: #FF698D;">MY</span><span style="color: white;">MONEY</span>
-            </div>
-            <div class="sidebar-sticky"></div>
-            <ul class="nav flex-column">
-                <li> <a class="nav-link" href="{{ path('budget_useraccount') }}"><i class="fa-regular fa-user"></i> My User Account</a></li>
-                <li><a href="#"><i class="fa fa-receipt"></i> My Expenses</a></li>
-                <li><a class="nav-link" href="{{ path('review') }}"><i class="fa fa-chart-area"></i> My Review</a></li>
-            </ul>
-            <!-- Séparateur -->
-            <hr class="dropdown-divider" style="margin-top: 470px; margin-bottom: 20px;">
-
-            <!-- Dropdown for user profile -->
-            <div class="dropdown mt-auto text-center">
-                <a class="btn btn-secondary dropdown-toggle" href="#" role="button" id="dropdownMenuLink" data-bs-toggle="dropdown" aria-expanded="false">
-                    {% if app.user %}
-                        <i class="fas fa-user-circle me-2" style="margin-right: 10px"></i>{{ app.user.userIdentifier }}
-                    {% else %}
-                        <i class="fas fa-user-circle me-2"></i>Profile
-                    {% endif %}
-                </a>
-
-                <ul class="dropdown-menu" aria-labelledby="dropdownMenuLink">
-                    {% if app.user %}
-                        <li><a class="dropdown-item" href="{{ path('app_logout') }}" style="color: black">Logout</a></li>
-                        <div class="dropdown-divider"></div>
-                    {% else %}
-                        <li><a class="dropdown-item" href="{{ path('app_register') }}">Register</a></li>
-                    {% endif %}
-                </ul>
-            </div>
-        </nav>
-
-        <!-- Main Content -->
-        <main class="col">
-            <header class="d-flex flex-wrap align-items-center justify-content-between py-3 mb-4 border-bottom">
-
-                <div class="b-example-divider"></div>
-                <div class="col-md-3 mb-2 mb-md-0">
-                    <a href="/" class="d-inline-flex link-body-emphasis text-decoration-none">
-                        <svg class="bi" width="40" height="32" role="img" aria-label="Bootstrap"><use xlink:href="#bootstrap"/></svg>
-                    </a>
-                </div>
-
-                <ul class="nav col-12 col-md-auto mb-2 justify-content-center mb-md-0" style="margin-right: 70px">
-                    <li><a href="{{ path ('home') }}" class="nav-link px-2 link-secondary pink-link">Home</a></li>
-                    <li><a href="#" class="nav-link px-2 pink-link">Contact</a></li>
-                    <li><a href="#" class="nav-link px-2 pink-link">FAQs</a></li>
-                    <li><a href="#" class="nav-link px-2 pink-link" style="margin-right: 10px;">About</a></li>
-                </ul>
-
-
-                <div class="col-md-3 text-end">
-                    <a href="{{ path('app_login') }}" class="btn btn-outline-primary me-2 btn-custom">Login</a>
-                    <a href="{{ path('app_register') }}" class="btn btn-primary btn-custom">Sign-up</a>
-                </div>
-
-
-            </header>
-        </main>
-    </div>
-    <div class="container mt-5">
+    <div class="container-fluid">
         <div class="row">
-            <div class="col-md-8 offset-md-2"> <!-- Centrage par une colonne de 8 avec un offset de 2 de chaque côté -->
-                <div class="card">
-                    <div class="card-body">
-                        <h2 class="card-title text-center mb-4">Welcome, Traveler!</h2>
-                        {% if profile is defined %}
-                            <p class="lead text-center mb-4">Your current budget is: {{ profileBudget }}€</p>
+            <!-- Sidebar -->
+            <nav class="col-md-3 col-lg-2 d-md-block sidebar">
+                <div class="sidebar-heading" style="margin-top: -30px; margin-bottom: 40px; font-weight: bold; font-size: 20px;">
+                    <span style="color: #FF698D;">MY</span><span style="color: white;">MONEY</span>
+                </div>
+                <div class="sidebar-sticky"></div>
+                <ul class="nav flex-column">
+                    <li class="nav-item">
+                        <a class="nav-link" href="{{ path('budget_useraccount') }}"><i class="fa-regular fa-user"></i> My User Account</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="{{ path('budget_show_profile') }}"><i class="fa fa-chart-line"></i> My Profile </a>
+                    </li>
+
+                    <li><a class="nav-link" href="{{ path('budget_show_categories') }}"><i class="fa fa-receipt"></i> My Expenses Category</a></li>
+                    <li><a class="nav-link" href="{{ path('budget_show_expenses') }}"><i class="fa fa-chart-pie"></i> My Expenses</a></li>
+                    <li><a href="#"><i class="fa fa-chart-area"></i> My Review</a></li>
+                </ul>
+
+
+
+                <!-- Séparateur -->
+                <hr class="dropdown-divider" style="margin-top: 470px; margin-bottom: 20px;">
+
+                <!-- Dropdown for user profile -->
+                <div class="dropdown mt-auto text-center">
+                    <a class="btn btn-secondary dropdown-toggle" href="#" role="button" id="dropdownMenuLink" data-bs-toggle="dropdown" aria-expanded="false">
+                        {% if app.user %}
+                            <i class="fas fa-user-circle me-2" style="margin-right: 10px"></i>{{ app.user.userIdentifier }}
                         {% else %}
-                            <p class="lead text-center mb-4">No traveler profile found.</p>
+                            <i class="fas fa-user-circle me-2"></i>Profile
                         {% endif %}
-                        <hr>
-                        <h4 class="card-title text-center mt-4 mb-3">Add Budget Categories</h4>
-                        {{ form_start(form) }}
-                        {% for categoryNameForm in form.categoryNames %}
-                            <div class="mb-4">
-                                {{ form_row(categoryNameForm, {'attr': {'class': 'form-control'}}) }}
+                    </a>
+
+                    <ul class="dropdown-menu" aria-labelledby="dropdownMenuLink">
+                        {% if app.user %}
+                            <li><a class="dropdown-item" href="{{ path('app_logout') }}" style="color: black">Logout</a></li>
+                            <div class="dropdown-divider"></div>
+                        {% else %}
+                            <li><a class="dropdown-item" href="{{ path('app_register') }}">Register</a></li>
+                        {% endif %}
+                    </ul>
+                </div>
+            </nav>
+
+            <!-- Main Content -->
+            <main class="col">
+                <header class="d-flex flex-wrap align-items-center justify-content-between py-3 mb-4 border-bottom">
+
+                    <div class="b-example-divider"></div>
+                    <div class="col-md-3 mb-2 mb-md-0">
+                        <a href="/" class="d-inline-flex link-body-emphasis text-decoration-none">
+                            <svg class="bi" width="40" height="32" role="img" aria-label="Bootstrap"><use xlink:href="#bootstrap"/></svg>
+                        </a>
+                    </div>
+
+                    <ul class="nav col-12 col-md-auto mb-2 justify-content-center mb-md-0" style="margin-right: 70px">
+                        <li><a href="{{ path ('home') }}" class="nav-link px-2 link-secondary pink-link">Home</a></li>
+                        <li><a href="#" class="nav-link px-2 pink-link">Contact</a></li>
+                        <li><a href="#" class="nav-link px-2 pink-link">FAQs</a></li>
+                        <li><a href="#" class="nav-link px-2 pink-link" style="margin-right: 10px;">About</a></li>
+                    </ul>
+
+
+                    <div class="col-md-3 text-end">
+                        <a href="{{ path('app_login') }}" class="btn btn-outline-primary me-2 btn-custom">Login</a>
+                        <a href="{{ path('app_register') }}" class="btn btn-primary btn-custom">Sign-up</a>
+                    </div>
+
+
+                </header>
+            </main>
+        </div>
+        <div class="container mt-5">
+            <div class="row">
+                <div class="col-md-8 offset-md-2"> <!-- Centrage par une colonne de 8 avec un offset de 2 de chaque côté -->
+                    <div class="card">
+                        <div class="card-body">
+                            <h2 class="card-title text-center mb-4">Welcome, Traveler!</h2>
+                            {% if profile is defined %}
+                                <p class="lead text-center mb-4">Your current budget is: {{ profileBudget }}€</p>
+                            {% else %}
+                                <p class="lead text-center mb-4">No traveler profile found.</p>
+                            {% endif %}
+                            <hr>
+                            <h4 class="card-title text-center mt-4 mb-3">Add Budget Categories</h4>
+                            {{ form_start(form) }}
+                            {% for categoryNameForm in form.categoryNames %}
+                                <div class="mb-4">
+                                    {{ form_row(categoryNameForm, {'attr': {'class': 'form-control'}}) }}
+                                </div>
+                            {% endfor %}
+                            <div class="text-center">
+                                <button type="submit" class="btn btn-custom">Submit</button>
                             </div>
-                        {% endfor %}
-                        <div class="text-center">
-                            <button type="submit" class="btn btn-custom">Submit</button>
+                            {{ form_end(form) }}
                         </div>
-                        {{ form_end(form) }}
                     </div>
                 </div>
             </div>
         </div>
-    </div>
 
-    </main>
-                <!-- Sidebar toggle button -->
-                <button class="sidebar-toggle" onclick="toggleSidebar()">
-                    <i class="fas fa-bars"></i>
-                </button>
-        </div>
+        </main>
+        <!-- Sidebar toggle button -->
+        <button class="sidebar-toggle" onclick="toggleSidebar()">
+            <i class="fas fa-bars"></i>
+        </button>
+    </div>
 
     </div>
 

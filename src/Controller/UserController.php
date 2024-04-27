@@ -3,7 +3,6 @@
 
 namespace App\Controller;
 
-use App\Entity\ExpensesCategory;
 use App\Entity\Profile;
 use App\Entity\User;
 use App\Form\AccueilFormType;
@@ -17,25 +16,41 @@ use Symfony\Component\Routing\Annotation\Route;
 use Symfony\Component\Security\Core\Authentication\Token\Storage\TokenStorageInterface;
 use function PHPUnit\Framework\returnArgument;
 use Symfony\Component\Form\FormTypeInterface;
-use App\Services\UserHandlerService;
 
 class UserController extends AbstractController
 {
-    private UserHandlerService $userHandlerService;
-
-    public function __construct(UserHandlerService $userHandlerService)
-    {
-        $this->userHandlerService = $userHandlerService;
-    }
     #[Route('/useraccount', name: 'budget_useraccount')]
     public function useraccount(Request $request, EntityManagerInterface $entityManager): Response
     {
-        return $this->userHandlerService->handleUseraccount($request, $entityManager);
+        if ($this->isGranted('IS_AUTHENTICATED_REMEMBERED')){
+            $user = $this->getUser();
+            // Récupérer tous les profils associés à l'utilisateur
+            $profiles = $user->getProfiles();
+            return $this->render('user/useraccount.html.twig', [
+                'controller_name' => 'UserController',
+                'user' => $user,
+            ]);
+        }
+        return $this->redirectToRoute('home');
 
     }
     #[Route('/useraccount/deleteUser', name: 'budget_delete_user')]
-    public function deleteUserAndProfiles(Request $request, TokenStorageInterface $tokenStorage, EntityManagerInterface $entityManager): Response {
-        return $this->userHandlerService->handledeleteUserAndProfiles($request, $tokenStorage, $entityManager);
-    }
+    public function deleteUserAndProfiles(Request $request, TokenStorageInterface $tokenStorage, EntityManagerInterface $entityManager): Response
+    {
+        $user = $this->getUser();
 
+        if ($user) {
+
+            // Supprimer l'utilisateur lui-même
+            $entityManager->remove($user);
+            $entityManager->flush();
+            $request->getSession()->invalidate();
+            $tokenStorage->setToken(null);
+
+            // Rediriger vers la page d'accueil ou une autre page après la suppression du compte
+            return $this->redirectToRoute('home');
+        }
+
+        return $this->redirectToRoute('home');
+    }
 }

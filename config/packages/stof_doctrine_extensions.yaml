@@ -1,0 +1,6 @@
+# config/packages/stof_doctrine_extensions.yaml
+stof_doctrine_extensions:
+  default_locale: fr_FR
+  orm:
+    default:
+      softdeleteable: true

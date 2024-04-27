@@ -1,0 +1,40 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    <h1>Expenses</h1>
+    {% if profilesWithExpenses is empty %}
+        <p>No expenses found.</p>
+    {% else %}
+        {% for profile in profilesWithExpenses %}
+            <div class="card my-3">
+                <div class="card-header">
+                    Profile: {{ profile.name }}
+                </div>
+                {% if profile.expenses is empty %}
+                    <p>No expenses recorded for this profile.</p>
+                {% else %}
+                    <table>
+                        <thead>
+                        <tr>
+                            <th>Date</th>
+                            <th>Amount Spent</th>
+                            <th>Daily Budget</th>
+                            <th>Daily Category Budget</th>
+                        </tr>
+                        </thead>
+                        <tbody>
+                        {% for expense in profile.expenses %}
+                            <tr>
+                                <td>{{ expense.getSpendDay()|date('Y-m-d') }}</td>
+                                <td>{{ expense.getAmountSpent() }}</td>
+                                <td>{{ expense.getDailyBudget() }}</td>
+                                <td>{{ expense.getDailyCategoryBudget() }} </td>
+                            </tr>
+                        {% endfor %}
+                        </tbody>
+                    </table>
+                {% endif %}
+            </div>
+        {% endfor %}
+    {% endif %}
+{% endblock %}

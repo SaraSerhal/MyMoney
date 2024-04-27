@@ -5,8 +5,10 @@ namespace App\Entity;
 use App\Repository\ExpensesRepository;
 use Doctrine\DBAL\Types\Types;
 use Doctrine\ORM\Mapping as ORM;
+use Gedmo\Mapping\Annotation as Gedmo;
 
 #[ORM\Entity(repositoryClass: ExpensesRepository::class)]
+#[Gedmo\SoftDeleteable(fieldName: "deletedAt", timeAware: false, hardDelete: false)]
 class Expenses
 {
     #[ORM\Id]
@@ -27,6 +29,10 @@ class Expenses
 
     #[ORM\Column(type: Types::FLOAT)]
     private ?float $dailyBudget = null;
+
+    #[ORM\Column(type: 'datetime_immutable',nullable: true)]
+    private ?\DateTimeInterface $deletedAt = null;
+
 
     #[ORM\ManyToOne(inversedBy: 'expenses')]
     private ?ExpensesCategory $categoryExpenses = null;
@@ -105,6 +111,18 @@ class Expenses
     public function setDailyBudget(float $dailyBudget): static
     {
         $this->dailyBudget = $dailyBudget;
+
+        return $this;
+    }
+
+    public function getDeletedAt(): ?\DateTimeInterface
+    {
+        return $this->deletedAt;
+    }
+
+    public function setDeletedAt(?\DateTimeInterface $deletedAt): static
+    {
+        $this->deletedAt = $deletedAt;
 
         return $this;
     }

@@ -81,6 +81,7 @@ return array(
     'Symfony\\Bridge\\PhpUnit\\' => array($vendorDir . '/symfony/phpunit-bridge'),
     'Symfony\\Bridge\\Monolog\\' => array($vendorDir . '/symfony/monolog-bridge'),
     'Symfony\\Bridge\\Doctrine\\' => array($vendorDir . '/symfony/doctrine-bridge'),
+    'Stof\\DoctrineExtensionsBundle\\' => array($vendorDir . '/stof/doctrine-extensions-bundle/src'),
     'Psr\\Log\\' => array($vendorDir . '/psr/log/src'),
     'Psr\\Link\\' => array($vendorDir . '/psr/link/src'),
     'Psr\\EventDispatcher\\' => array($vendorDir . '/psr/event-dispatcher/src'),
@@ -91,6 +92,7 @@ return array(
     'PHPStan\\PhpDocParser\\' => array($vendorDir . '/phpstan/phpdoc-parser/src'),
     'Monolog\\' => array($vendorDir . '/monolog/monolog/src/Monolog'),
     'Masterminds\\' => array($vendorDir . '/masterminds/html5/src'),
+    'Gedmo\\' => array($vendorDir . '/gedmo/doctrine-extensions/src'),
     'Egulias\\EmailValidator\\' => array($vendorDir . '/egulias/email-validator/src'),
     'Doctrine\\SqlFormatter\\' => array($vendorDir . '/doctrine/sql-formatter/src'),
     'Doctrine\\Persistence\\' => array($vendorDir . '/doctrine/persistence/src/Persistence'),
@@ -108,6 +110,7 @@ return array(
     'Doctrine\\Bundle\\DoctrineBundle\\' => array($vendorDir . '/doctrine/doctrine-bundle'),
     'DeepCopy\\' => array($vendorDir . '/myclabs/deep-copy/src/DeepCopy'),
     'Composer\\Semver\\' => array($vendorDir . '/composer/semver/src'),
+    'Behat\\Transliterator\\' => array($vendorDir . '/behat/transliterator/src/Behat/Transliterator'),
     'App\\Tests\\' => array($baseDir . '/tests'),
     'App\\' => array($baseDir . '/src'),
 );

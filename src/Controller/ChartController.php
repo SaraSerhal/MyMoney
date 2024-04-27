@@ -91,11 +91,123 @@ class ChartController extends AbstractController
             return $this->redirectToRoute('budget_chart');
         }
 
-        return $this->render('home/chart.html.twig', [
+        return $this->render('chart/index.html.twig', [
             'controller_name' => 'ChartController',
             'chartData' => json_encode($chartData),
             'form' => $form->createView(),
             'profileBudget' => $profileBudget,
         ]);
+    }
+
+    #[Route('/expenses/showCategories', name: 'budget_show_categories')]
+    public function readExpensesCategories(Request $request, EntityManagerInterface $entityManager): Response
+    {
+        $user = $this->getUser();
+
+        if (!$user || !$user->getProfiles() || $user->getProfiles()->isEmpty()) {
+            throw $this->createNotFoundException('Profil ou budget non trouvé pour l\'utilisateur.');
+        }
+
+        $profiles = $user->getProfiles();
+        $categoriesDetails = [];
+
+        foreach ($profiles as $profile) {
+            $expensesCategories = $profile->getExpensesCategories();
+            if (!$expensesCategories->isEmpty()) {
+                foreach ($expensesCategories as $category) {
+                    $categoryNames = $category->getCategoryNames();
+                    $categoriesDetails[] = [
+                        'profileName' => $profile->getProfileType(),
+                        'category' => $category,
+                        'names' => $categoryNames
+                    ];
+                }
+            }
+        }
+
+        if (empty($categoriesDetails)) {
+            throw $this->createNotFoundException('Aucune catégorie de dépenses trouvée pour ce profil.');
+        }
+
+        return $this->render('expenses/myexpensescategories.html.twig', [
+            'controller_name' => 'ExpensesController',
+            'user' => $user,
+            'categoriesDetails' => $categoriesDetails
+        ]);
+    }
+
+    #[Route('/expenses/showExpenses', name: 'budget_show_expenses')]
+    public function readExpenses(Request $request, EntityManagerInterface $entityManager): Response
+    {
+        $user = $this->getUser();
+        if (!$user) {
+            throw $this->createNotFoundException('User not found.');
+        }
+
+        $profiles = $user->getProfiles();
+        if (!$profiles || $profiles->isEmpty()) {
+            throw $this->createNotFoundException('No profiles found for the user.');
+        }
+
+        $profilesWithExpenses = [];
+        foreach ($profiles as $profile) {
+            $profileData = [
+                'name' => $profile->getProfileType(),
+                'expenses' => []
+            ];
+            foreach ($profile->getExpensesCategories() as $category) {
+                foreach ($category->getExpenses() as $expense) {
+                    if (null === $expense->getDeletedAt()) {  // Check if the expense is not soft-deleted
+                        $profileData['expenses'][] = $expense;
+                    }
+                }
+            }
+            $profilesWithExpenses[] = $profileData;
+        }
+
+        return $this->render('expenses/myexpenses.html.twig', [
+            'controller_name' => 'ExpenseController',
+            'profilesWithExpenses' => $profilesWithExpenses
+        ]);
+    }
+
+    #[Route('/expenses/deleteAllCategories', name: 'budget_delete_all_categories')]
+    public function deleteAllCategoriesAndExpenses(EntityManagerInterface $entityManager): Response
+    {
+        $user = $this->getUser();
+        if (!$user) {
+            return $this->redirectToRoute('login');
+        }
+        $entityManager->getFilters()->enable('softdeleteable');
+
+        $profiles = $user->getProfiles();
+        if (!$profiles->isEmpty()) {
+            foreach ($profiles as $profile) {
+                $expensesCategories = $profile->getExpensesCategories();
+                if (!$expensesCategories->isEmpty()) {
+                    foreach ($expensesCategories as $category) {
+                        $entityManager->remove($category);
+                    }
+                    foreach ($expensesCategories as $category) {
+                        foreach ($category->getCategoryNames() as $categoryName) {
+                            $entityManager->remove($categoryName);
+                        }
+                    }
+                    foreach ($expensesCategories as $category) {
+                        // Supprimer d'abord toutes les dépenses associées à chaque catégorie
+                        foreach ($category->getExpenses() as $expense) {
+                            $entityManager->remove($expense);
+
+                        }
+                    }
+                }
+            }
+            $entityManager->flush();
+            $this->addFlash('success', 'All expenses categories have been successfully deleted.');
+        } else {
+            $this->addFlash('error', 'No profiles found.');
+        }
+
+        return $this->redirectToRoute('new_profile');
     }
 }

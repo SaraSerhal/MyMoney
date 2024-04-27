@@ -21,6 +21,15 @@ class ProfileRepository extends ServiceEntityRepository
         parent::__construct($registry, Profile::class);
     }
 
+    public function findActiveProfiles()
+    {
+        return $this->getEntityManager()
+            ->createQuery(
+                'SELECT p FROM App\Entity\Profile p WHERE p.deletedAt IS NULL'
+            )
+            ->getResult();
+    }
+
 //    /**
 //     * @return profile[] Returns an array of profile objects
 //     */

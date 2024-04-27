@@ -156,20 +156,21 @@
                 <span style="color: #FF698D;">MY</span><span style="color: white;">MONEY</span>
             </div>
             <div class="sidebar-sticky"></div>
-
             <ul class="nav flex-column">
                 <li class="nav-item">
                     <a class="nav-link" href="{{ path('budget_useraccount') }}"><i class="fa-regular fa-user"></i> My User Account</a>
                 </li>
-
                 <li class="nav-item">
-                    <a class="nav-link" href="#"><i class="fa-solid fa-receipt"></i> My Expenses </a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="{{ path('review') }}"><i class="fa fa-chart-area"></i> My Review</a>
+                    <a class="nav-link" href="{{ path('budget_show_profile') }}"><i class="fa fa-chart-line"></i> My Profile </a>
                 </li>
 
+                <li><a class="nav-link" href="{{ path('budget_show_categories') }}"><i class="fa fa-receipt"></i> My Expenses Category</a></li>
+                <li><a class="nav-link" href="{{ path('budget_show_expenses') }}"><i class="fa fa-chart-pie"></i> My Expenses</a></li>
+                <li><a href="#"><i class="fa fa-chart-area"></i> My Review</a></li>
             </ul>
+
+
+
 
             <!-- Séparateur -->
             <hr class="dropdown-divider" style="margin-top: 470px; margin-bottom: 20px;">
@@ -241,18 +242,18 @@
 
             {{ form_start(form, {'attr': {'style': 'margin-left: 300px; margin-right: 300px;'}}) }}
 
-    {{ form_row(form.profileType, {'attr': {'class': 'form-control'}}) }}
-    {{ form_row(form.profileBudget, {
-        'attr': {
-            'class': 'form-control',
-            'placeholder': 'Enter your budget in €...',
+            {{ form_row(form.profileType, {'attr': {'class': 'form-control'}}) }}
+            {{ form_row(form.profileBudget, {
+                'attr': {
+                    'class': 'form-control',
+                    'placeholder': 'Enter your budget in €...',
 
-        }
-    }) }}
+                }
+            }) }}
             <button type="submit" class="btn btn-primary register">Register</button>
-    {{ form_end(form) }}
+            {{ form_end(form) }}
 
-    </main>
+        </main>
 
 
     </div>

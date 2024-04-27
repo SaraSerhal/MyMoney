@@ -7,9 +7,10 @@ use Doctrine\ORM\Mapping as ORM;
 use Symfony\UX\Turbo\Attribute\Broadcast;
 use Doctrine\Common\Collections\Collection;
 use Doctrine\Common\Collections\ArrayCollection;
+use Gedmo\Mapping\Annotation as Gedmo;
 
 #[ORM\Entity(repositoryClass: ExpensesCategoryRepository::class)]
-#[Broadcast]
+#[Gedmo\SoftDeleteable(fieldName: "deletedAt", timeAware: false, hardDelete: false)]
 class ExpensesCategory{
     #[ORM\Id]
     #[ORM\GeneratedValue]
@@ -20,6 +21,10 @@ class ExpensesCategory{
 
     #[ORM\OneToMany(targetEntity: CategoryName::class, mappedBy: "expensesCategory", cascade: ["persist", "remove"])]
     private Collection $categoryNames;
+
+
+    #[ORM\Column(type: 'datetime_immutable',nullable: true)]
+    private ?\DateTimeInterface $deletedAt = null;
 
 
     #[ORM\ManyToOne(inversedBy: "expensesCategories")]
@@ -104,6 +109,18 @@ class ExpensesCategory{
                 $expense->setCategoryExpenses(null);
             }
         }
+
+        return $this;
+    }
+
+    public function getDeletedAt(): ?\DateTimeInterface
+    {
+        return $this->deletedAt;
+    }
+
+    public function setDeletedAt(?\DateTimeInterface $deletedAt): static
+    {
+        $this->deletedAt = $deletedAt;
 
         return $this;
     }

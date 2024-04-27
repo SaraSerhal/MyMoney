@@ -1,0 +1,57 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Vue des Catégories de Dépenses{% endblock %}
+
+{% block body %}
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/sweetalert2@11/dist/sweetalert2.min.css">
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+
+    <div class="container">
+        <h1>Catégories de Dépenses pour {{ user.email }}</h1>
+
+        {% for categoryDetail in categoriesDetails %}
+            <div class="card my-3">
+                <div class="card-header">
+                    Profil: {{ categoryDetail.profileName }}
+                </div>
+                <div class="card-body">
+                    <h5 class="card-title">Noms des Catégories:</h5>
+                    {% if categoryDetail.names is not empty %}
+                        <ul>
+                            {% for categoryName in categoryDetail.names %}
+                                <li>{{ categoryName.name }}</li>
+                            {% endfor %}
+                        </ul>
+                    {% else %}
+                        <p>Aucun nom de catégorie associé à cette catégorie de dépenses.</p>
+                    {% endif %}
+                </div>
+            </div>
+        {% endfor %}
+    </div>
+
+    <form id="deleteForm" action="{{ path('budget_delete_all_categories') }}" method="post">
+        <button type="button" class="btn btn-danger" onclick="confirmDelete()">Delete All Categories</button>
+    </form>
+
+    <script>
+        function confirmDelete() {
+            Swal.fire({
+                title: 'Are you sure?',
+                text: "You want to delete all your category names? This will also delete the associated expenses.",
+                icon: 'warning',
+                showCancelButton: true,
+                confirmButtonColor: '#d33',  // Red color for the confirm button
+                cancelButtonColor: '#3085d6',
+                confirmButtonText: 'Yes, delete it!'
+            }).then((result) => {
+                if (result.isConfirmed) {
+                    // If confirmed, submit the form
+                    document.getElementById('deleteForm').submit();
+                }
+            });
+        }
+    </script>
+
+    </div>
+{% endblock %}

@@ -1,10 +1,10 @@
+
 {% extends 'base.html.twig' %}
 {% block title %}UserAccount{% endblock %}
 
 {% block stylesheets %}
     {{ parent() }}
     <style>
-        /* Styles pour la barre latérale */
         .sidebar {
             position: fixed;
             top: 0;
@@ -129,12 +129,12 @@
             margin-left: 10px;
         }
 
-        /* Tableau avec bordures */
+
         .table-bordered td,
         .table-bordered th {
-            border: 2px solid black; /* Couleur et épaisseur de la bordure */
+            border: none
         }
-        .btn btn-danger:hooover {
+        .btn btn-danger:hover {
             background-color: #FF698D;
             border-color: #FF698D;
         }
@@ -158,11 +158,10 @@
                 <a class="nav-link" href="{{ path('budget_show_profile') }}"><i class="fa fa-chart-line"></i> My Profile </a>
             </li>
 
-            <li><a class="nav-link" href="{{ path('budget_show_categories') }}"><i class="fa fa-receipt"></i> My Expenses Category</a></li>
-            <li><a class="nav-link" href="{{ path('budget_show_expenses') }}"><i class="fa fa-chart-pie"></i> My Expenses</a></li>
+            <li><a href="#"><i class="fa fa-receipt"></i> My Expenses Category</a></li>
+            <li><a href="#"><i class="fa fa-chart-pie"></i> My Expenses</a></li>
             <li><a href="#"><i class="fa fa-chart-area"></i> My Review</a></li>
         </ul>
-
 
         <!-- Séparateur -->
         <hr class="dropdown-divider" style="margin-top: 470px; margin-bottom: 20px;">
@@ -216,34 +215,67 @@
         </button>
 
         <div style="text-align: center; margin-top: 50px;">
-            <h1>User Account  </h1>
-            <br>
-            <h5> Here you can manage your account  </h5>
-            <br>
-            <div class="text-center">
-                <table class="table table-bordered">
-                    <tr>
-                        <td>Name:</td>
-                        <td>{{ user.name }}</td>
-                    </tr>
-                    <tr>
-                        <td>Last name:</td>
-                        <td>{{ user.lastName }}</td>
-                    </tr>
-                    <tr>
-                        <td>Email:</td>
-                        <td>{{ user.email }}</td>
-                    </tr>
-                    <tr>
-                        <td>Age:</td>
-                        <td>{{ user.age }}</td>
-                    </tr>
+            <div style="text-align: center; margin-top: 50px;">
+                <h1>My Profiles</h1>
+                <br>
+                <div class="text-center">
+                    <table class="table table-bordered">
+                        <thead>
+                        <tr>
+                            <th>Profile Type</th>
+                            <th>Profile Budget</th>
+                            <th>Updated Profile Budget</th>
 
-                </table>
-                <a href="{{ path('app_logout') }}" class="btn btn-danger">Logout</a>
-                <a href="{{ path('budget_delete_user') }}" class="btn btn-danger" onclick="return confirm('Are you sure you want to delete your account?')">Delete Account</a>
+                        </tr>
+                        </thead>
+                        <tbody>
+                        {% if profiles is empty %}
+                            <tr>
+                                <td colspan="3">No profiles found for this user.</td>
+                            </tr>
+                        {% else %}
+                            {% for profileDetail in profiles %}
+                                <tr>
+                                    <td>{{ profileDetail.profileType }}</td>
+                                    <td>{{ profileDetail.profileBudget }}</td>
+                                    <td>{{ profileDetail.updatedProfileBudget }}</td>
+
+                                </tr>
+                            {% endfor %}
+                        {% endif %}
+                        </tbody>
+                    </table>
+
+
+
+                    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/sweetalert2@11/dist/sweetalert2.min.css">
+
+                    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+
+                    <form id="deleteProfilesForm" action="{{ path('budget_delete_all_profiles') }}" method="post">
+                        <input type="button" value="Delete All Profiles" class="btn btn-danger" onclick="confirmDeleteProfiles()">
+                    </form>
+
+                    <script>
+                        function confirmDeleteProfiles() {
+                            Swal.fire({
+                                title: 'Are you sure?',
+                                text: "You want to delete all profiles?",
+                                icon: 'warning',
+                                showCancelButton: true,
+                                confirmButtonColor: '#d33', // Red color for the confirm button
+                                cancelButtonColor: '#3085d6',
+                                confirmButtonText: 'Yes, delete them!'
+                            }).then((result) => {
+                                if (result.isConfirmed) {
+                                    // If confirmed, submit the form
+                                    document.getElementById('deleteProfilesForm').submit();
+                                }
+                            });
+                        }
+                    </script>
+                </div>
             </div>
-            <br>
         </div>
     </main>
 

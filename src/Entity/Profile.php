@@ -6,8 +6,11 @@ use App\Repository\ProfileRepository;
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
+use Gedmo\Mapping\Annotation as Gedmo;
+
 
 #[ORM\Entity(repositoryClass: ProfileRepository::class)]
+#[Gedmo\SoftDeleteable(fieldName: "deletedAt", timeAware: false, hardDelete: false)]
 class Profile
 {
     #[ORM\Id]
@@ -26,6 +29,9 @@ class Profile
 
     #[ORM\Column(type: 'datetime_immutable')]
     private ?\DateTimeImmutable $createdAt = null;
+
+    #[ORM\Column(type: 'datetime_immutable',nullable: true)]
+    private ?\DateTimeInterface $deletedAt = null;
 
     #[ORM\ManyToMany(targetEntity: User::class, mappedBy: 'profiles')]
     private Collection $users;
@@ -148,6 +154,18 @@ class Profile
     public function setUpdatedProfileBudget(float $UpdatedProfileBudget): static
     {
         $this->UpdatedProfileBudget = $UpdatedProfileBudget;
+
+        return $this;
+    }
+
+    public function getDeletedAt(): ?\DateTimeInterface
+    {
+        return $this->deletedAt;
+    }
+
+    public function setDeletedAt(?\DateTimeInterface $deletedAt): static
+    {
+        $this->deletedAt = $deletedAt;
 
         return $this;
     }
