@@ -14,7 +14,7 @@ use Symfony\Component\Routing\Annotation\Route;
 class ChartController extends AbstractController
 {
     #[Route('/chart', name: 'budget_chart')]
-    public function chart(Request $request, ExpensesRepository $expensesRepository, EntityManagerInterface $entityManager): Response
+    public function createAndUpdatechart(Request $request, ExpensesRepository $expensesRepository, EntityManagerInterface $entityManager): Response
     {
         $user = $this->getUser();
 

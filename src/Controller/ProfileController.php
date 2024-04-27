@@ -296,7 +296,7 @@ class ProfileController extends AbstractController{
 
 
     #[Route('/profile/deleteAllProfiles', name: 'budget_delete_all_profiles')]
-    public function deleteAllProfiles(EntityManagerInterface $entityManager): Response
+    public function deleteAllProfilesAndReview(EntityManagerInterface $entityManager): Response
     {
 
         $entityManager->getFilters()->enable('softdeleteable');
