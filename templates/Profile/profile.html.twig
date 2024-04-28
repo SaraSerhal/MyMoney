@@ -241,7 +241,7 @@
 
 
             {{ form_start(form, {'attr': {'style': 'margin-left: 300px; margin-right: 300px;'}}) }}
-
+            {{ form_errors(form) }}
             {{ form_row(form.profileType, {'attr': {'class': 'form-control'}}) }}
             {{ form_row(form.profileBudget, {
                 'attr': {

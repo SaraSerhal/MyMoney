@@ -11,6 +11,7 @@ use App\Form\ExpensesCategoryType;
 use App\Form\RegistrationFormType;
 use App\Repository\UserRepository;
 use Doctrine\ORM\EntityManagerInterface;
+use Symfony\Component\Form\FormError;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Response;
@@ -32,20 +33,36 @@ class ProfileController extends AbstractController{
     #[Route('/profile/new_profile', name: 'new_profile')]
     public function create(Request $request, EntityManagerInterface $entityManager): Response
     {
-        $user = new User();
+        $user = $this->getUser();
         $profile = new Profile();
         $form = $this->createForm(AccueilFormType::class, $profile);
         $form->handleRequest($request);
         if ($form->isSubmitted() && $form->isValid()) {
-            $user = $this->getUser();
-            $profile->addUser($user);
+            $profileType = $form->getData()->getProfileType();
+            $existingProfile = $user->getProfiles()->filter(function ($profile) use ($profileType) {
+                return $profile->getProfileType() === $profileType;
+            })->first();
+
+            if ($existingProfile) {
+                // Update the budget of the existing profile
+                $existingProfile->setProfileBudget($form->getData()->getProfileBudget());
+                $entityManager->persist($existingProfile);
+                $entityManager->flush();
+
+                // Add an error message to the form
+                $form->addError(new FormError('You already have a profile of this type. The budget has been updated.'));
+                return $this->render('profile/profile.html.twig', [
+                    'controller_name' => 'ProfileController',
+                    'form' => $form->createView(),
+                ]);
+            }
+
+            $user->addProfile($profile);
             $entityManager->persist($profile);
             $entityManager->flush();
+
             $formData = $form->getData();
-
-
-
-            $profileType = $formData->getProfileType();
+            $profileId = $formData->getId();
 
             switch ($profileType) {
                 case 'Student':
