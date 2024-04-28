@@ -7,6 +7,9 @@
     {{ parent() }}
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
     <style>
+        .sidebar ul li:last-child {
+            margin-bottom: -100px; /* Réduire l'espace entre le lien Delete My Account et le dropdown menu */
+        }
         .btn-custom, .btn btn-primary {
             background-color: #FF698D;
             border-color: #FF698D;

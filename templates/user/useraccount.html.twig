@@ -4,7 +4,9 @@
 {% block stylesheets %}
     {{ parent() }}
     <style>
-        /* Styles pour la barre latérale */
+        .sidebar ul li:last-child {
+            margin-bottom: -100px; /* Réduire l'espace entre le lien Delete My Account et le dropdown menu */
+        }
         .sidebar {
             position: fixed;
             top: 0;

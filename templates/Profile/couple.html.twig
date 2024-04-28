@@ -16,6 +16,9 @@
             border-color: #FF5C7D;
             color: white;
         }
+        .sidebar ul li:last-child {
+            margin-bottom: -100px; /* Réduire l'espace entre le lien Delete My Account et le dropdown menu */
+        }
         body {
             align-items: center;
             background-color: #e4e4e4;
@@ -103,13 +106,8 @@
                 </div>
                 <div class="sidebar-sticky"></div>
                 <ul class="nav flex-column">
-                    <li class="nav-item">
-                        <a class="nav-link" href="{{ path('budget_useraccount') }}"><i class="fa-regular fa-user"></i> My User Account</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="{{ path('budget_show_profile') }}"><i class="fa fa-chart-line"></i> My Profile </a>
-                    </li>
-
+                    <li class="nav-item"><a class="nav-link" href="{{ path('budget_useraccount') }}"><i class="fa-regular fa-user"></i> My User Account</a></li>
+                    <li class="nav-item"><a class="nav-link" href="{{ path('budget_show_profile') }}"><i class="fa fa-chart-line"></i> My Profile </a></li>
                     <li><a class="nav-link" href="{{ path('budget_show_categories') }}"><i class="fa fa-receipt"></i> My Expenses Category</a></li>
                     <li><a class="nav-link" href="{{ path('budget_show_expenses') }}"><i class="fa fa-chart-pie"></i> My Expenses</a></li>
                     <li><a href="#"><i class="fa fa-chart-area"></i> My Review</a></li>
