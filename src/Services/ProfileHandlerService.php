@@ -15,7 +15,7 @@ use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 
 class ProfileHandlerService extends AbstractController
 {
-    private EntityManagerInterface $entityManager;
+    /* private EntityManagerInterface $entityManager;
     private ProfileRepository $profileRepository;
 
     public function __construct(EntityManagerInterface $entityManager, ProfileRepository $profileRepository)
@@ -234,6 +234,6 @@ public function createInvestorProfile(int $id, Request $request, EntityManagerIn
 
         $this->addFlash('error', 'Aucun profil couple trouvé ou profil non couple.');
         return $this->redirectToRoute('some_other_route');
-    }
+    } */
 
 }

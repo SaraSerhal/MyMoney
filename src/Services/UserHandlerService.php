@@ -18,7 +18,7 @@ use function PHPUnit\Framework\returnArgument;
 use Symfony\Component\Form\FormTypeInterface;
 class UserHandlerService extends AbstractController
 {
-    private EntityManagerInterface $entityManager;
+    /* private EntityManagerInterface $entityManager;
     private TokenStorageInterface $tokenStorage;
 
     public function __construct(EntityManagerInterface $entityManager, TokenStorageInterface $tokenStorage)
@@ -68,7 +68,7 @@ class UserHandlerService extends AbstractController
         }
 
         return $this->redirectToRoute('home');
-    }
+    } */
 
 
 

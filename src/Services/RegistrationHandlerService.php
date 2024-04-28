@@ -11,7 +11,7 @@ use Symfony\Component\PasswordHasher\Hasher\UserPasswordHasherInterface;
 
 class RegistrationHandlerService extends AbstractController
 {
-    private EntityManagerInterface $entityManager;
+   /* private EntityManagerInterface $entityManager;
     private UserPasswordHasherInterface $passwordHasher;
 
     public function __construct(EntityManagerInterface $entityManager, UserPasswordHasherInterface $passwordHasher)
@@ -44,5 +44,5 @@ class RegistrationHandlerService extends AbstractController
         return $this->render('registration/register.html.twig', [
             'registrationForm' => $form->createView(),
         ]);
-    }
+    } */
 }
