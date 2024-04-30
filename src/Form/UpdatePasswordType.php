@@ -18,6 +18,14 @@ class UpdatePasswordType extends AbstractType
     public function buildForm(FormBuilderInterface $builder, array $options): void
     {
         $builder
+            ->add('oldPassword', PasswordType::class, [
+                'mapped' => false,
+                'constraints' => [
+                    new NotBlank([
+                        'message' => 'Please enter your current password',
+                    ]),
+                ],
+            ])
             ->add('plainPassword', RepeatedType::class, [
                 'type' => PasswordType::class,
                 'invalid_message' => 'passwords need to be the same',

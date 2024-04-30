@@ -5,6 +5,7 @@ namespace App\Controller;
 use App\Form\UpdatePasswordType;
 use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
+use Symfony\Component\Form\FormError;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 use Symfony\Component\Security\Http\Authentication\AuthenticationUtils;
@@ -44,13 +45,23 @@ class SecurityController extends AbstractController
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {
+            if ($form->get('plainPassword')->getData() === $form->get('oldPassword')->getData()) {
+                $form->get('plainPassword')->addError(new FormError('Your new password cannot be the same as your current password.'));
+                return $this->render('security/updatePassword.html.twig', [
+                    'form' => $form->createView()
+                ]);
+            }
+            if (!$userPasswordHasher->isPasswordValid($user, $form->get('oldPassword')->getData())) {
+                $form->get('oldPassword')->addError(new FormError('The password you entered is incorrect.'));
+                return $this->render('security/updatePassword.html.twig', [
+                    'form' => $form->createView()
+                ]);
+            }
             $user->setPassword($userPasswordHasher->hashPassword($user, $form->get('plainPassword')->getData()));
 
             $entityManager->flush();
 
             $this->addFlash('success', 'Your password has been updated.');
-
-            return $this->redirectToRoute('home');
         }
 
         return $this->render('security/updatePassword.html.twig', [
