@@ -10,7 +10,7 @@ use App\Services\AdviceService;
 
 class AdviceController extends AbstractController
 {
-    private $adviceService;
+    private AdviceService $adviceService;
 
     public function __construct(AdviceService $adviceService)
     {
