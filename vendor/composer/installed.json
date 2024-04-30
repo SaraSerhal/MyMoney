@@ -93,7 +93,7 @@
                     "dev-master": "1.x-dev"
                 }
             },
-            "installation-source": "source",
+            "installation-source": "dist",
             "autoload": {
                 "psr-4": {
                     "Behat\\Transliterator\\": "src/Behat/Transliterator"
@@ -1699,7 +1699,7 @@
                     "dev-main": "3.13-dev"
                 }
             },
-            "installation-source": "source",
+            "installation-source": "dist",
             "autoload": {
                 "psr-4": {
                     "Gedmo\\": "src/"
@@ -4229,7 +4229,7 @@
                     "dev-main": "1.x-dev"
                 }
             },
-            "installation-source": "source",
+            "installation-source": "dist",
             "autoload": {
                 "psr-4": {
                     "Stof\\DoctrineExtensionsBundle\\": "src"

@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Advice</title>
+    <link rel="stylesheet" href="{{ asset('css/advice.css') }}">
+</head>
+<body>
+<h1>Our Advices for you</h1>
+{% for profileType, advices in adviceLinks %}
+    <h2>{{ profileType }}</h2>
+    {% if advices is not empty %}
+        <div class="advice-container">
+            {% for advice in advices %}
+                <div class="advice-card">
+                    <a href="{{ advice.url }}">
+                        <img src="{{ advice.image }}" alt="{{ advice.url | escape('html_attr') }}" class="advice-logo">
+                        <div>{{ advice.url }}</div>
+                    </a>
+                </div>
+            {% endfor %}
+        </div>
+    {% else %}
+        <p class="no-advice">No advice available for {{ profileType }} profile type. Please update your preferences or check back later.</p>
+    {% endif %}
+{% endfor %}
+
+<script src="{{ asset('js/advice.js') }}"></script>
+</body>
+</html>

@@ -1,0 +1,50 @@
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background-color: #f4f4f9;
+    margin: 0;
+    padding: 0;
+}
+
+h1 {
+    text-align: center;
+    color: #333;
+}
+
+.advice-container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 20px;
+    padding: 20px;
+}
+
+.advice-card {
+    background-color: #ffffff;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+    overflow: hidden;
+    width: 240px;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.advice-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 6px 12px rgba(0,0,0,0.15);
+}
+
+.advice-card a {
+    color: #007bff;
+    text-decoration: none;
+    padding: 15px;
+    display: block;
+}
+
+.advice-card img {
+    width: 100%;
+    display: block;
+}
+
+.no-advice {
+    text-align: center;
+    padding: 20px;
+}
