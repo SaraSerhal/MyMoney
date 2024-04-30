@@ -5,7 +5,7 @@ namespace App\Controller;
 use App\Entity\User;
 use App\Form\RegistrationFormType;
 use App\Repository\UserRepository;
-use App\Services\RegistrationHandlerService;
+use App\Services\RegistrationService;
 use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\Form\FormError;
@@ -20,14 +20,15 @@ class RegistrationController extends AbstractController
     private UserRepository $userRepository;
     private EntityManagerInterface $entityManager;
     private UserPasswordHasherInterface $userPasswordHasher;
+    private RegistrationService $registrationService;
 
-    public function __construct(UserRepository $userRepository, EntityManagerInterface $entityManager, UserPasswordHasherInterface $userPasswordHasher)
+    public function __construct(UserRepository $userRepository, EntityManagerInterface $entityManager, UserPasswordHasherInterface $userPasswordHasher, RegistrationService $registrationService)
     {
         $this->userRepository = $userRepository;
         $this->entityManager = $entityManager;
         $this->userPasswordHasher = $userPasswordHasher;
+        $this->registrationService = $registrationService;
     }
-
 
     #[Route('/register', name: 'app_register')]
     public function register(Request $request,ValidatorInterface $validator): Response
@@ -37,24 +38,11 @@ class RegistrationController extends AbstractController
 
         if ($form->isSubmitted() && $form->isValid()) {
             $user = $form->getData();
-            $errors = $validator->validate($user);
-
-            if (count($errors) > 0) {
-                // Traitement des erreurs de validation
-                $errorsString = (string) $errors;
-                return new Response($errorsString, 400);
-            }
-
+            $errors = $this->registrationService->validateForm($form, $validator);
             $unactiveUser= $this->userRepository->findUnactiveUserByEmailValid($user->getEmailValid());
             if ($unactiveUser){
-                $unactiveUser->setDeletedAt(null);
-                $unactiveUser->setLastName($user->getLastName());
-                $unactiveUser->setName($user->getName());
-                $unactiveUser->setAge($user->getAge());
-                $unactiveUser->setPassword($this->userPasswordHasher->hashPassword($unactiveUser, $form->get('plainPassword')->getData()));
-                $unactiveUser->setEmailValid($user->getEmailValid());
-                $this->entityManager->flush();
-            return $this->redirectToRoute('app_login');
+                $this->registrationService->updateInactiveUser($unactiveUser, $form->get('lastName')->getData(), $form->get('name')->getData(), $form->get('age')->getData(), $form->get('plainPassword')->getData(), $form->get('email')->getData(), $this->userPasswordHasher, $this->entityManager);
+                return $this->redirectToRoute('app_login');
             }
             if ($this->userRepository->findByEmailValid($form->get('email')->getData())) {
                 return $this->render('registration/register.html.twig', [
@@ -62,19 +50,9 @@ class RegistrationController extends AbstractController
                     'error' => 'Email already exists'
                 ]);
             }
-
-            $user->setEmailValid($form->get('email')->getData());
-            $user->setEmail($form->get('email')->getData());
-            $user->setLastName($form->get('lastName')->getData());
-            $user->setName($form->get('name')->getData());
-            $user->setAge($form->get('age')->getData());
-            $user->setPassword($this->userPasswordHasher->hashPassword($user, $form->get('plainPassword')->getData()));
-            $this->entityManager->persist($user);
-            $this->entityManager->flush();
+            $this->registrationService->createUser($form->get('email')->getData(), $form->get('lastName')->getData(), $form->get('name')->getData(), $form->get('age')->getData(), $form->get('plainPassword')->getData(), $this->userPasswordHasher, $this->entityManager);
             return $this->redirectToRoute('app_login');
-
         }
-
         return $this->render('registration/register.html.twig', [
             'registrationForm' => $form->createView(),
         ]);

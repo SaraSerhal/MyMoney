@@ -29,6 +29,7 @@ class UserService
         $session->invalidate();
         $tokenStorage->setToken(null);
     }
+
 }
 
 
