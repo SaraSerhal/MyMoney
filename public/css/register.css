@@ -1,0 +1,40 @@
+
+    /* Votre CSS personnalisé */
+    /* Par exemple */
+body {
+    background-color: #e4e4e4;
+}
+.pink-link{
+    color: #FF698D;
+}
+.btn-custom {
+    background-color: transparent;
+    color: #FF698D;
+    border-color: #FF698D;
+}
+
+.btn-custom:hover {
+    background-color: #FF698D;
+    border-color: #FF698D;
+    color: white;
+}
+.btn {
+    background-color: #FF698D;
+    border: none;
+    color: white;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    margin: 4px 2px;
+    cursor: pointer;
+}
+
+.custom-form {
+    margin-left: 90px;
+    margin-right: 90px;
+}
+
+.custom-form {
+    margin-left: 375px;
+    margin-right: 375px;
+}

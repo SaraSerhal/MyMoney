@@ -1,0 +1,137 @@
+
+.sidebar {
+    position: fixed;
+    top: 0;
+    bottom: 0;
+    left: -250px; /* barre latérale initialement cachée */
+    z-index: 100;
+    padding: 48px 0; /* Ajustez au besoin */
+    overflow-x: hidden;
+    overflow-y: auto; /* Afficher la barre de défilement si nécessaire */
+    background-color: black; /* Couleur de fond */
+    border-right: 1px solid #FF698D; /* Bordure droite */
+    transition: left 0.3s; /* Transition fluide */
+}
+
+.sidebar.active {
+    left: 0; /* Barre latérale visible */
+}
+
+.sidebar-heading {
+    text-align: center;
+    padding: 10px 15px;
+}
+
+.sidebar ul {
+    flex-direction: column;
+    padding-left: 0;
+    margin-bottom: 0;
+    list-style: none;
+}
+
+.sidebar ul li {
+    margin: -5px;
+    padding: 7px;
+}
+
+.sidebar ul li a {
+    display: flex;
+    align-items: center; /* Aligner l'icône et le texte verticalement */
+    padding: .3rem 2rem;
+    color: #ffffff;
+    text-decoration: none;
+}
+
+.sidebar ul li a:hover {
+    background-color: #FF698D; /* Surligner au survol */
+}
+
+/* Style du bouton */
+.sidebar-toggle {
+    position: fixed;
+    left: 10px;
+    top: 10px;
+    background-color: #FF698D;
+    color: white;
+    border: none;
+    border-radius: 50%;
+    padding: 15px;
+    cursor: pointer;
+}
+
+.sidebar-toggle:focus {
+    outline: none;
+}
+
+/* Icône */
+.sidebar ul li a i {
+    margin-right: 10px; /* Ajouter de l'espace entre l'icône et le texte */
+}
+
+/* Styles des boutons personnalisés */
+.btn-custom {
+    background-color: transparent;
+    color: #FF698D;
+    border-color: #FF698D;
+}
+
+.btn-custom:hover {
+    background-color: #FF698D;
+    border-color: #FF698D;
+    color: white;
+}
+
+/* Contenu principal */
+body {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: #e4e4e4;
+    margin: 0;
+    font-family: 'Montserrat', sans-serif;
+}
+
+/* Styles pour les images */
+.image-container img {
+    max-width: 100%;
+    height: auto;
+    transition: transform 0.3s ease;
+    border-radius: 10px;
+    margin: 0 10px;
+}
+
+.image-container img:hover {
+    transform: translateY(-20px);
+}
+
+/* Lien rose */
+.pink-link {
+    color: #FF698D;
+}
+
+/* Séparateur */
+.b-example-divider {
+    flex-shrink: 0;
+    width: 2px;
+    background-color: rgba(0, 0, 0, .1);
+}
+
+/* Dropdown */
+.btn-secondary.dropdown-toggle {
+    background-color: #FF698D;
+    border-color: #FF698D;
+    margin-left: 10px;
+}
+
+
+.table-bordered td,
+.table-bordered th {
+    border: none
+}
+.btn btn-danger:hover {
+    background-color: #FF698D;
+    border-color: #FF698D;
+}
+.sidebar ul li:last-child {
+    margin-bottom: -100px; /* Réduire l'espace entre le lien Delete My Account et le dropdown menu */
+}
