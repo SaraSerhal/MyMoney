@@ -37,17 +37,15 @@ class UserController extends AbstractController
     #[Route('/useraccount/deleteUser', name: 'budget_delete_user')]
     public function deleteUserAndProfiles(Request $request, TokenStorageInterface $tokenStorage, EntityManagerInterface $entityManager): Response
     {
+        $entityManager->getFilters()->enable('softdeleteable');
         $user = $this->getUser();
 
         if ($user) {
-
-            // Supprimer l'utilisateur lui-même
             $entityManager->remove($user);
             $entityManager->flush();
             $request->getSession()->invalidate();
             $tokenStorage->setToken(null);
 
-            // Rediriger vers la page d'accueil ou une autre page après la suppression du compte
             return $this->redirectToRoute('home');
         }
 

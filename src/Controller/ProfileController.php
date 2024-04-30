@@ -73,10 +73,6 @@ class ProfileController extends AbstractController{
                 default:
                     return $this->redirectToRoute('budget_accueil');
             }
-
-
-
-
         }
         return $this->render('profile/profile.html.twig', [
             'controller_name' => 'ProfileController',

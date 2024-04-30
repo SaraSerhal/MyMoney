@@ -64,4 +64,38 @@ class UserRepository extends ServiceEntityRepository implements PasswordUpgrader
 //            ->getOneOrNullResult()
 //        ;
 //    }
+
+    public function findByActive(): array
+    {
+        return $this->createQueryBuilder('u')
+            ->andWhere('u.deletedAt IS NULL')
+            ->orderBy('u.id', 'ASC')
+            ->getQuery()
+            ->getResult()
+            ;
+    }
+
+    public function findByEmail(string $email): ?User
+    {
+        return $this->createQueryBuilder('u')
+            ->andWhere('u.email = :email')
+            ->setParameter('email', $email)
+            ->getQuery()
+            ->getOneOrNullResult()
+            ;
+    }
+
+    public function findActiveUserByEmail($email)
+    {
+        $entityManager = $this->getEntityManager();
+        $queryBuilder = $entityManager->createQueryBuilder();
+
+        $queryBuilder->select('u')
+            ->from(User::class, 'u')
+            ->where('u.email = :email')
+            ->andWhere('u.deletedAt IS NULL') // Exclut les utilisateurs supprimés
+            ->setParameter('email', $email);
+
+        return $queryBuilder->getQuery()->getOneOrNullResult();
+    }
 }

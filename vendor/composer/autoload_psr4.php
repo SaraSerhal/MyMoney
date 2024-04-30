@@ -108,6 +108,7 @@ return array(
     'Doctrine\\Common\\' => array($vendorDir . '/doctrine/common/src', $vendorDir . '/doctrine/event-manager/src'),
     'Doctrine\\Bundle\\MigrationsBundle\\' => array($vendorDir . '/doctrine/doctrine-migrations-bundle'),
     'Doctrine\\Bundle\\DoctrineBundle\\' => array($vendorDir . '/doctrine/doctrine-bundle'),
+    'DoctrineExtensions\\' => array($vendorDir . '/beberlei/doctrineextensions/src'),
     'DeepCopy\\' => array($vendorDir . '/myclabs/deep-copy/src/DeepCopy'),
     'Composer\\Semver\\' => array($vendorDir . '/composer/semver/src'),
     'Behat\\Transliterator\\' => array($vendorDir . '/behat/transliterator/src/Behat/Transliterator'),
