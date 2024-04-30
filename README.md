@@ -21,6 +21,7 @@ git clone https://github.com/OdeliaCohen/Projet_Dev.git nomProjet
 cd Projet_Dev
 ```
 ou cd nomProjet si vous l'avez nommé différemment
+
 3) Installez les dépendances PHP en exécutant la commande suivante :
 ```bash
 composer install
