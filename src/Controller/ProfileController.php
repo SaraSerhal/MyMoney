@@ -49,12 +49,7 @@ class ProfileController extends AbstractController{
                 $entityManager->persist($existingProfile);
                 $entityManager->flush();
 
-                // Add an error message to the form
-                $form->addError(new FormError('You already have a profile of this type. The budget has been updated.'));
-                return $this->render('profile/profile.html.twig', [
-                    'controller_name' => 'ProfileController',
-                    'form' => $form->createView(),
-                ]);
+                return $this->redirectToRoute('budget_chart');
             }
 
             $user->addProfile($profile);
