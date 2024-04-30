@@ -48,7 +48,7 @@ Pour accéder à l'outil de gestion de sprints :
 https://trello.com/invite/b/p7t3LjJF/ATTIf65cd8117f6df0c9e642ebe7d68632053C011377/projetweb
 
 Pour accéder à l'export de la base de données (format .SQL): 
-[https://drive.google.com/drive/home?ths=](https://drive.google.com/file/d/1kKzRn5XCdPKgXbfre7jXYXHFcAhwmI0A/view?usp=sharing)
+[Muy Money BDD](https://drive.google.com/file/d/1kKzRn5XCdPKgXbfre7jXYXHFcAhwmI0A/view?usp=sharing)
 
 ## Technologies utilisées
 - Symfony: framework PHP pour le développement web suivant le MVC
