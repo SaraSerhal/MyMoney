@@ -1,6 +1,6 @@
 <?php
 
-declare(strict_types=1);
+/*declare(strict_types=1);
 
 namespace DoctrineMigrations;
 
@@ -9,7 +9,7 @@ use Doctrine\Migrations\AbstractMigration;
 
 /**
  * Auto-generated Migration: Please modify to your needs!
- */
+
 final class Version20240430135941 extends AbstractMigration
 {
     public function getDescription(): string
@@ -33,3 +33,4 @@ final class Version20240430135941 extends AbstractMigration
         $this->addSql('CREATE UNIQUE INDEX UNIQ_8D93D649E7927C74 ON user (email)');
     }
 }
+ */

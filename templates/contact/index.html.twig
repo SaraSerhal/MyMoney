@@ -1,38 +1,67 @@
-
 {% extends 'base.html.twig' %}
 
-{% block title %}Student Profile{% endblock %}
+{% block title %}Contact{% endblock %}
 
 {% block stylesheets %}
     {{ parent() }}
-    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
     <style>
+        .btn-custom {
+            background-color: transparent;
+            color: #FF698D;
+            border-color: #FF698D;
+        }
         .sidebar ul li:last-child {
             margin-bottom: -100px; /* Réduire l'espace entre le lien Delete My Account et le dropdown menu */
         }
-        .btn-custom, .btn btn-primary {
+        .sidebar ul li a {
+            padding: 10px 15px;
+            color: white;
+            text-decoration: none;
+        }
+
+        .btn-custom:hover {
             background-color: #FF698D;
             border-color: #FF698D;
             color: white;
         }
-        .btn-custom:hover {
-            background-color: #FF5C7D; /* Darker on hover */
-            border-color: #FF5C7D;
-            color: white;
-        }
+
         body {
             align-items: center;
             background-color: #e4e4e4;
             font-family: 'Montserrat', sans-serif;
         }
 
+        .custom-link {
+            color: #FF698D;
+        }
+
+        .custom-link:hover {
+            color: white;
+            background-color: #FF698D;
+            border-color: #FF698D;
+        }
+
+        /* Définir le style pour .btn.btn-primary */
+        .btn.btn-primary {
+            background-color: #FF698D;
+            border-color: #FF698D;
+            color: white;
+        }
+
+
+        /* Définir le style pour .btn.btn-primary:hover */
+        .btn.btn-primary:hover {
+            background-color: #FF5C7D; /* Couleur de survol légèrement plus sombre */
+            border-color: #FF5C7D; /* Couleur de bordure de survol légèrement plus sombre */
+            color: white;
+        }
         .sidebar {
             position: fixed;
             top: 0;
             bottom: 0;
             left: -250px; /* sidebar initially hidden */
             z-index: 100;
-            padding: 48px 0; /* Adjust as needed */
+            padding: 70px 0; /* Adjust as needed */
             overflow-x: hidden;
             overflow-y: auto; /* Show scrollbar if necessary */
             background-color: black; /* Background color */
@@ -57,8 +86,9 @@
         }
 
         .sidebar ul li {
-            margin: -5px;
-            padding: 7px;
+            margin: 0px;
+            padding: 2px;
+
         }
 
         .sidebar ul li a {
@@ -67,6 +97,7 @@
             padding: .3rem 2rem;
             color: #ffffff;
             text-decoration: none;
+
         }
 
         .sidebar ul li a:hover {
@@ -95,6 +126,7 @@
             margin-right: 10px; /* Add spacing between icon and text */
         }
     </style>
+
 {% endblock %}
 
 {% block body %}
@@ -107,8 +139,13 @@
                 </div>
                 <div class="sidebar-sticky"></div>
                 <ul class="nav flex-column">
-                    <li class="nav-item"><a class="nav-link" href="{{ path('budget_useraccount') }}"><i class="fa-regular fa-user"></i> My User Account</a></li>
-                    <li class="nav-item"><a class="nav-link" href="{{ path('budget_show_profile') }}"><i class="fa fa-chart-line"></i> My Profile </a></li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="{{ path('budget_useraccount') }}"><i class="fa-regular fa-user"></i> My User Account</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="{{ path('budget_show_profile') }}"><i class="fa fa-chart-line"></i> My Profile </a>
+                    </li>
+
                     <li><a class="nav-link" href="{{ path('budget_show_categories') }}"><i class="fa fa-receipt"></i> My Expenses Category</a></li>
                     <li><a class="nav-link" href="{{ path('budget_show_expenses') }}"><i class="fa fa-chart-pie"></i> My Expenses</a></li>
                     <li><a class="nav-link" href="{{ path('review') }}"><i class="fa fa-chart-area"></i> My Review</a></li>
@@ -133,7 +170,7 @@
                     <ul class="dropdown-menu" aria-labelledby="dropdownMenuLink">
                         {% if app.user %}
                             <li><a class="dropdown-item" href="{{ path('app_logout') }}" style="color: black">Logout</a></li>
-                            <div class="dropdown-divider"></div>
+                            <li class="dropdown-divider"></li>
                         {% else %}
                             <li><a class="dropdown-item" href="{{ path('app_register') }}">Register</a></li>
                         {% endif %}
@@ -144,7 +181,6 @@
             <!-- Main Content -->
             <main class="col">
                 <header class="d-flex flex-wrap align-items-center justify-content-between py-3 mb-4 border-bottom">
-
                     <div class="b-example-divider"></div>
                     <div class="col-md-3 mb-2 mb-md-0">
                         <a href="/" class="d-inline-flex link-body-emphasis text-decoration-none">
@@ -154,59 +190,48 @@
 
                     <ul class="nav col-12 col-md-auto mb-2 justify-content-center mb-md-0" style="margin-right: 70px">
                         <li><a href="{{ path ('home') }}" class="nav-link px-2 link-secondary pink-link">Home</a></li>
-                        <li><a href="{{ path('contact') }}" class="nav-link px-2 pink-link custom-link">Contact</a></li>
+                        <li><a href="{{ path('contact') }}" class="nav-link px-2 pink-link">Contact</a></li>
                         <li><a href="#" class="nav-link px-2 pink-link">FAQs</a></li>
                         <li><a href="#" class="nav-link px-2 pink-link" style="margin-right: 10px;">About</a></li>
                     </ul>
-
 
                     <div class="col-md-3 text-end">
                         <a href="{{ path('app_login') }}" class="btn btn-outline-primary me-2 btn-custom">Login</a>
                         <a href="{{ path('app_register') }}" class="btn btn-primary btn-custom">Sign-up</a>
                     </div>
-
-
                 </header>
-            </main>
-        </div>
-        <div class="container mt-5">
-            <div class="row">
-                <div class="col-md-8 offset-md-2"> <!-- Centrage par une colonne de 8 avec un offset de 2 de chaque côté -->
-                    <div class="card">
-                        <div class="card-body">
-                            <h2 class="card-title text-center mb-4">{{ 'welcome_student'|trans }}</h2>
-                            {% if profile is defined %}
-                                <p class="lead text-center mb-4">{{ 'current_budget'|trans({'budgett': profileBudget}) }}</p>
-                            {% else %}
-                                <p class="lead text-center mb-4">{{ 'no_profile_found'|trans }}</p>
-                            {% endif %}
-                            <hr>
-                            <h4 class="card-title text-center mt-4 mb-3">{{ 'add_budget_categories'|trans }}</h4>
+
+                <div class="container">
+                    <div class="row">
+                        <div class="col-md-6 offset-md-3">
+                            <h1>Contactez-nous</h1>
                             {{ form_start(form) }}
-                            {% for categoryNameForm in form.categoryNames %}
-                                <div class="mb-4">
-                                    {{ form_row(categoryNameForm, {'attr': {'class': 'form-control'}}) }}
-                                </div>
-                            {% endfor %}
-                            <div class="text-center">
-                                <button type="submit" class="btn btn-custom">{{ 'submit_button'|trans }}</button>
+                            <div class="mb-3">
+                                {{ form_row(form.name) }}
                             </div>
+                            <div class="mb-3">
+                                {{ form_row(form.email) }}
+                            </div>
+                            <div class="mb-3">
+                                {{ form_row(form.subject) }}
+                            </div>
+                            <div class="mb-3">
+                                {{ form_row(form.message) }}
+                            </div>
+
                             {{ form_end(form) }}
                         </div>
                     </div>
                 </div>
-            </div>
+
+            </main>
         </div>
-
-
-        </main>
-        <!-- Sidebar toggle button -->
-        <button class="sidebar-toggle" onclick="toggleSidebar()">
-            <i class="fas fa-bars"></i>
-        </button>
     </div>
 
-    </div>
+    <!-- Sidebar toggle button -->
+    <button class="sidebar-toggle" onclick="toggleSidebar()">
+        <i class="fas fa-bars"></i>
+    </button>
 
     <script>
         document.addEventListener("DOMContentLoaded", function() {
@@ -241,4 +266,3 @@
         });
     </script>
 {% endblock %}
-

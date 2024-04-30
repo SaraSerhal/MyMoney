@@ -19,3 +19,15 @@ index:
         _locale: 'en|fr'
     defaults:
         _locale: 'en'
+
+# config/routes.yaml
+contact:
+    path: /contact
+    controller: App\Controller\ContactController::contact
+    methods: ['GET', 'POST']
+
+# config/routes.yaml
+
+confirmation:
+    path: /confirmation
+    controller: App\Controller\ContactController::confirmation

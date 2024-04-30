@@ -138,6 +138,9 @@
             background-color: #FF698D;
             border-color: #FF698D;
         }
+        .sidebar ul li:last-child {
+            margin-bottom: -100px; /* Réduire l'espace entre le lien Delete My Account et le dropdown menu */
+        }
 
     </style>
 {% endblock %}
@@ -151,16 +154,12 @@
         </div>
         <div class="sidebar-sticky"></div>
         <ul class="nav flex-column">
-            <li class="nav-item">
-                <a class="nav-link" href="{{ path('budget_useraccount') }}"><i class="fa-regular fa-user"></i> My User Account</a>
-            </li>
-            <li class="nav-item">
-                <a class="nav-link" href="{{ path('budget_show_profile') }}"><i class="fa fa-chart-line"></i> My Profile </a>
-            </li>
-
-            <li><a href="#"><i class="fa fa-receipt"></i> My Expenses Category</a></li>
-            <li><a href="#"><i class="fa fa-chart-pie"></i> My Expenses</a></li>
-            <li><a href="#"><i class="fa fa-chart-area"></i> My Review</a></li>
+            <li class="nav-item"><a class="nav-link" href="{{ path('budget_useraccount') }}"><i class="fa-regular fa-user"></i> My User Account</a></li>
+            <li class="nav-item"><a class="nav-link" href="{{ path('budget_show_profile') }}"><i class="fa fa-chart-line"></i> My Profile </a></li>
+            <li><a class="nav-link" href="{{ path('budget_show_categories') }}"><i class="fa fa-receipt"></i> My Expenses Category</a></li>
+            <li><a class="nav-link" href="{{ path('budget_show_expenses') }}"><i class="fa fa-chart-pie"></i> My Expenses</a></li>
+            <li><a class="nav-link" href="{{ path('review') }}"><i class="fa fa-chart-area"></i> My Review</a></li>
+            <li><a class="nav-link" href="{{ path('budget_chart') }}"><i class="fa fa-chart-bar"></i> My Chart</a></li>
         </ul>
 
         <!-- Séparateur -->
@@ -198,7 +197,7 @@
 
             <ul class="nav col-12 col-md-auto mb-2 justify-content-center mb-md-0" style="margin-right: 70px">
                 <li><a href="{{ path ('home') }}" class="nav-link px-2 link-secondary pink-link">Home</a></li>
-                <li><a href="#" class="nav-link px-2 pink-link">Contact</a></li>
+                <li><a href="{{ path('contact') }}" class="nav-link px-2 pink-link custom-link">Contact</a></li>
                 <li><a href="#" class="nav-link px-2 pink-link">FAQs</a></li>
                 <li><a href="#" class="nav-link px-2 pink-link" style="margin-right: 10px;">About</a></li>
             </ul>
