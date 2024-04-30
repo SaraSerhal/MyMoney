@@ -70,23 +70,22 @@
         </div>
     </header>
 
-    <h1 class="text-center" style="margin-top: -20px">Create an account</h1>
+    <h1 class="text-center" style="margin-top: -20px">{{ 'create_account'|trans }}</h1>
 
     <div class="custom-form">
         <form method="post">
-            {{ form_start(registrationForm) }}
-            {{ form_row(registrationForm.name, {'attr': {'class': 'form-control'}}) }}
-            {{ form_row(registrationForm.lastName, {'attr': {'class': 'form-control'}}) }}
-            {{ form_row(registrationForm.age, {'attr': {'class': 'form-control', 'min': 0}}) }}
-            {{ form_row(registrationForm.email, {'attr': {'class': 'form-control'}}) }}
-            {% if error is defined %}
-                <div class="alert alert-danger">{{ error }}</div>
-            {% endif %}
-            {{ form_row(registrationForm.plainPassword, {'attr': {'class': 'form-control', 'placeholder': '·······'}, 'label': 'Password'}) }}
-            {{ form_row(registrationForm.AgreeTerms) }}
+            {{ form_row(registrationForm.name, {'attr': {'class': 'form-control'}, 'label': 'name'|trans}) }}
+            {{ form_row(registrationForm.lastName, {'attr': {'class': 'form-control'}, 'label': 'last_name'|trans}) }}
+            {{ form_row(registrationForm.age, {'attr': {'class': 'form-control'}, 'label': 'age'|trans}) }}
+            {{ form_row(registrationForm.email, {'attr': {'class': 'form-control'}, 'label': 'email'|trans}) }}
+            {{ form_row(registrationForm.plainPassword, {
+                'attr': {'class': 'form-control', 'placeholder': 'password'|trans},
+                'label': 'repeat_password'|trans
+            }) }}
+            {{ form_row(registrationForm.AgreeTerms, {'label': 'agree_terms'|trans}) }}
             {{ form_row(registrationForm._token) }}
-            <button type="submit" class="btn">Register</button>
-            {{ form_end(registrationForm) }}
+
+            <button type="submit" class="btn">{{ 'register_button'|trans }}</button>
         </form>
     </div>
 {% endblock %}

@@ -198,12 +198,13 @@
             </header>
 
 
-            <h1 style="text-align: center;">Visualisation des dépenses</h1>
+            <h1 style="text-align: center;">{{ 'spending_visualization'|trans }}</h1>
 
-            <!-- Affichage du budget du profil -->
+            <!-- Display of the profile's budget -->
             <div style="text-align: center;">
-                <h2 id="profileBudget">Budget du profil: {{ profileBudget }}</h2>
+                <h2 id="profileBudget">{{ 'profile_budget'|trans({'budgett': profileBudget}) }}</h2>
             </div>
+
             <br >
             <!-- Sidebar toggle button -->
             <button class="sidebar-toggle" onclick="toggleSidebar()">
@@ -299,24 +300,26 @@
 
             </script>
 
+
             <br><br>
-            <h2 style="text-align: center;">Mettre à jour le budget</h2>
+            <h2 style="text-align: center;">{{ 'update_budget_title'|trans }}</h2>
             {{ form_start(form) }}
             <div class="mb-3">
-                {{ form_row(form.dailyBudget, {'label': 'Nouveau budget par jour:', 'attr': {'class': 'form-control', 'placeholder': 'Entrez le nouveau budget par jour'}}) }}
+                {{ form_row(form.dailyBudget, {'label': 'new_daily_budget_label'|trans, 'attr': {'class': 'form-control', 'placeholder': 'new_daily_budget_placeholder'|trans}}) }}
             </div>
             <div class="mb-3">
-                {{ form_row(form.categoryDailyBudget, {'label': 'Nouveau budget par catégorie:', 'attr': {'class': 'form-control', 'placeholder': 'Entrez le nouveau budget par catégorie'}}) }}
+                {{ form_row(form.categoryDailyBudget, {'label': 'new_category_budget_label'|trans, 'attr': {'class': 'form-control', 'placeholder': 'new_category_budget_placeholder'|trans}}) }}
             </div>
             <div class="text-center">
-                <button type="submit" class="btn btn-custom">Mettre à jour le budget</button>
+                <button type="submit" class="btn btn-custom">{{ 'update_budget_button'|trans }}</button>
             </div>
             {{ form_end(form) }}
             <br>
             <div class="button-container" style="text-align: center">
-                <p>Do you want to see a review of your expenses? Click here:</p>
-                <a href="{{ path('review') }}" class="review-button" type="submit">See my review</a>
+                <p>{{ 'review_expenses_prompt'|trans }}</p>
+                <a href="{{ path('review') }}" class="review-button" type="submit">{{ 'review_button'|trans }}</a>
             </div>
+
 
 
             {% endblock %}

@@ -198,7 +198,7 @@
                 <div class="container">
                     <div class="row">
                         <div class="col-md-12 text-center my-5">
-                            <h1 class="display-4">Welcome {{ app.user.name }}!</h1>
+                            <h1 class="display-4">{{ 'welcome_user'|trans({'name': app.user.name}) }}</h1>
                         </div>
                     </div>
                     <div class="row justify-content-center">
@@ -206,13 +206,13 @@
                             <div class="intro text-center p-4" style="background-color: #f8f9fa; border: 2px solid #dee2e6; border-radius: 10px; margin-left: -60px; margin-right: -60px">
                                 <p class="lead">You have 5 different profiles:</p>
                                 <ul class="list-unstyled" style="text-align: left">
-                                    <li><strong>If you are a student:</strong> Select this profile if you need help managing your budget.</li>
-                                    <li><strong>If you are a traveler:</strong> Select this profile if you need guidance on budget management.</li>
-                                    <li><strong>If you are an investor:</strong> Select this profile if you are unsure where to allocate your budget.</li>
-                                    <li><strong>If you are a parent:</strong> Select this profile if you need assistance with budgeting.</li>
-                                    <li><strong>If you are a couple:</strong> Select this profile if you need guidance on budget management.</li>
+                                    <li><strong>{{ 'student'|trans }}</strong> {{ 'profile'|trans }}</li>
+                                    <li><strong>{{ 'traveler'|trans }}</strong>{{ 'profile'|trans }} </li>
+                                    <li><strong>{{ 'investor'|trans }}</strong> {{ 'profile'|trans }}</li>
+                                    <li><strong>{{ 'couple'|trans }}</strong> {{ 'profile'|trans }}</li>
+                                    <li><strong>{{ 'parent'|trans }}</strong> {{ 'profile'|trans }}</li>
                                 </ul>
-                                <p>Select the profile that best fits your situation to get assistance.</p>
+                                <p>{{ 'select_profile'|trans }}</p>
                             </div>
                         </div>
                     </div>
@@ -225,11 +225,11 @@
                 {{ form_row(form.profileBudget, {
                     'attr': {
                         'class': 'form-control',
-                        'placeholder': 'Enter your budget in €...',
+                        'placeholder': 'enter_budget'|trans,
 
                     }
                 }) }}
-                <button type="submit" class="btn btn-primary register">Register</button>
+                <button type="submit" class="btn btn-primary register">{{ 'register_button'|trans }}</button>
                 {{ form_end(form) }}
 
             </main>

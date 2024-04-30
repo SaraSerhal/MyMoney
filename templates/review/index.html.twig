@@ -186,13 +186,15 @@
             <div class="col-md-12">
                 <div class="card">
                     <div class="card-header">
-                        <h4 style="text-align: center">My Review</h4>
-                    </div>
-                    <div class="card-body">
-                        <div class="row">
-                            <div class="col-md-12">
-                                <a href="{{ path('budget_useraccount') }}" class="btn btn-primary">Back to Budget</a>
+                        <h4 style="text-align: center">{{ 'review_title'|trans }}</h4>
+
+                        <div class="card-body">
+                            <div class="row">
+                                <div class="col-md-12">
+                                    <a href="{{ path('budget_useraccount') }}" class="btn btn-primary">{{ 'back_to_budget'|trans }}</a>
+                                </div>
                             </div>
+                            <br>
                         </div>
                         <br>
                         <div class="row">
@@ -307,9 +309,10 @@
 
 
     </script>
-
+    <br>
     <div class="col-md-12 text-center">
-        <a href="{{ path('advice') }}" class="btn btn-primary">Our advices for you</a>
+        <a href="{{ path('advice') }}" class="btn btn-primary">{{ 'advice'|trans }}</a>
     </div>
+
 
 {% endblock %}

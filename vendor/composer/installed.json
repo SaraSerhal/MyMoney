@@ -9451,17 +9451,17 @@
         },
         {
             "name": "symfony/translation",
-            "version": "v7.0.2",
-            "version_normalized": "7.0.2.0",
+            "version": "v7.0.7",
+            "version_normalized": "7.0.7.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/symfony/translation.git",
-                "reference": "a7566ad85f4328c4a8cdaf441fcfab18ece995e1"
+                "reference": "1515e03afaa93e6419aba5d5c9d209159317100b"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/symfony/translation/zipball/a7566ad85f4328c4a8cdaf441fcfab18ece995e1",
-                "reference": "a7566ad85f4328c4a8cdaf441fcfab18ece995e1",
+                "url": "https://api.github.com/repos/symfony/translation/zipball/1515e03afaa93e6419aba5d5c9d209159317100b",
+                "reference": "1515e03afaa93e6419aba5d5c9d209159317100b",
                 "shasum": ""
             },
             "require": {
@@ -9483,7 +9483,7 @@
                 "symfony/translation-implementation": "2.3|3.0"
             },
             "require-dev": {
-                "nikic/php-parser": "^4.13",
+                "nikic/php-parser": "^4.18|^5.0",
                 "psr/log": "^1|^2|^3",
                 "symfony/config": "^6.4|^7.0",
                 "symfony/console": "^6.4|^7.0",
@@ -9497,7 +9497,7 @@
                 "symfony/service-contracts": "^2.5|^3",
                 "symfony/yaml": "^6.4|^7.0"
             },
-            "time": "2023-12-19T11:23:03+00:00",
+            "time": "2024-04-18T09:29:19+00:00",
             "type": "library",
             "installation-source": "dist",
             "autoload": {
@@ -9528,7 +9528,7 @@
             "description": "Provides tools to internationalize your application",
             "homepage": "https://symfony.com",
             "support": {
-                "source": "https://github.com/symfony/translation/tree/v7.0.2"
+                "source": "https://github.com/symfony/translation/tree/v7.0.7"
             },
             "funding": [
                 {

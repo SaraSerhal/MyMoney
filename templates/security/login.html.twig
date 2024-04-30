@@ -131,24 +131,26 @@
                 {% endif %}
 
                 <div class="container" style="margin-top: -30px; margin-bottom: 20px;">
-                    <h1 class="text-center">Welcome Back</h1>
-                    <p class="text-center">Discover new ways to manage your budget and reach your financial goals with ease</p>
+                    <h1 class="text-center">     {{ 'welcome'|trans }}</h1>
+                    <p class="text-center">{{ 'budget_management'|trans }}</p>
+
                 </div>
 
-                <label for="inputEmail">Email</label>
+                <label for="inputEmail">{{ 'email_label'|trans }}</label>
                 <input type="email" value="{{ last_username }}" name="email" id="inputEmail" class="form-control" autocomplete="email" required autofocus>
-                <label for="inputPassword" style="margin-top: 20px">Password</label>
+
+                <label for="inputPassword" style="margin-top: 20px">{{ 'password_label'|trans }}</label>
                 <input type="password" name="password" id="inputPassword" class="form-control" autocomplete="current-password" required>
 
                 <input type="hidden" name="_csrf_token" value="{{ csrf_token('authenticate') }}">
-                <button class="btn btn-outline-primary me-2 btn-custom" style="padding-left: 154px; padding-right: 154px; margin-top: 30px">Login</button>
+                <button class="btn btn-outline-primary me-2 btn-custom" style="padding-left: 154px; padding-right: 154px; margin-top: 30px">{{ 'login_button'|trans }}</button>
 
                 <div class="divider">
-                    <span style="color: #999DA3">or</span>
+                    <span style="color: #999DA3">{{ 'or'|trans }}</span>
                 </div>
 
                 <div style="text-align: center; margin-top: 30px">
-                    <a href="{{ path('app_register') }}" class="pink-underline">Create an account</a>
+                    <a href="{{ path('app_register') }}" class="pink-underline">{{ 'create_account'|trans }}</a>
                 </div>
 
 

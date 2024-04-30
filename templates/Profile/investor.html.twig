@@ -178,14 +178,14 @@
                 <div class="col-md-8 offset-md-2"> <!-- Centrage par une colonne de 8 avec un offset de 2 de chaque côté -->
                     <div class="card">
                         <div class="card-body">
-                            <h2 class="card-title text-center mb-4">Welcome, Investor!</h2>
+                            <h2 class="card-title text-center mb-4">{{ 'welcome_investor'|trans }}</h2>
                             {% if profile is defined %}
-                                <p class="lead text-center mb-4">Your current budget is: {{ profileBudget }}€</p>
+                                <p class="lead text-center mb-4">{{ 'current_budget'|trans({'budgett': profileBudget}) }}</p>
                             {% else %}
-                                <p class="lead text-center mb-4">No traveler profile found.</p>
+                                <p class="lead text-center mb-4">{{ 'no_profile_found'|trans }}</p>
                             {% endif %}
                             <hr>
-                            <h4 class="card-title text-center mt-4 mb-3">Add Budget Categories</h4>
+                            <h4 class="card-title text-center mt-4 mb-3">{{ 'add_budget_categories'|trans }}</h4>
                             {{ form_start(form) }}
                             {% for categoryNameForm in form.categoryNames %}
                                 <div class="mb-4">
@@ -193,7 +193,7 @@
                                 </div>
                             {% endfor %}
                             <div class="text-center">
-                                <button type="submit" class="btn btn-custom">Submit</button>
+                                <button type="submit" class="btn btn-custom">{{ 'submit_button'|trans }}</button>
                             </div>
                             {{ form_end(form) }}
                         </div>
