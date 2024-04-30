@@ -1,4 +1,4 @@
-# Projet Symfony
+# Projet Symfony: My Money
 Ce projet est réalisé dans le cadre de la matière Technologie du web - niveau avancé en L3 MIAGE à l'université Paris 1 Panthéon Sorbonne. 
 
 ## Prérequis
@@ -33,6 +33,10 @@ composer install
 php bin/console doctrine:database:create
 php bin/console doctrine:migrations:migrate
 ```
+Veuillez exécuter cette commande 
+```bash
+composer require stof/doctrine-extensions-bundle
+```
 
 ## Se connecter
 Pour se connecter à l'application, rendez vous dans l'URL localhost/Projet_Dev/public (veuillez à changer le *Projet_Dev* en fonction de ce que vous avez nommé le dossier) pour accéder à la page d'accueil. 
@@ -50,7 +54,7 @@ Pour accéder à l'export de la base de données (format .SQL): **à ajouter**
 - HTML, CSS, JavaScript
 - Twig: moteur de templates
 - Bootstrap, Axentis: framework CSS
-- ChartJs: bibliothèque JS pour créer des graphiqueset des diagrammes interactifs
+- ChartJs: bibliothèque JS pour créer des graphiques et des diagrammes interactifs
 - Figma: maquette
 - Trello: gestion des sprints
 
