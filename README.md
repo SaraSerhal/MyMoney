@@ -47,7 +47,8 @@ Enfin, connectez vous à l'aide de l'email et du mot de passe que vous avez sais
 Pour accéder à l'outil de gestion de sprints : 
 https://trello.com/invite/b/p7t3LjJF/ATTIf65cd8117f6df0c9e642ebe7d68632053C011377/projetweb
 
-Pour accéder à l'export de la base de données (format .SQL): **à ajouter** 
+Pour accéder à l'export de la base de données (format .SQL): 
+https://drive.google.com/drive/home?ths=true
 
 ## Technologies utilisées
 - Symfony: framework PHP pour le développement web suivant le MVC
