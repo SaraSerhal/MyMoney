@@ -44,6 +44,12 @@ class UserController extends AbstractController
             $user->setEmailValid(null);
             $entityManager->flush();
             $entityManager->remove($user);
+            for ($i = 0; $i < count($user->getProfiles()); $i++) {
+                $profile = $user->getProfiles()[$i];
+                $entityManager->remove($profile);
+
+            }
+
             $entityManager->flush();
             $request->getSession()->invalidate();
             $tokenStorage->setToken(null);
