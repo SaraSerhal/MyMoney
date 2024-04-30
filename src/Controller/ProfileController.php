@@ -22,14 +22,6 @@ use Symfony\Component\Form\FormTypeInterface;
 
 class ProfileController extends AbstractController{
 
-    /*#[Route('/profile', name: 'profile')]
-        public function profile(): Response
-        {
-            return $this->render('profile/profile.html.twig', [
-                'controller_name' => 'ProfileController',
-            ]);
-        } */
-
     #[Route('/profile/new_profile', name: 'new_profile')]
     public function create(Request $request, EntityManagerInterface $entityManager): Response
     {

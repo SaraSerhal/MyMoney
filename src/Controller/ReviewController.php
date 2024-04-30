@@ -2,6 +2,7 @@
 
 namespace App\Controller;
 
+use App\Services\ReviewService;
 use Psr\Log\LoggerInterface;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Response;
@@ -9,6 +10,11 @@ use Symfony\Component\Routing\Annotation\Route;
 
 class ReviewController extends AbstractController
 {
+    private ReviewService $reviewService;
+    public function __construct(ReviewService $reviewService)
+    {
+        $this->reviewService = $reviewService;
+    }
     #[Route('/review', name: 'review')]
     public function index(): Response
     {
@@ -22,24 +28,8 @@ class ReviewController extends AbstractController
         if (!$profiles || $profiles->isEmpty()) {
             throw $this->createNotFoundException('Profil ou budget non trouvé pour l\'utilisateur.');
         }
+        $data = $this->reviewService->getReviewData($user);
 
-
-        $data = [];
-        foreach ($profiles as $profile) {
-            $initialBudget = $profile->getProfileBudget();
-            $updatedBudget = $profile->getUpdatedProfileBudget();
-
-            $data[] = [
-                'name' => 'Profile Name : ' . $profile->getProfileType(),
-                'initialBudget' => $initialBudget,
-                'updatedBudget' => $updatedBudget
-            ];
-            $data[] = [
-                'name' => 'Profile Name : ' . $profile->getProfileType(),
-                'initialBudget' => $initialBudget,
-                'updatedBudget' => $updatedBudget
-            ];
-        }
         return $this->render('review/index.html.twig', [
             'controller_name' => 'ReviewController',
             'chartData' => json_encode($data),
