@@ -31,3 +31,6 @@ contact:
 confirmation:
     path: /confirmation
     controller: App\Controller\ContactController::confirmation
+about:
+    path: /about
+    controller: App\Controller\AboutController::index

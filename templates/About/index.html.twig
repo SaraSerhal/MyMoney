@@ -1,24 +1,54 @@
 
+
+
 {% extends 'base.html.twig' %}
 
-{% block title %}Student Profile{% endblock %}
+{% block title %}Couple Profile{% endblock %}
 
 {% block stylesheets %}
     {{ parent() }}
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
     <style>
-        .sidebar ul li:last-child {
-            margin-bottom: -100px; /* Réduire l'espace entre le lien Delete My Account et le dropdown menu */
-        }
         .btn-custom, .btn btn-primary {
             background-color: #FF698D;
             border-color: #FF698D;
             color: white;
         }
+        .container {
+            max-width: 880px;
+            margin: 0 auto;
+            padding: 10px;
+        }
+        .about-section {
+            margin-bottom: 20px;
+        }
+        .about-section p {
+            margin-bottom: 10px;
+        }
+        .team-section {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-top: 20px;
+        }
+        .team-member {
+            text-align: center;
+        }
+        .team-member img {
+            width: 100px;
+            height: 100px;
+            border-radius: 50%;
+            margin-bottom: 10px;
+        }
+
+
         .btn-custom:hover {
             background-color: #FF5C7D; /* Darker on hover */
             border-color: #FF5C7D;
             color: white;
+        }
+        .sidebar ul li:last-child {
+            margin-bottom: -100px; /* Réduire l'espace entre le lien Delete My Account et le dropdown menu */
         }
         body {
             align-items: center;
@@ -168,43 +198,33 @@
 
                 </header>
             </main>
-        </div>
-        <div class="container mt-5">
-            <div class="row">
-                <div class="col-md-8 offset-md-2"> <!-- Centrage par une colonne de 8 avec un offset de 2 de chaque côté -->
-                    <div class="card">
-                        <div class="card-body">
-                            <h2 class="card-title text-center mb-4">{{ 'welcome_student'|trans }}</h2>
-                            {% if profile is defined %}
-                                <p class="lead text-center mb-4">{{ 'current_budget'|trans({'budgett': profileBudget}) }}</p>
-                            {% else %}
-                                <p class="lead text-center mb-4">{{ 'no_profile_found'|trans }}</p>
-                            {% endif %}
-                            <hr>
-                            <h4 class="card-title text-center mt-4 mb-3">{{ 'add_budget_categories'|trans }}</h4>
-                            {{ form_start(form) }}
-                            {% for categoryNameForm in form.categoryNames %}
-                                <div class="mb-4">
-                                    {{ form_row(categoryNameForm, {'attr': {'class': 'form-control'}}) }}
-                                </div>
-                            {% endfor %}
-                            <div class="text-center">
-                                <button type="submit" class="btn btn-custom">{{ 'submit_button'|trans }}</button>
-                            </div>
-                            {{ form_end(form) }}
-                        </div>
-                    </div>
+            <div class="container">
+                <div class="about-section">
+                    <h2>About MyMoney</h2>
+                    <p>
+                        Bienvenue chez MyMoney, votre allié dans la gestion intelligente de vos finances personnelles. Fondée par trois jeunes femmes ayant autrefois du mal à contrôler leurs dépenses et à planifier leur avenir financier, MyMoney est née de la volonté de transformer les défis financiers en opportunités d'apprentissage et de croissance.
+                        <br><br>
+                        Notre histoire est celle de nombreuses personnes : des acheteurs compulsifs, des étudiants vivant avec un budget serré, des professionnels soucieux de leur avenir financier, et des voyageurs passionnés cherchant à maximiser leur budget pour des aventures inoubliables. Nous avons ressenti les frissons de la culpabilité après un achat impulsif et l'anxiété de regarder notre compte en banque se vider sans savoir où l'argent est passé.
+                        <br><br>
+                        C'est pourquoi nous avons créé MyMoney, un outil simple et intuitif conçu pour vous aider à prendre le contrôle de vos finances. Que vous soyez un étudiant jonglant avec les frais de scolarité et les dépenses quotidiennes, un investisseur débutant cherchant à comprendre les rouages du marché financier, ou un globe-trotter rêvant de voyages sans contraintes budgétaires, MyMoney est là pour vous accompagner à chaque étape de votre parcours financier.
+                        <br><br>
+                        Avec MyMoney, vous pouvez suivre vos revenus et vos dépenses en temps réel, établir des budgets personnalisés pour chaque catégorie de dépenses, planifier et suivre vos objectifs financiers à long terme, et accéder à une gamme d'outils et de ressources éducatives pour améliorer vos connaissances en matière de finance personnelle.
+                        <br><br>
+                        Mais MyMoney est bien plus qu'une simple application de gestion de budget. C'est une communauté dynamique et bienveillante où vous pouvez partager vos expériences, poser des questions, et trouver l'inspiration auprès d'autres membres qui partagent vos défis et vos aspirations. Ensemble, nous pouvons briser les tabous entourant l'argent, développer des habitudes financières saines, et réaliser nos rêves, un budget à la fois.
+                        <br><br>
+                        Rejoignez-nous dès aujourd'hui et commencez votre voyage vers une vie financière épanouie avec MyMoney. Parce que chaque centime compte, et chaque pas vers la liberté financière est une victoire à célébrer.
+                    </p>
+
                 </div>
+
+
             </div>
+            </main>
+            <!-- Sidebar toggle button -->
+            <button class="sidebar-toggle" onclick="toggleSidebar()">
+                <i class="fas fa-bars"></i>
+            </button>
         </div>
-
-
-        </main>
-        <!-- Sidebar toggle button -->
-        <button class="sidebar-toggle" onclick="toggleSidebar()">
-            <i class="fas fa-bars"></i>
-        </button>
-    </div>
 
     </div>
 
