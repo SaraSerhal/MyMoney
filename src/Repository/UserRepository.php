@@ -43,27 +43,6 @@ class UserRepository extends ServiceEntityRepository implements PasswordUpgrader
 //    /**
 //     * @return User[] Returns an array of User objects
 //     */
-//    public function findByExampleField($value): array
-//    {
-//        return $this->createQueryBuilder('u')
-//            ->andWhere('u.exampleField = :val')
-//            ->setParameter('val', $value)
-//            ->orderBy('u.id', 'ASC')
-//            ->setMaxResults(10)
-//            ->getQuery()
-//            ->getResult()
-//        ;
-//    }
-
-//    public function findOneBySomeField($value): ?User
-//    {
-//        return $this->createQueryBuilder('u')
-//            ->andWhere('u.exampleField = :val')
-//            ->setParameter('val', $value)
-//            ->getQuery()
-//            ->getOneOrNullResult()
-//        ;
-//    }
 
     public function findByActive(): array
     {
@@ -71,8 +50,7 @@ class UserRepository extends ServiceEntityRepository implements PasswordUpgrader
             ->andWhere('u.deletedAt IS NULL')
             ->orderBy('u.id', 'ASC')
             ->getQuery()
-            ->getResult()
-            ;
+            ->getResult();
     }
 
     public function findByEmail(string $email): ?User
@@ -81,8 +59,7 @@ class UserRepository extends ServiceEntityRepository implements PasswordUpgrader
             ->andWhere('u.email = :email')
             ->setParameter('email', $email)
             ->getQuery()
-            ->getOneOrNullResult()
-            ;
+            ->getOneOrNullResult();
     }
 
     public function findActiveUserByEmail($email)
@@ -98,4 +75,43 @@ class UserRepository extends ServiceEntityRepository implements PasswordUpgrader
 
         return $queryBuilder->getQuery()->getOneOrNullResult();
     }
+
+    public function findByEmailValid(string $email): ?User
+    {
+        return $this->createQueryBuilder('u')
+            ->andWhere('u.emailValid = :email')
+            ->setParameter('email', $email)
+            ->getQuery()
+            ->getOneOrNullResult();
+    }
+
+    public function findActiveUserByEmailValid($email)
+    {
+        $entityManager = $this->getEntityManager();
+        $queryBuilder = $entityManager->createQueryBuilder();
+
+        $queryBuilder->select('u')
+            ->from(User::class, 'u')
+            ->where('u.emailValid = :email')
+            ->andWhere('u.deletedAt IS NULL') // Exclut les utilisateurs supprimés
+            ->setParameter('email', $email);
+
+        return $queryBuilder->getQuery()->getOneOrNullResult();
+    }
+
+    public function findUnactiveUserByEmailValid($email)
+    {
+        $entityManager = $this->getEntityManager();
+        $queryBuilder = $entityManager->createQueryBuilder();
+
+        $queryBuilder->select('u')
+            ->from(User::class, 'u')
+            ->where('u.emailValid = :email')
+            ->andWhere('u.deletedAt IS NOT NULL') // Exclut les utilisateurs actifs
+            ->setParameter('email', $email);
+
+        return $queryBuilder->getQuery()->getOneOrNullResult();
+    }
+
+
 }

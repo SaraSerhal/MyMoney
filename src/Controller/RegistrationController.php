@@ -4,9 +4,11 @@ namespace App\Controller;
 
 use App\Entity\User;
 use App\Form\RegistrationFormType;
+use App\Repository\UserRepository;
 use App\Services\RegistrationHandlerService;
 use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
+use Symfony\Component\Form\FormError;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\PasswordHasher\Hasher\UserPasswordHasherInterface;
@@ -14,28 +16,54 @@ use Symfony\Component\Routing\Annotation\Route;
 
 class RegistrationController extends AbstractController
 {
+    private UserRepository $userRepository;
+    private EntityManagerInterface $entityManager;
+    private UserPasswordHasherInterface $userPasswordHasher;
+
+    public function __construct(UserRepository $userRepository, EntityManagerInterface $entityManager, UserPasswordHasherInterface $userPasswordHasher)
+    {
+        $this->userRepository = $userRepository;
+        $this->entityManager = $entityManager;
+        $this->userPasswordHasher = $userPasswordHasher;
+    }
+
 
     #[Route('/register', name: 'app_register')]
-    public function register(Request $request, UserPasswordHasherInterface $userPasswordHasher, EntityManagerInterface $entityManager): Response
+    public function register(Request $request): Response
     {
-        $user = new User();
-        $form = $this->createForm(RegistrationFormType::class, $user);
+        $form = $this->createForm(RegistrationFormType::class);
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {
-            // encode the plain password
-            $user->setPassword(
-                $userPasswordHasher->hashPassword(
-                    $user,
-                    $form->get('plainPassword')->getData()
-                )
-            );
-
-            $entityManager->persist($user);
-            $entityManager->flush();
-            // do anything else you need here, like send an email
-
+            $user = $form->getData();
+            $unactiveUser= $this->userRepository->findUnactiveUserByEmailValid($user->getEmailValid());
+            if ($unactiveUser){
+                $unactiveUser->setDeletedAt(null);
+                $unactiveUser->setLastName($user->getLastName());
+                $unactiveUser->setName($user->getName());
+                $unactiveUser->setAge($user->getAge());
+                $unactiveUser->setPassword($this->userPasswordHasher->hashPassword($unactiveUser, $form->get('plainPassword')->getData()));
+                $unactiveUser->setEmailValid($user->getEmailValid());
+                $this->entityManager->flush();
             return $this->redirectToRoute('app_login');
+            }
+            if ($this->userRepository->findByEmailValid($form->get('email')->getData())) {
+                return $this->render('registration/register.html.twig', [
+                    'registrationForm' => $form->createView(),
+                    'error' => 'Email already exists'
+                ]);
+            }
+
+            $user->setEmailValid($form->get('email')->getData());
+            $user->setEmail($form->get('email')->getData());
+            $user->setLastName($form->get('lastName')->getData());
+            $user->setName($form->get('name')->getData());
+            $user->setAge($form->get('age')->getData());
+            $user->setPassword($this->userPasswordHasher->hashPassword($user, $form->get('plainPassword')->getData()));
+            $this->entityManager->persist($user);
+            $this->entityManager->flush();
+            return $this->redirectToRoute('app_login');
+
         }
 
         return $this->render('registration/register.html.twig', [

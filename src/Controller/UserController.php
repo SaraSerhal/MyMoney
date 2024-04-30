@@ -41,6 +41,8 @@ class UserController extends AbstractController
         $user = $this->getUser();
 
         if ($user) {
+            $user->setEmailValid(null);
+            $entityManager->flush();
             $entityManager->remove($user);
             $entityManager->flush();
             $request->getSession()->invalidate();
