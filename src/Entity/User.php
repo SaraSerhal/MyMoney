@@ -11,6 +11,8 @@ use Symfony\Component\Security\Core\User\PasswordAuthenticatedUserInterface;
 use Symfony\Component\Security\Core\User\UserInterface;
 use Symfony\UX\Turbo\Attribute\Broadcast;
 use Gedmo\Mapping\Annotation as Gedmo;
+use Symfony\Component\Validator\Constraints as Assert;
+
 
 #[ORM\Entity(repositoryClass: UserRepository::class)]
 #[Gedmo\SoftDeleteable(fieldName: "deletedAt", timeAware: false, hardDelete: false)]
@@ -22,6 +24,11 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
     #[ORM\Column]
     private ?int $id = null;
 
+    /**
+     * @Assert\Email(
+     *     message = "L'email '{{ value }}' n'est pas un email valide."
+     * )
+     */
     #[ORM\Column(length: 180)]
     private ?string $email = null;
 
@@ -38,6 +45,14 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
     #[ORM\Column(length: 255)]
     private ?string $name = null;
 
+
+    /**
+     * @Assert\Range(
+     *      min = 12,
+     *      max = 140,
+     *      notInRangeMessage = "Vous devez être âgé entre {{ min }} et {{ max }} ans pour vous inscrire à ce site."
+     * )
+     */
     #[ORM\Column]
     private ?int $age = null;
 

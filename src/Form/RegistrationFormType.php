@@ -5,6 +5,8 @@ namespace App\Form;
 use App\Entity\User;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\Extension\Core\Type\CheckboxType;
+use Symfony\Component\Form\Extension\Core\Type\EmailType;
+use Symfony\Component\Form\Extension\Core\Type\IntegerType;
 use Symfony\Component\Form\Extension\Core\Type\PasswordType;
 use Symfony\Component\Form\Extension\Core\Type\RepeatedType;
 use Symfony\Component\Form\FormBuilderInterface;
@@ -12,6 +14,8 @@ use Symfony\Component\OptionsResolver\OptionsResolver;
 use Symfony\Component\Validator\Constraints\IsTrue;
 use Symfony\Component\Validator\Constraints\Length;
 use Symfony\Component\Validator\Constraints\NotBlank;
+use Symfony\Component\Validator\Constraints as Assert;
+
 
 class RegistrationFormType extends AbstractType
 {
@@ -20,8 +24,23 @@ class RegistrationFormType extends AbstractType
         $builder
             ->add('name')
             ->add('lastName')
-            ->add('email')
-            ->add('age')
+            ->add('email', EmailType::class, [
+                'constraints' => [
+                    new Assert\Email([
+                        'message' => "L'adresse email '{{ value }}' n'est pas une adresse valide."
+                    ])
+                ]
+            ])
+
+            ->add('age', IntegerType::class, [
+                'constraints' => [
+                    new Assert\Range([
+                        'min' => 12,
+                        'max' => 140,
+                        'notInRangeMessage' => 'Vous devez être âgé entre {{ min }} et {{ max }} ans pour utiliser ce service.'
+                    ])
+                ]
+            ])
             ->add('AgreeTerms', CheckboxType::class, [
                                 'mapped' => false,
                 'constraints' => [

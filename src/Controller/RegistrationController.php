@@ -13,6 +13,7 @@ use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\PasswordHasher\Hasher\UserPasswordHasherInterface;
 use Symfony\Component\Routing\Annotation\Route;
+use Symfony\Component\Validator\Validator\ValidatorInterface;
 
 class RegistrationController extends AbstractController
 {
@@ -29,13 +30,21 @@ class RegistrationController extends AbstractController
 
 
     #[Route('/register', name: 'app_register')]
-    public function register(Request $request): Response
+    public function register(Request $request,ValidatorInterface $validator): Response
     {
         $form = $this->createForm(RegistrationFormType::class);
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {
             $user = $form->getData();
+            $errors = $validator->validate($user);
+
+            if (count($errors) > 0) {
+                // Traitement des erreurs de validation
+                $errorsString = (string) $errors;
+                return new Response($errorsString, 400);
+            }
+
             $unactiveUser= $this->userRepository->findUnactiveUserByEmailValid($user->getEmailValid());
             if ($unactiveUser){
                 $unactiveUser->setDeletedAt(null);
